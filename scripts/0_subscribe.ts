@@ -17,6 +17,7 @@ const subscriptionProtocol: DeployFunction<Settings> = async (
       subfee: 7770000000n,                                              // notice the extra zeros for the 7 decimal places implied with $ngu as a token
       platformfees: 0n,                                                 // notice no dev fees or contract fees, no fees until subscription handled
       devfees: 0n,
+      //fee: 543900000n,                                                // 1% dev fee
       dev: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",
       lead: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",            // fetch address from Elvis
       token: ""                                                         // the id of the $NGU token

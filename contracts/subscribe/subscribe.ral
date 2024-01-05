@@ -4,6 +4,7 @@ Contract Subscribe(
     subfee: U256,                       // Fee Amount (777 $NGU)
     mut platformfees: U256,             // Platform Amount
     mut devfees: U256,                  // Dev Amount
+    mut fee: U256                       // Dev Fee
     dev: Address,                       // Developer
     lead: Address,                      // Platform
     token: ByteVec                      // $NGU Token
@@ -12,6 +13,7 @@ Contract Subscribe(
     event Subscribed(addy: Address, who: ByteVec, when: U256, devamt: U256, platformfees: U256)
     // Subscription uses ByteVec to recognize $ngu signal holding status from discordname
     event Withdrawngu(when: U256, amt: U256)
+    event Feeupdate(prevfee: U256, newfee: U256)
 
     // Error Codes
     enum Codes {
@@ -38,9 +40,8 @@ Contract Subscribe(
     pub fn deposit(discordname: ByteVec) -> () {
 
         let caller = callerAddress!()
-
-        // Calculate 1% fee with proper scaling for 7 decimals    
-        let fee = subfee * 100 / 10000
+        
+        fee = fee * 1 // Establish Value
 
         // Distribute the fee
         devfees = devfees + fee
@@ -77,5 +78,16 @@ Contract Subscribe(
         emit Withdrawngu(blockTimeStamp!(), devfees)
         
         devfees = devfees - devfees // zero out
+    }
+
+    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true)
+    pub fn updatefee(newfee: U256) -> () {
+
+        checkCaller!(callerAddress!() == dev, Codes.InvalidCaller)
+
+        let oldfee = fee        // oldfee = fee
+        fee = newfee            // prevfee -> newfee
+
+        emit Feeupdate(oldfee, fee)
     }
 }
