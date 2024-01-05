@@ -1,0 +1,8 @@
+TxScript Withdrawdev(
+	contract: Subscribe
+) {
+    let token = contract.getToken()
+    let amount = contract.getDevFees()
+
+	contract.withdrawdev{selfAddress!() -> token: amount}()
+}

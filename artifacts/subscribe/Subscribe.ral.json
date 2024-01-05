@@ -1,0 +1,155 @@
+{
+  "version": "v2.5.7",
+  "name": "Subscribe",
+  "bytecode": "060709121b4024405f407f409f010000000102ce0302010000000102ce0002010000000102a00102010000000102a0000201030003001fb41700ce001340642c1367102d1701a00116012aa101ce0016012b1702a00016022aa1001600b2ce03ce00aa05160056a001a00061010300000012b4ce02450d7bb2ce02ce03a000aa0656a0005fa000a0002ba100010300000012b4ce01450d7bb2ce01ce03a000aa0656a0015fa001a0012ba101",
+  "codeHash": "9026a897a5f2bfb3bbc6266cd78eb839c977e50412880002a8f0736afcd034b9",
+  "fieldsSig": {
+    "names": [
+      "subfee",
+      "platformfees",
+      "devfees",
+      "dev",
+      "lead",
+      "token"
+    ],
+    "types": [
+      "U256",
+      "U256",
+      "U256",
+      "Address",
+      "Address",
+      "ByteVec"
+    ],
+    "isMutable": [
+      false,
+      true,
+      true,
+      false,
+      false,
+      false
+    ]
+  },
+  "eventsSig": [
+    {
+      "name": "Subscribed",
+      "fieldNames": [
+        "who",
+        "when",
+        "devamt",
+        "platformfees"
+      ],
+      "fieldTypes": [
+        "Address",
+        "U256",
+        "U256",
+        "U256"
+      ]
+    },
+    {
+      "name": "Withdrawngu",
+      "fieldNames": [
+        "when",
+        "amt"
+      ],
+      "fieldTypes": [
+        "U256",
+        "U256"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getToken",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "ByteVec"
+      ]
+    },
+    {
+      "name": "getSubFee",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "getDevFees",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "getPlatformFees",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "deposit",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    },
+    {
+      "name": "withdrawplatform",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    },
+    {
+      "name": "withdrawdev",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    }
+  ],
+  "constants": [],
+  "enums": [
+    {
+      "name": "Codes",
+      "fields": [
+        {
+          "name": "InvalidCaller",
+          "value": {
+            "type": "U256",
+            "value": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

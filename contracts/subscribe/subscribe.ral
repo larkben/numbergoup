@@ -1,0 +1,80 @@
+// Subscribe
+
+Contract Subscribe(
+    subfee: U256,                   // Fee Amount (777 $NGU)
+    mut platformfees: U256,             // Platform Amount
+    mut devfees: U256,                  // Dev Amount
+    dev: Address,                       // Developer
+    lead: Address,                      // Platform
+    token: ByteVec                      // $NGU Token
+) {
+    // Events
+    event Subscribed(who: Address, when: U256, devamt: U256, platformfees: U256)
+    event Withdrawngu(when: U256, amt: U256)
+
+    // Error Codes
+    enum Codes {
+        InvalidCaller = 1
+    }
+
+    pub fn getToken() -> ByteVec {
+        return token
+    }
+
+    pub fn getSubFee() -> U256 {
+        return subfee
+    }
+
+    pub fn getDevFees() -> U256 {
+        return devfees
+    }
+
+    pub fn getPlatformFees() -> U256 {
+        return platformfees
+    }
+
+    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = false)
+    pub fn deposit() -> () {
+
+        let caller = callerAddress!()
+
+        // Calculate 1% fee with proper scaling for 7 decimals    
+        let fee = subfee * 100 / 10000
+
+        // Distribute the fee
+        devfees = devfees + fee
+
+        // Calculate net amount
+        let calculated = subfee - fee
+        platformfees = platformfees + calculated
+
+        // Transfer the amount from caller to contract
+        transferToken!(caller, selfAddress!(), token, subfee)
+
+        emit Subscribed(caller, blockTimeStamp!(), devfees, platformfees)
+    }
+
+    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true)
+    pub fn withdrawplatform() -> () {
+
+        checkCaller!(callerAddress!() == lead, Codes.InvalidCaller)
+
+        transferToken!(selfAddress!(), lead, token, platformfees)
+
+        emit Withdrawngu(blockTimeStamp!(), platformfees)
+        
+        platformfees = platformfees - platformfees // zero out
+    }
+
+    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true)
+    pub fn withdrawdev() -> () {
+
+        checkCaller!(callerAddress!() == dev, Codes.InvalidCaller)
+
+        transferToken!(selfAddress!(), dev, token, platformfees)
+
+        emit Withdrawngu(blockTimeStamp!(), devfees)
+        
+        devfees = devfees - devfees // zero out
+    }
+}

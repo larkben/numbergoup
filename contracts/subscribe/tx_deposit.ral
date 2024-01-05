@@ -1,0 +1,8 @@
+TxScript Deposit(
+	contract: Subscribe
+) {
+	let token = contract.getToken()
+    let amount = contract.getSubFee()
+
+	contract.deposit{callerAddress!() -> token: amount}()
+}

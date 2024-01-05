@@ -1,0 +1,41 @@
+{
+  "fullNodeVersion": "v2.5.7",
+  "compilerOptionsUsed": {
+    "ignoreUnusedConstantsWarnings": false,
+    "ignoreUnusedVariablesWarnings": false,
+    "ignoreUnusedFieldsWarnings": false,
+    "ignoreUnusedPrivateFunctionsWarnings": false,
+    "ignoreUpdateFieldsCheckWarnings": false,
+    "ignoreCheckExternalCallerWarnings": false
+  },
+  "infos": {
+    "Deposit": {
+      "sourceFile": "subscribe/tx_deposit.ral",
+      "sourceCodeHash": "51164d9f3c48706ddc6e91994d1c097f80234cc651dbc112e5150b78f16bb6a8",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "Subscribe": {
+      "sourceFile": "subscribe/subscribe.ral",
+      "sourceCodeHash": "3a3e1f457365ab8ed9037238cac2c28525ee8164cc7182f4ba88e96d8659a105",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "9026a897a5f2bfb3bbc6266cd78eb839c977e50412880002a8f0736afcd034b9",
+      "warnings": []
+    },
+    "Withdrawdev": {
+      "sourceFile": "subscribe/tx_withdrawdev.ral",
+      "sourceCodeHash": "1830446db998fc94bba1598dbd07a00edb7c90a62adde4780d52fba3f16881fc",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "Withdrawplatform": {
+      "sourceFile": "subscribe/tx_withdrawplatform.ral",
+      "sourceCodeHash": "5a60550ff371a088abae490c85971ba83566ca9a4c65233f0ebc2845ee7db06d",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    }
+  }
+}

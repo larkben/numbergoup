@@ -1,0 +1,28 @@
+{
+  "version": "v2.5.7",
+  "name": "Withdrawdev",
+  "bytecodeTemplate": "010103000200120c0d{0}010017000c0d{0}01021701b216001601a30c0c{0}0106",
+  "fieldsSig": {
+    "names": [
+      "contract"
+    ],
+    "types": [
+      "ByteVec"
+    ],
+    "isMutable": [
+      false
+    ]
+  },
+  "functions": [
+    {
+      "name": "main",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    }
+  ]
+}
