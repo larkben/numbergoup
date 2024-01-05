@@ -1,7 +1,7 @@
 // Subscribe
 
 Contract Subscribe(
-    subfee: U256,                   // Fee Amount (777 $NGU)
+    subfee: U256,                       // Fee Amount (777 $NGU)
     mut platformfees: U256,             // Platform Amount
     mut devfees: U256,                  // Dev Amount
     dev: Address,                       // Developer
@@ -9,7 +9,8 @@ Contract Subscribe(
     token: ByteVec                      // $NGU Token
 ) {
     // Events
-    event Subscribed(who: Address, when: U256, devamt: U256, platformfees: U256)
+    event Subscribed(addy: Address, who: ByteVec, when: U256, devamt: U256, platformfees: U256)
+    // Subscription uses ByteVec to recognize $ngu signal holding status from discordname
     event Withdrawngu(when: U256, amt: U256)
 
     // Error Codes
@@ -34,7 +35,7 @@ Contract Subscribe(
     }
 
     @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = false)
-    pub fn deposit() -> () {
+    pub fn deposit(discordname: ByteVec) -> () {
 
         let caller = callerAddress!()
 
@@ -51,7 +52,7 @@ Contract Subscribe(
         // Transfer the amount from caller to contract
         transferToken!(caller, selfAddress!(), token, subfee)
 
-        emit Subscribed(caller, blockTimeStamp!(), devfees, platformfees)
+        emit Subscribed(caller, discordname, blockTimeStamp!(), devfees, platformfees)
     }
 
     @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true)
