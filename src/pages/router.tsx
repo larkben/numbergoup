@@ -3,9 +3,14 @@
 // Imports
 import { useRouter } from 'next/router'
 import Home from './index'
-import Signals from './subscribepage'
+import Swaps from './swaps'
+import Token from './subscribe'
+import Whitepaper from '../components/whitepaper'
+import Tools from './tools'
+import NFT from './swaps'
 
 import React from 'react'
+import AutoSubscribe from './subscribe'
 
 const routes = [
   {
@@ -13,8 +18,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/subscribepage',
-    component: Signals
+    path: '/whitepaper',
+    component: Whitepaper
+  },
+  {
+    path: '/tools',
+    component: Tools
+  },
+  {
+    path: '/swaps',
+    component: Swaps
+  },
+  {
+    path: '/subscribe',
+    component: AutoSubscribe
   }
 ]
 

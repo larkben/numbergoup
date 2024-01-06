@@ -1,0 +1,6 @@
+TxScript Updatedevfee(
+	contract: Subscribe,
+    newfee: U256
+) {
+	contract.updatefee(newfee)
+}

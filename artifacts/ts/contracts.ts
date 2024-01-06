@@ -3,12 +3,32 @@
 /* eslint-disable */
 
 import { Contract, ContractFactory } from "@alephium/web3";
-import { Subscribe } from ".";
+import {
+  BurnToken,
+  CreateToken,
+  Createswap,
+  Faucet,
+  FeeCollection,
+  Subscribe,
+  Swap,
+  Token,
+  Viral,
+} from ".";
 
 let contracts: ContractFactory<any>[] | undefined = undefined;
 export function getContractByCodeHash(codeHash: string): Contract {
   if (contracts === undefined) {
-    contracts = [Subscribe];
+    contracts = [
+      BurnToken,
+      CreateToken,
+      Createswap,
+      Faucet,
+      FeeCollection,
+      Subscribe,
+      Swap,
+      Token,
+      Viral,
+    ];
   }
   const c = contracts.find(
     (c) =>

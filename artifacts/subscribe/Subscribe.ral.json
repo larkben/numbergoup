@@ -1,18 +1,20 @@
 {
-  "version": "v2.5.7",
+  "version": "v2.5.9",
   "name": "Subscribe",
-  "bytecode": "060709121b4024405f407f409f010000000102ce0302010000000102ce0002010000000102a00102010000000102a0000201030003001fb41700ce001340642c1367102d1701a00116012aa101ce0016012b1702a00016022aa1001600b2ce03ce00aa05160056a001a00061010300000012b4ce02450d7bb2ce02ce03a000aa0656a0005fa000a0002ba100010300000012b4ce01450d7bb2ce01ce03a000aa0656a0015fa001a0012ba101",
-  "codeHash": "9026a897a5f2bfb3bbc6266cd78eb839c977e50412880002a8f0736afcd034b9",
+  "bytecode": "070909121b4024405b407b409b40b540c4010000000102ce0302010000000102ce0002010000000102a00102010000000102a0000201030103001eb41701a0020d2ca102a001a0022aa101ce00a0022b1702a00016022aa1001601b2ce03ce00aa051601160056a001a00073010300000012b4ce02450d7bb2ce02ce03a000aa0656a0005fa000a0002ba100010300000012b4ce01450d7bb2ce01ce03a000aa0656a0015fa001a0012ba10101000102000db4ce01450d7ba00217011600a102071601a0025f010000000008b4ce01450d7b08b45e",
+  "codeHash": "6c20f9a43e02cb01820ae66d2d72044c609c0ae2e5ce4f2c8bd325fafe67e048",
   "fieldsSig": {
     "names": [
       "subfee",
       "platformfees",
       "devfees",
+      "fee",
       "dev",
       "lead",
       "token"
     ],
     "types": [
+      "U256",
       "U256",
       "U256",
       "U256",
@@ -24,6 +26,7 @@
       false,
       true,
       true,
+      true,
       false,
       false,
       false
@@ -33,6 +36,7 @@
     {
       "name": "Subscribed",
       "fieldNames": [
+        "addy",
         "who",
         "when",
         "devamt",
@@ -40,6 +44,7 @@
       ],
       "fieldTypes": [
         "Address",
+        "ByteVec",
         "U256",
         "U256",
         "U256"
@@ -54,6 +59,26 @@
       "fieldTypes": [
         "U256",
         "U256"
+      ]
+    },
+    {
+      "name": "Feeupdate",
+      "fieldNames": [
+        "prevfee",
+        "newfee"
+      ],
+      "fieldTypes": [
+        "U256",
+        "U256"
+      ]
+    },
+    {
+      "name": "Destroysub",
+      "fieldNames": [
+        "who"
+      ],
+      "fieldTypes": [
+        "Address"
       ]
     }
   ],
@@ -111,9 +136,15 @@
       "usePreapprovedAssets": true,
       "useAssetsInContract": false,
       "isPublic": true,
-      "paramNames": [],
-      "paramTypes": [],
-      "paramIsMutable": [],
+      "paramNames": [
+        "discordname"
+      ],
+      "paramTypes": [
+        "ByteVec"
+      ],
+      "paramIsMutable": [
+        false
+      ],
       "returnTypes": []
     },
     {
@@ -129,6 +160,32 @@
     {
       "name": "withdrawdev",
       "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    },
+    {
+      "name": "updatefee",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "newfee"
+      ],
+      "paramTypes": [
+        "U256"
+      ],
+      "paramIsMutable": [
+        false
+      ],
+      "returnTypes": []
+    },
+    {
+      "name": "subdestroy",
+      "usePreapprovedAssets": false,
       "useAssetsInContract": false,
       "isPublic": true,
       "paramNames": [],

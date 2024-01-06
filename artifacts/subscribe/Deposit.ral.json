@@ -1,15 +1,18 @@
 {
-  "version": "v2.5.7",
+  "version": "v2.5.9",
   "name": "Deposit",
-  "bytecodeTemplate": "010103000200120c0d{0}010017000c0d{0}01011701b416001601a30c0c{0}0104",
+  "bytecodeTemplate": "010103000200130c0d{0}010017000c0d{0}01011701b416001601a3{1}0d0c{0}0104",
   "fieldsSig": {
     "names": [
-      "contract"
+      "contract",
+      "discordname"
     ],
     "types": [
+      "ByteVec",
       "ByteVec"
     ],
     "isMutable": [
+      false,
       false
     ]
   },

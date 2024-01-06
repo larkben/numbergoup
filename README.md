@@ -1,11 +1,43 @@
-# Official Number Go Up Website
-<h2> * Open Source is the only Source * </h2>
+## ALPHpaca's Homepage
 
-# How to start using this repo?
-`npm install` - this installs all required dependencies for the project <br/>
-`npm run compile` - compiles any RALPH contracts in the contracts folder <br/>
-`npm run dev` - builds a development server for you in your own browser on your machine but no where else .ie. not publicly avilable <br/>
-`npm run build` - builds a production level version of your website which when ran on a hosting platform will make your site public <br/>
+By downloading and or forking this site for your own personal use you run the risk of not fully understanding the code; possibly even resulting in extreme cases of a loss of funds.
 
-# Current Implementations?
-<h2> Subscription Service / Automation </h2>
+### Install
+
+```
+npm install
+```
+
+### Install and Run Docker
+
+```
+make start-devnet
+```
+
+### Deploy the token faucet contract
+
+```bash
+# deploys to devnet check package.json for extra commands extending to other networks
+npx @alephium/cli deploy -n devnet 
+```
+
+## Compilation and Testing
+
+```bash
+# Compile
+npx @alephium/cli compile
+
+# Test
+npx @alephium/cli test
+```
+
+### Run the development server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser
+to see the ALPHpaca website.

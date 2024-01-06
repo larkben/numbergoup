@@ -1,8 +1,9 @@
 TxScript Deposit(
-	contract: Subscribe
+	contract: Subscribe,
+	discordname: ByteVec
 ) {
 	let token = contract.getToken()
     let amount = contract.getSubFee()
 
-	contract.deposit{callerAddress!() -> token: amount}()
+	contract.deposit{callerAddress!() -> token: amount}(discordname)
 }

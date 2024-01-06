@@ -1,38 +1,82 @@
-// Component Token Create
+// Component Subscribe
 import React from 'react'
 import { FC, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // Alephium imports
-import { SubscribeConfig } from '@/utils/utils'
+import { SubscribeContract } from '@/services/token.service'
+import { TxStatus } from './TxStatus'
+import { node } from '@alephium/web3'
+import { SubscribeConfig } from '@/services/utils'
+import { useWallet } from '@alephium/web3-react'
 
 // Token Creation
 export const SubscribeAutomation: FC<{
   config: SubscribeConfig
 }> = ({ config }) => {
-  //const context = useAlephiumConnectContext()
+  const { signer, account } = useWallet()
   const addressGroup = config.groupIndex
   const [ongoingTxId, setOngoingTxId] = useState<string>()
 
-  // Subscribe  Variables (Updating DevFee and or SignalFee)
-  const [supply, setSupply] = useState('')
+  // Token Variables
+  const [discord, setDiscord] = useState<string>("")
 
   // Handle of TokenCreation
-  /*
-  const handleBuildTokenSubmit = async (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (context.signerProvider) {
-      const result = await BuildToken(context.signerProvider, symbol, name, decimals, supply)
+    if (signer) {
+      const result = await SubscribeContract(signer, discord)
       setOngoingTxId(result.txId)
     }
   }
-  */
+
+  // Gets the TX and updates according to status on chain
+  const txStatusCallback = (status: node.TxStatus, numberOfChecks: number): Promise<any> => {
+    if ((status.type === 'Confirmed' && numberOfChecks > 2) || (status.type === 'TxNotFound' && numberOfChecks > 3)) {
+      setOngoingTxId(undefined)
+    }
+
+    return Promise.resolve()
+  } 
+
+  console.log('ongoing..', ongoingTxId)
 
   // Form submit to insert values and receive input
   return (
     <>
-      Subscribe ot $NGU signals
+      <br/>
+      <style>
+        @import url(&apos;https://fonts.googleapis.com/css2?family=Tektur&display=swap&apos;);
+      </style>
+      <div style={{color: 'black'}} >
+        <form onSubmit={handleSubscribe} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <p style={{color: 'black', textAlign: 'center'}}> 777 NGU for one month of signals. </p>
+            <label htmlFor="symbol">Symbol :</label>
+            <input
+                className={styles.inputToken}
+                type="text"
+                id="symbol"
+                name="symbol"
+                value={discord}
+                onChange={(e) => setDiscord(e.target.value)}
+            />
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Subscribe to NGU Signals" />
+          </>
+        </form>
+      </div>
+
+      <br/>
+
+      <div style={{color: 'white'}}>
+        {ongoingTxId && <TxStatus txId={ongoingTxId} txStatusCallback={txStatusCallback} />}
+      </div>
+
+      <br/>
     </>
   )
 }
