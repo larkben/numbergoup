@@ -1,4 +1,4 @@
-## ALPHpaca's Homepage
+## ngu.money
 
 By downloading and or forking this site for your own personal use you run the risk of not fully understanding the code; possibly even resulting in extreme cases of a loss of funds.
 
@@ -40,4 +40,4 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser
-to see the ALPHpaca website.
+
