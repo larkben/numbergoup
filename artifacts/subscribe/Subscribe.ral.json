@@ -1,8 +1,8 @@
 {
   "version": "v2.5.9",
   "name": "Subscribe",
-  "bytecode": "070909121b4024405b407b409b40b540c4010000000102ce0302010000000102ce0002010000000102a00102010000000102a0000201030103001eb41701a0020d2ca102a001a0022aa101ce00a0022b1702a00016022aa1001601b2ce03ce00aa051601160056a001a00073010300000012b4ce02450d7bb2ce02ce03a000aa0656a0005fa000a0002ba100010300000012b4ce01450d7bb2ce01ce03a000aa0656a0015fa001a0012ba10101000102000db4ce01450d7ba00217011600a102071601a0025f010000000008b4ce01450d7b08b45e",
-  "codeHash": "6c20f9a43e02cb01820ae66d2d72044c609c0ae2e5ce4f2c8bd325fafe67e048",
+  "bytecode": "070909121b4024405b407b409b40b540c4010000000102ce0302010000000102ce0002010000000102a00102010000000102a0000201010103001eb41701a0020d2ca102a001a0022aa101ce00a0022b1702a00016022aa1001601b2ce03ce00aa051601160056a001a00073010100000012b4ce02450d7bb2ce02ce03a000aa0656a0005fa000a0002ba100010100000012b4ce01450d7bb2ce01ce03a000aa0656a0015fa001a0012ba10101000102000db4ce01450d7ba00217011600a102071601a0025f010000000008b4ce01450d7b08b45e",
+  "codeHash": "fe16aee67858e64da90848e92e58d127515ee022cbc38badd455f54f9de9bd14",
   "fieldsSig": {
     "names": [
       "subfee",
@@ -134,7 +134,7 @@
     {
       "name": "deposit",
       "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
+      "useAssetsInContract": true,
       "isPublic": true,
       "paramNames": [
         "discordname"
@@ -150,7 +150,7 @@
     {
       "name": "withdrawplatform",
       "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
+      "useAssetsInContract": true,
       "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
@@ -160,7 +160,7 @@
     {
       "name": "withdrawdev",
       "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
+      "useAssetsInContract": true,
       "isPublic": true,
       "paramNames": [],
       "paramTypes": [],

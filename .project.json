@@ -200,9 +200,9 @@
     },
     "Subscribe": {
       "sourceFile": "subscribe/subscribe.ral",
-      "sourceCodeHash": "6a5567779d9b9d072c1aebde5d2b196da2eed89bd2f4cd80e3e40ffd9b52103b",
+      "sourceCodeHash": "afd0d313055ff10bbf534b8ca31c59efbc64fc035195d5997b0371c1046744e0",
       "bytecodeDebugPatch": "",
-      "codeHashDebug": "6c20f9a43e02cb01820ae66d2d72044c609c0ae2e5ce4f2c8bd325fafe67e048",
+      "codeHashDebug": "fe16aee67858e64da90848e92e58d127515ee022cbc38badd455f54f9de9bd14",
       "warnings": []
     },
     "Swap": {

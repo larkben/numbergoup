@@ -68,8 +68,8 @@ function getTokenBurnConfig(): BurnToken {
 function getSubscribeConfig(): SubscribeConfig {
   const network = getNetwork()
   const groupIndex = 0
-  const subscribeAddress = "w5UXSmiVagH8Q8SrsiBb47w3BDQJ1r8pGc8b3iF6eGDM"
-  const subscribeID = "237c8a2e118eb0b35ca1b073ae7e17eb2c908aeb862e9891cc7e3e3d8a30c100"
+  const subscribeAddress = "yXvkFKwGyLq3xtADP6ezzPKR7Md1y8JMrcALCEQmu4Go"
+  const subscribeID = "47faa99bdfa7306e6a97d4f63c492fe728753d3f3f5882f2e2d2d8795692c100"
   const nguID = "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"     // token id
   return { network, groupIndex, subscribeAddress, subscribeID, nguID }
 }
