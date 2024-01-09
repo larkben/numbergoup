@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import Home from './index'
 import Swaps from './swaps'
 import Token from './subscribe'
-import Whitepaper from '../components/whitepaper'
 import Tools from './tools'
 import NFT from './swaps'
 
@@ -16,10 +15,6 @@ const routes = [
   {
     path: '/',
     component: Home
-  },
-  {
-    path: '/whitepaper',
-    component: Whitepaper
   },
   {
     path: '/tools',

@@ -6,23 +6,20 @@
 
 Contract BurnToken (
 	mut tokensburned: U256,
-	tokenid: ByteVec,          // PACA, used for name (ALPHpaca)
+	mut devfee: U256,
+	token: ByteVec,
 	owner: Address
 ) {
 	// Events
-	event Burn(from: Address, amount: U256, token: ByteVec)
+	event Burn(from: Address, amount: U256, when: U256)
 	event Destroy(from: Address)
 
 	enum Error {
 		InvalidCaller = 0
 	}
 
-	pub fn getSymbol() -> ByteVec {
-		return tokenid
-	}
-
-	pub fn getName() -> ByteVec {
-		return tokenid
+	pub fn getToken() -> ByteVec {
+		return token
 	}
 
 	@using(preapprovedAssets = true, assetsInContract = false, updateFields = true, checkExternalCaller = false)
@@ -30,17 +27,33 @@ Contract BurnToken (
 
 		let caller = callerAddress!()
 
-		burnToken!(caller, tokenid, amount)
+		let devFee = amount * 3 / 100
+		let amountToBurn = amount - devFee
 
-		tokensburned = tokensburned + amount  // Added to total tokens burned
+		burnToken!(caller, token, amountToBurn)
 
-		emit Burn(caller, amount, tokenid)
+		tokensburned = tokensburned + amountToBurn // Added to total tokens burned
+
+		emit Burn(caller, amountToBurn, blockTimeStamp!())
 	}
 
+	@using(preapprovedAssets = false, assetsInContract = true, updateFields = true, checkExternalCaller = true)
+	pub fn withdrawdevburn() -> () {
+
+		let caller = callerAddress!()
+
+		checkCaller!(caller == owner, Error.InvalidCaller)
+
+		transferTokenFromSelf!(owner, token, devfee)
+
+		devfee = devfee - devfee
+	}
+
+	@using(preapprovedAssets = false, assetsInContract = false, updateFields = false, checkExternalCaller = true)
 	pub fn destroy() -> () {
 		let caller = callerAddress!()
 
-		assert!(caller == owner, Error.InvalidCaller)
+		checkCaller!(caller == owner, Error.InvalidCaller)
 
 		destroySelf!(owner)
 

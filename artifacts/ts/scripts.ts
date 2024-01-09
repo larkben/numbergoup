@@ -22,6 +22,7 @@ import { default as CreateswappacaScriptJson } from "../swaps/Createswappaca.ral
 import { default as DepositScriptJson } from "../subscribe/Deposit.ral.json";
 import { default as DestroyScriptJson } from "../faucet/Destroy.ral.json";
 import { default as DestroyTokenSwapScriptJson } from "../swaps/DestroyTokenSwap.ral.json";
+import { default as DestroyburnScriptJson } from "../burn/Destroyburn.ral.json";
 import { default as DestroytokenScriptJson } from "../createtoken/Destroytoken.ral.json";
 import { default as EditfeeScriptJson } from "../scripts/Editfee.ral.json";
 import { default as FeeAlphScriptJson } from "../swaps/FeeAlph.ral.json";
@@ -35,6 +36,7 @@ import { default as SubdestroyScriptJson } from "../subscribe/Subdestroy.ral.jso
 import { default as TopupScriptJson } from "../faucet/Topup.ral.json";
 import { default as UpdatedevfeeScriptJson } from "../subscribe/Updatedevfee.ral.json";
 import { default as WithdrawdevScriptJson } from "../subscribe/Withdrawdev.ral.json";
+import { default as WithdrawdevBurnScriptJson } from "../burn/WithdrawdevBurn.ral.json";
 import { default as WithdrawlassetsScriptJson } from "../scripts/Withdrawlassets.ral.json";
 import { default as WithdrawplatformScriptJson } from "../subscribe/Withdrawplatform.ral.json";
 
@@ -90,6 +92,9 @@ export const Destroy = new ExecutableScript<{ contract: HexString }>(
 export const DestroyTokenSwap = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroyTokenSwapScriptJson)
 );
+export const Destroyburn = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(DestroyburnScriptJson)
+);
 export const Destroytoken = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroytokenScriptJson)
 );
@@ -138,6 +143,9 @@ export const Updatedevfee = new ExecutableScript<{
 }>(Script.fromJson(UpdatedevfeeScriptJson));
 export const Withdrawdev = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawdevScriptJson)
+);
+export const WithdrawdevBurn = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(WithdrawdevBurnScriptJson)
 );
 export const Withdrawlassets = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawlassetsScriptJson)

@@ -1,0 +1,5 @@
+TxScript Destroyburn(
+	contract: BurnToken
+) {
+	contract.destroy()
+}

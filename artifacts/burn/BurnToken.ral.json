@@ -1,20 +1,23 @@
 {
   "version": "v2.5.9",
   "name": "BurnToken",
-  "bytecode": "0304091240314048010000000102ce0002010000000102ce000201030102000fb417011601ce001600bda00016002aa1000516011600ce006001000001000cb417001600ce01450c7bce01b00616005e",
-  "codeHash": "f2def89f6c6812d5b48e2bc92ed1fc50520dfb84621676d9aa3e9e3b2bba609c",
+  "bytecode": "04040940384056406d010000000102ce0002010301040019b4170116000f2c1340642d1702160016022b17031601ce001603bda00016032aa1000516011603566001020001000fb417001600ce01450c7bce01ce00a001aba001a0012ba10101000001000cb417001600ce01450c7bce01b00616005e",
+  "codeHash": "f6ea9ca53ecaa70a82621c9c479de75cba8bda64a0aa562ac5e6ef5b92b55bfb",
   "fieldsSig": {
     "names": [
       "tokensburned",
-      "tokenid",
+      "devfee",
+      "token",
       "owner"
     ],
     "types": [
+      "U256",
       "U256",
       "ByteVec",
       "Address"
     ],
     "isMutable": [
+      true,
       true,
       false,
       false
@@ -26,12 +29,12 @@
       "fieldNames": [
         "from",
         "amount",
-        "token"
+        "when"
       ],
       "fieldTypes": [
         "Address",
         "U256",
-        "ByteVec"
+        "U256"
       ]
     },
     {
@@ -46,19 +49,7 @@
   ],
   "functions": [
     {
-      "name": "getSymbol",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
-      "paramNames": [],
-      "paramTypes": [],
-      "paramIsMutable": [],
-      "returnTypes": [
-        "ByteVec"
-      ]
-    },
-    {
-      "name": "getName",
+      "name": "getToken",
       "usePreapprovedAssets": false,
       "useAssetsInContract": false,
       "isPublic": true,
@@ -83,6 +74,16 @@
       "paramIsMutable": [
         false
       ],
+      "returnTypes": []
+    },
+    {
+      "name": "withdrawdevburn",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": true,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
       "returnTypes": []
     },
     {

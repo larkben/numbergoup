@@ -1,7 +1,7 @@
 {
   "version": "v2.5.9",
   "name": "Withdrawplatform",
-  "bytecodeTemplate": "010103000200120c0d{0}010017000c0d{0}01031701b216001601a30c0c{0}0105",
+  "bytecodeTemplate": "010103000000040c0c{0}0105",
   "fieldsSig": {
     "names": [
       "contract"

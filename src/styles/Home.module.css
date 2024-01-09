@@ -151,7 +151,7 @@
     padding: 10px;
     width: 300px;
     height: 35px;
-    background-color: #e5a73e;
+    background-color: #8bea16;
     border: 4px solid #000000;
     border-radius: 50px;
     box-sizing: border-box;
@@ -166,7 +166,7 @@
 .searchField {
     background-color: none;
     height: 50vh;
-    color: #e24502;
+    color: #88ef09;
     font-family: 'Tektur', cursive;
 }
 
@@ -301,7 +301,7 @@
 .buttonDapp {
   align-items: center;
   background-clip: padding-box;
-  background-color: #fa6400;
+  background-color: #42e710;
   border: 1px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -328,7 +328,7 @@
 }
 
 .buttonDapp:hover, .buttonDapp:focus {
-  background-color: #fb8332;
+  background-color: #14b006;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
@@ -337,7 +337,7 @@
 }
 
 .buttonDapp:active {
-  background-color: #c85000;
+  background-color: #04ae18;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
 }

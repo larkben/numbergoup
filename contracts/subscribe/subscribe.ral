@@ -57,7 +57,7 @@ Contract Subscribe(
         emit Subscribed(caller, discordname, blockTimeStamp!(), devfees, platformfees)
     }
 
-    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true, assetsInContract = true)
+    @using(preapprovedAssets = false, updateFields = true, checkExternalCaller = true, assetsInContract = true)
     pub fn withdrawplatform() -> () {
 
         checkCaller!(callerAddress!() == lead, Codes.InvalidCaller)
@@ -69,7 +69,7 @@ Contract Subscribe(
         platformfees = platformfees - platformfees // zero out
     }
 
-    @using(preapprovedAssets = true, updateFields = true, checkExternalCaller = true, assetsInContract = true)
+    @using(preapprovedAssets = false, updateFields = true, checkExternalCaller = true, assetsInContract = true)
     pub fn withdrawdev() -> () {
 
         checkCaller!(callerAddress!() == dev, Codes.InvalidCaller)

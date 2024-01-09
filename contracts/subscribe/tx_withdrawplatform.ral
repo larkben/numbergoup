@@ -1,8 +1,5 @@
 TxScript Withdrawplatform(
 	contract: Subscribe
 ) {
-    let token = contract.getToken()
-    let amount = contract.getPlatformFees()
-
-	contract.withdrawplatform{selfAddress!() -> token: amount}()
+	contract.withdrawplatform()
 }
