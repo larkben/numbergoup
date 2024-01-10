@@ -2,7 +2,6 @@
 import React from 'react'
 import { FC, useState } from 'react'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 
 // Alephium imports
 import { BurnTokenContract } from '@/services/token.service'
