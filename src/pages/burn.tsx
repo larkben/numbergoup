@@ -25,7 +25,7 @@ export default function AutoSubscribe() {
             <br/>
             <div style={{backgroundColor: 'green', padding: 20}} className={styles.showBorder}>
                 <AlephiumConnectButton></AlephiumConnectButton>
-                <h2 style={{color: 'black', textAlign: 'center'}}> Please connect wallet before subscribing to $NGU signals! </h2>
+                <h2 style={{color: 'black', textAlign: 'center'}}> Please connect wallet before burning. </h2>
                 {/*<TokenDapp config={TokenFaucetConfig}></TokenDapp> This is the $PACA faucet; actively not in use at the moment*/}
                 {/*<DevBoard config={TokenFaucetConfig}></DevBoard> This is the dev dashboard*/}
                 <TokenBurnAutomation config={SubscribeConfig}/>
