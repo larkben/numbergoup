@@ -13,8 +13,7 @@ import { AlephiumWalletProvider } from '@alephium/web3-react';
 import { NodeProvider } from '@alephium/web3';
 
 // Graphics
-import { ThreeTorus } from '@/components/ThreeTorus';
-import { SubscribeConfig } from '@/services/utils';
+import { Navbar } from '@/components/NavBar';
 
 export default function HomePage() {
 
@@ -28,42 +27,33 @@ export default function HomePage() {
         <style>
           @import url(&quot;https://fonts.googleapis.com/css2?family=Tektur&display=swap&quot;);
         </style>
-        <ThreeTorus config={SubscribeConfig}></ThreeTorus>
+        { /*<ThreeTorus config={SubscribeConfig}></ThreeTorus> Too much strain on site? */}
+        <Navbar/>
+        <br/>
+        <br/>
         <br/>
         <div className={styles.NFTheader}>
-        <h1 className={styles.alphpacaTitleGlow}> ALPHpaca&apos;s </h1>
-        <h5 className={styles.pacaDescript}> A cute cuddly project blessed upon by Alephium. </h5>
+        <h1 className={styles.alphpacaTitleGlow}> Number Go Up </h1>
+        <h5 className={styles.pacaDescript}> A project specializing in number go up technologies. </h5>
         </div>
-
         <div className={styles.movingText}>
           <TypeAnimation
             sequence={[
                 // Same substring at the start will only be typed out once, initially
-                "Building with a rarity.",
+                "You buy, NUMBER GO UP!",
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "Building with a purpose.",
+                "You sell, NUMBER GO UP!",
                 1000,
-                'Building with a passion.',
+                'You do nothing, ... NUMBER STILL GO UP!',
                 1000,
-                'Building with a community.',
+                'Welcome to NGU.',
                 1000,
-                'Coming 12.25.23.',
+                'A project that only goes up and likes the number 7.',
                 1000
             ]}
             speed={30}
             repeat={Infinity}
           />
-        </div>
-
-        <div className={styles.uiHub}>
-          <div className={`${styles.showBorder} ${styles.uiNav}`} style={{height: 300}}>
-            <table className={styles.uiNavItems}>
-              <tr> <button className={styles.buttonSite}> <Link href="/subscribe" className={styles.link}> $NGU Signals </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/burn" className={styles.link}> 🔥 </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/" className={styles.link}> Coming Soon! </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/" className={styles.link}> Coming Soon! </Link></button> </tr>
-            </table>
-          </div>
         </div>
         <br/>
       </div>

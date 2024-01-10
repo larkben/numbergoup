@@ -52,12 +52,11 @@ export const SubscribeAutomation: FC<{
       <div style={{color: 'black'}} >
         <form onSubmit={handleSubscribe} style={{alignContent: 'center', textAlign: 'center'}}>
           <>
-            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals ({config.network})</h2>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals {/*({config.network})*/}</h2>
             {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
-            <p style={{color: 'black', textAlign: 'center'}}> 777 NGU for one month of signals. </p>
+            <p style={{color: 'black', textAlign: 'center'}}> 777 NGU for signals. </p>
             <p style={{color: 'black', textAlign: 'center'}}> Please be patient as we process your request, and allow at least 1-2 hours. </p>
-            <p style={{color: 'black', textAlign: 'center'}}> Refunds will not be processed more than 24 hours after purchase. After 24 hours all sales are final. </p>
-            <label htmlFor="symbol"> Discord Name in $NGU :</label>
+            <label htmlFor="symbol"> Discord Name in $NGU Server:</label>
             <input
                 className={styles.inputToken}
                 type="text"

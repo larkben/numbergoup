@@ -8,7 +8,7 @@
 }
 
 .alphpacaTitleGlow {
-    text-shadow: 0 0 5px #005bd1;
+    text-shadow: 0 0 5px #00d100;
     font-size: 300%;
     margin-bottom: 5px;
     margin-left: 50px;
@@ -16,6 +16,8 @@
     color: white;
     font-family: 'Tektur', cursive;
     z-index: 2;
+    text-align: center;
+    font-size: 100px;
 }
 
 .pacaDescript {
@@ -24,6 +26,7 @@
     margin-top: 1px;
     color: white;
     font-family: 'Tektur', cursive;
+    text-align: center;
 }
 
 .showBorder {
@@ -81,6 +84,8 @@
     margin-left: 50px;
     margin-bottom: 15px;
     font-size: 75%;
+    text-align: center;
+    font-size: 35px;
 }
 
 .link {

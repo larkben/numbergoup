@@ -13,7 +13,7 @@ export const Navbar = () => {
         <style>
             @import url(&quot;https://fonts.googleapis.com/css2?family=Tektur&display=swap&quot;);
         </style>
-      <div className={styles.logo}>ALPHpaca</div>
+      <div className={styles.logo}>NGU</div>
       <ul className={styles.navItems}>
         <li>
           <Link href="/">
@@ -21,13 +21,13 @@ export const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/Token Creator">
-            Create Token
+          <Link href="/subscribe">
+            $NGU Signals
           </Link>
         </li>
         <li>
-          <Link href="/Mint">
-            Mint
+          <Link href="/burn">
+            Burn $NGU
           </Link>
         </li>
         <li>

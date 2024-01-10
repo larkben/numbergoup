@@ -51,7 +51,7 @@ export const TokenBurnAutomation: FC<{
       <div style={{color: 'black'}} >
         <form onSubmit={handleBurn} style={{alignContent: 'center', textAlign: 'center'}}>
           <>
-            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Burn ({config.network})</h2>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Burn {/*({config.network})*/}</h2>
             {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
             <p style={{color: 'black', textAlign: 'center'}}> You are now burning your most valuable asset. All contracts are final and irreversible. </p>
             <label htmlFor="burn"> Amount of $NGU to be burned. </label>
