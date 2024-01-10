@@ -8,7 +8,6 @@ import { NodeProvider, EventSubscribeOptions } from '@alephium/web3'
 import { CreateToken, CreateTokenInstance, CreateTokenTypes } from 'artifacts/ts'
 
 import Link from 'next/link'
-import { SubscribeAutomation } from '@/components/Subscribe'
 import { SubscribeConfig, TokenBurnConfig } from '@/services/utils'
 import { TokenBurnAutomation } from '@/components/Burn'
 
