@@ -8,7 +8,7 @@ import { NodeProvider, EventSubscribeOptions } from '@alephium/web3'
 import { CreateToken, CreateTokenInstance, CreateTokenTypes } from 'artifacts/ts'
 
 import Link from 'next/link'
-import { SubscribeAutomation } from '@/components/Subscribe'
+import { SubscribeAutomation } from '../components/Subscribe'
 import { SubscribeConfig } from '@/services/utils'
 
 // Testnet: https://wallet-v20.testnet.alephium.org
