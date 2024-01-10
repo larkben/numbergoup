@@ -66,7 +66,7 @@ Contract Subscribe(
 
         emit Withdrawngu(blockTimeStamp!(), platformfees)
         
-        platformfees = platformfees - platformfees // zero out
+        platformfees = 0 // zero out
     }
 
     @using(preapprovedAssets = false, updateFields = true, checkExternalCaller = true, assetsInContract = true)
@@ -74,11 +74,11 @@ Contract Subscribe(
 
         checkCaller!(callerAddress!() == dev, Codes.InvalidCaller)
 
-        transferToken!(selfAddress!(), dev, token, platformfees)
+        transferToken!(selfAddress!(), dev, token, devfees)
 
         emit Withdrawngu(blockTimeStamp!(), devfees)
         
-        devfees = devfees - devfees // zero out
+        devfees = 0 // zero out
     }
 
     @using(preapprovedAssets = false, updateFields = true, checkExternalCaller = true)
@@ -92,11 +92,12 @@ Contract Subscribe(
         emit Feeupdate(oldfee, fee)
     }
 
-    @using(preapprovedAssets = false, updateFields = false, checkExternalCaller = true)
+    @using(assetsInContract = true)
     pub fn subdestroy() -> () {
-
         checkCaller!(callerAddress!() == dev, Codes.InvalidCaller)
 
-        emit Destroysub(callerAddress!())
+        destroySelf!(dev)
+
+        emit Destroysub(dev)
     }
 }

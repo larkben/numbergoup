@@ -3,7 +3,6 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 //import { TokenDapp } from '@/components/FaucetDapp'
 import { AlephiumConnectButton } from '@alephium/web3-react'
-import { TokenFaucetConfig } from '@/services/utils'
 
 import Router from './router'
 import Link from 'next/link'

@@ -1,5 +1,0 @@
-TxScript WithdrawdevBurn(
-	contract: BurnToken
-) {
-    contract.withdrawdevburn()
-}

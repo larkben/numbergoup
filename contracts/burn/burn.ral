@@ -6,12 +6,11 @@
 
 Contract BurnToken (
 	mut tokensburned: U256,
-	mut devfee: U256,
 	token: ByteVec,
 	owner: Address
 ) {
 	// Events
-	event Burn(from: Address, amount: U256, when: U256)
+	event Burn(from: Address, amount: U256, when: U256, totalburned: U256)
 	event Destroy(from: Address)
 
 	enum Error {
@@ -27,36 +26,16 @@ Contract BurnToken (
 
 		let caller = callerAddress!()
 
-		let devFee = amount * 3 / 100
-		let amountToBurn = amount - devFee
+		burnToken!(caller, token, amount)
 
-		burnToken!(caller, token, amountToBurn)
+		tokensburned = tokensburned + amount // Added to total tokens burned
 
-		tokensburned = tokensburned + amountToBurn // Added to total tokens burned
-
-		emit Burn(caller, amountToBurn, blockTimeStamp!())
+		emit Burn(caller, amount, blockTimeStamp!(), tokensburned)
 	}
 
-	@using(preapprovedAssets = false, assetsInContract = true, updateFields = true, checkExternalCaller = true)
-	pub fn withdrawdevburn() -> () {
-
-		let caller = callerAddress!()
-
-		checkCaller!(caller == owner, Error.InvalidCaller)
-
-		transferTokenFromSelf!(owner, token, devfee)
-
-		devfee = devfee - devfee
-	}
-
-	@using(preapprovedAssets = false, assetsInContract = false, updateFields = false, checkExternalCaller = true)
-	pub fn destroy() -> () {
-		let caller = callerAddress!()
-
-		checkCaller!(caller == owner, Error.InvalidCaller)
-
-		destroySelf!(owner)
-
-		emit Destroy(caller)
-	}
+	@using(assetsInContract = true)
+    pub fn destroy() -> () {
+        checkCaller!(callerAddress!() == owner, Error.InvalidCaller)
+        destroySelf!(owner)
+    }
 }

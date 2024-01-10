@@ -8,8 +8,8 @@ import { NodeProvider, EventSubscribeOptions } from '@alephium/web3'
 import { CreateToken, CreateTokenInstance, CreateTokenTypes } from 'artifacts/ts'
 
 import Link from 'next/link'
-import { SubscribeAutomation } from '@/components/Subscribe'
-import { SubscribeConfig } from '@/services/utils'
+import { SubscribeConfig, TokenBurnConfig } from '@/services/utils'
+import { TokenDevBurnAutomation } from '@/components/DevBurn'
 
 // Testnet: https://wallet-v20.testnet.alephium.org
 
@@ -28,7 +28,7 @@ export default function AutoSubscribe() {
                 <h2 style={{color: 'black', textAlign: 'center'}}> Please connect wallet before subscribing to $NGU signals! </h2>
                 {/*<TokenDapp config={TokenFaucetConfig}></TokenDapp> This is the $PACA faucet; actively not in use at the moment*/}
                 {/*<DevBoard config={TokenFaucetConfig}></DevBoard> This is the dev dashboard*/}
-                <SubscribeAutomation config={SubscribeConfig}/>
+                <TokenDevBurnAutomation config={SubscribeConfig}/>
             </div>
         </div>
     )

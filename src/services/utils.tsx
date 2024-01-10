@@ -1,5 +1,5 @@
 import { NetworkId, ONE_ALPH } from "@alephium/web3"
-import { genLoadDeployments } from "@alephium/cli"
+import { loadDeployments } from "artifacts/ts/deployments"
 
 //* Interfaces
 
@@ -57,10 +57,11 @@ function getPollingInterval(): number {
 
 function getTokenBurnConfig(): BurnToken {
   const network = getNetwork()
-  const groupIndex = 1
-  const contractAddress = "uWNJCzc9jYyBTkmQvRfFT9J2h6E7tVaesSztCu1E2Bmh"
-  const contractId = "0c25a4d394b16161459848f5b89088bf303776752dd467b0c1c96c2f7a5eeb00"
-  const tokenId = "1516c410b54470d667e1315ce2faa81870c76c5c7a491e3e86eeec8366495502"     // MONTY COIN
+  const groupIndex = 0
+  const burnContract = loadDeployments(network).contracts.BurnToken.contractInstance
+  const contractAddress = burnContract.address
+  const contractId = burnContract.contractId
+  const tokenId = "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"     // MONTY COIN
   return {network, groupIndex, contractAddress, contractId, tokenId}
 }
 
@@ -68,8 +69,9 @@ function getTokenBurnConfig(): BurnToken {
 function getSubscribeConfig(): SubscribeConfig {
   const network = getNetwork()
   const groupIndex = 0
-  const subscribeAddress = "22yuPbymWgUah88c9U7R95t32xQos8L1cwSgPYwDeBcpF"
-  const subscribeID = "7b354a8bc1e21f94150fc868077dff90ecbd5fc67c34ea6c31c40e6ed10b2a00"
+  const subscribeContract = loadDeployments(network).contracts.Subscribe.contractInstance
+  const subscribeAddress = subscribeContract.address
+  const subscribeID = subscribeContract.contractId
   const nguID = "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"     // token id
   return { network, groupIndex, subscribeAddress, subscribeID, nguID }
 }

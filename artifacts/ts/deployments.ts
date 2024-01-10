@@ -12,6 +12,7 @@ import {
   Swap,
   SwapInstance,
 } from ".";
+import { default as mainnetDeployments } from "../.deployments.mainnet.json";
 import { default as testnetDeployments } from "../.deployments.testnet.json";
 
 export type Deployments = {
@@ -19,7 +20,7 @@ export type Deployments = {
   contracts: {
     Subscribe: DeployContractExecutionResult<SubscribeInstance>;
     BurnToken: DeployContractExecutionResult<BurnTokenInstance>;
-    Swap: DeployContractExecutionResult<SwapInstance>;
+    Swap?: DeployContractExecutionResult<SwapInstance>;
   };
 };
 
@@ -37,12 +38,15 @@ function toDeployments(json: any): Deployments {
         json.contracts["BurnToken"].contractInstance.address
       ),
     },
-    Swap: {
-      ...json.contracts["Swap"],
-      contractInstance: Swap.at(
-        json.contracts["Swap"].contractInstance.address
-      ),
-    },
+    Swap:
+      json.contracts["Swap"] === undefined
+        ? undefined
+        : {
+            ...json.contracts["Swap"],
+            contractInstance: Swap.at(
+              json.contracts["Swap"].contractInstance.address
+            ),
+          },
   };
   return {
     ...json,
@@ -54,7 +58,12 @@ export function loadDeployments(
   networkId: NetworkId,
   deployerAddress?: string
 ): Deployments {
-  const deployments = networkId === "testnet" ? testnetDeployments : undefined;
+  const deployments =
+    networkId === "mainnet"
+      ? mainnetDeployments
+      : networkId === "testnet"
+      ? testnetDeployments
+      : undefined;
   if (deployments === undefined) {
     throw Error("The contract has not been deployed to the " + networkId);
   }

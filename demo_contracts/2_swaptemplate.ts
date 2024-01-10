@@ -22,7 +22,7 @@ const swapTemplate: DeployFunction<Settings> = async (
       tradetoken: "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501",
       tamount: 1000000000000n,
       owner: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",
-      feealph: 10000000000000000, // 0.01 alph
+      feealph: 10000000000000000n, // 0.01 alph
       dev: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd"
     }
   })

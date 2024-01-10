@@ -36,7 +36,6 @@ import { default as SubdestroyScriptJson } from "../subscribe/Subdestroy.ral.jso
 import { default as TopupScriptJson } from "../faucet/Topup.ral.json";
 import { default as UpdatedevfeeScriptJson } from "../subscribe/Updatedevfee.ral.json";
 import { default as WithdrawdevScriptJson } from "../subscribe/Withdrawdev.ral.json";
-import { default as WithdrawdevBurnScriptJson } from "../burn/WithdrawdevBurn.ral.json";
 import { default as WithdrawlassetsScriptJson } from "../scripts/Withdrawlassets.ral.json";
 import { default as WithdrawplatformScriptJson } from "../subscribe/Withdrawplatform.ral.json";
 
@@ -143,9 +142,6 @@ export const Updatedevfee = new ExecutableScript<{
 }>(Script.fromJson(UpdatedevfeeScriptJson));
 export const Withdrawdev = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawdevScriptJson)
-);
-export const WithdrawdevBurn = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(WithdrawdevBurnScriptJson)
 );
 export const Withdrawlassets = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawlassetsScriptJson)

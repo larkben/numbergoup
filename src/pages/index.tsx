@@ -59,9 +59,9 @@ export default function HomePage() {
           <div className={`${styles.showBorder} ${styles.uiNav}`} style={{height: 300}}>
             <table className={styles.uiNavItems}>
               <tr> <button className={styles.buttonSite}> <Link href="/subscribe" className={styles.link}> $NGU Signals </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/swaps" className={styles.link}> Swaps </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/" className={styles.link}> Profile </Link></button> </tr>
-              <tr> <button className={styles.buttonSite}> <Link href="/alphpaca_farm" className={styles.link}> Coming Soon! </Link></button> </tr>
+              <tr> <button className={styles.buttonSite}> <Link href="/burn" className={styles.link}> 🔥 </Link></button> </tr>
+              <tr> <button className={styles.buttonSite}> <Link href="/" className={styles.link}> Coming Soon! </Link></button> </tr>
+              <tr> <button className={styles.buttonSite}> <Link href="/" className={styles.link}> Coming Soon! </Link></button> </tr>
             </table>
           </div>
         </div>

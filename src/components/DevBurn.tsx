@@ -5,13 +5,13 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // Alephium imports
-import { BurnTokenContract } from '@/services/token.service'
+import { BurnTokenContract, DestroyBurnContract } from '@/services/token.service'
 import { TxStatus } from './TxStatus'
 import { node } from '@alephium/web3'
 import { SubscribeConfig, TokenBurnConfig } from '../services/utils'
 import { useWallet } from '@alephium/web3-react'
 
-export const TokenBurnAutomation: FC<{
+export const TokenDevBurnAutomation: FC<{
   config: SubscribeConfig
 }> = ({ config }) => {
   const { signer, account } = useWallet()
@@ -21,12 +21,20 @@ export const TokenBurnAutomation: FC<{
   // Token Variables
   const [tokenburn, setTokenBurn] = useState('')
 
-  // Handle of Subscription
+  // Handle of Burn
   const handleBurn = async (e: React.FormEvent) => {
     e.preventDefault()
     if (signer) {
       const tokenBurnValue = BigInt(Number(tokenburn) * 1e7).toString();
       const result = await BurnTokenContract(signer, tokenBurnValue)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleDestroyBurn = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (signer) {
+      const result = await DestroyBurnContract(signer)
       setOngoingTxId(result.txId)
     }
   }
@@ -67,6 +75,17 @@ export const TokenBurnAutomation: FC<{
             <br/>
             <br/>
             <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Burn $NGU" />
+          </>
+        </form>
+        <br/>
+        <br/>
+        <form onSubmit={handleDestroyBurn} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Destroy Burn Contract" />
           </>
         </form>
       </div>

@@ -31,7 +31,6 @@ import { getContractByCodeHash } from "./contracts";
 export namespace BurnTokenTypes {
   export type Fields = {
     tokensburned: bigint;
-    devfee: bigint;
     token: HexString;
     owner: Address;
   };
@@ -42,6 +41,7 @@ export namespace BurnTokenTypes {
     from: Address;
     amount: bigint;
     when: bigint;
+    totalburned: bigint;
   }>;
   export type DestroyEvent = ContractEvent<{ from: Address }>;
 
@@ -91,11 +91,6 @@ class Factory extends ContractFactory<
     ): Promise<TestContractResult<null>> => {
       return testMethod(this, "burntoken", params);
     },
-    withdrawdevburn: async (
-      params: Omit<TestContractParams<BurnTokenTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawdevburn", params);
-    },
     destroy: async (
       params: Omit<TestContractParams<BurnTokenTypes.Fields, never>, "testArgs">
     ): Promise<TestContractResult<null>> => {
@@ -109,7 +104,7 @@ export const BurnToken = new Factory(
   Contract.fromJson(
     BurnTokenContractJson,
     "",
-    "f6ea9ca53ecaa70a82621c9c479de75cba8bda64a0aa562ac5e6ef5b92b55bfb"
+    "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4"
   )
 );
 

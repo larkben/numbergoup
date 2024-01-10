@@ -12,7 +12,7 @@ import { SubscribeConfig } from '@/services/utils'
 import { useWallet } from '@alephium/web3-react'
 
 // Subscription
-export const SubscribeAutomation: FC<{
+export const DevSubscribeAutomation: FC<{
   config: SubscribeConfig
 }> = ({ config }) => {
   const { signer, account } = useWallet()
@@ -27,6 +27,30 @@ export const SubscribeAutomation: FC<{
     e.preventDefault()
     if (signer) {
       const result = await SubscribeContract(signer, discord)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleDestroySubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (signer) {
+      const result = await SubscribeDestroyContract(signer)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleWithdrawDevSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (signer) {
+      const result = await SubscribeWithdrawDevContract(signer)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleWithdrawLeadSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (signer) {
+      const result = await SubscribeWithdrawPlatformContract(signer)
       setOngoingTxId(result.txId)
     }
   }
@@ -69,6 +93,41 @@ export const SubscribeAutomation: FC<{
             <br/>
             <br/>
             <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Subscribe to NGU Signals" />
+          </>
+        </form>
+        {/* Start of dev / lead facing materials - make webpage specifically for this*/}
+        <form onSubmit={handleDestroySubscribe} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <p style={{color: 'black', textAlign: 'center'}}> Destroy Subscription Contract </p>
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Destroy Contract" />
+          </>
+        </form>
+        <br />
+        <br />
+        <form onSubmit={handleWithdrawDevSubscribe} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <p style={{color: 'black', textAlign: 'center'}}> Withdraw Dev Fees </p>
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Collect Dev Fees" />
+          </>
+        </form>
+        <br />
+        <br />
+        <form onSubmit={handleWithdrawLeadSubscribe} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <p style={{color: 'black', textAlign: 'center'}}> Withdraw Platform Fees </p>
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Collect Lead Fees" />
           </>
         </form>
       </div>

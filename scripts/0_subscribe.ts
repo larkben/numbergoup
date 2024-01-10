@@ -14,13 +14,13 @@ const subscriptionProtocol: DeployFunction<Settings> = async (
   const result = await deployer.deployContract(Subscribe, {
     // the initial states of the Subscribe contract
     initialFields: {
-      subfee: 777000000n,                                                         // notice the extra zeros for the 7 decimal places implied with $ngu as a token - add a zero
-      platformfees: 0n,                                                           // notice no dev fees or contract fees, no fees until subscription handled
+      subfee: 7770000000n,                                                         // notice the extra zeros for the 7 decimal places implied with $ngu as a token - add a zero
+      platformfees: 0n,                                                            // notice no dev fees or contract fees, no fees until subscription handled
       devfees: 0n,
-      fee: 54390000n,                                                             // 1% dev fee - add a zero
+      fee: 543900000n,                                                             // 1% dev fee - add a zero
       dev: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",
-      lead: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",                      // fetch address from Elvis
-      token: "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"   // testnet play token                                                      // the id of the $NGU token
+      lead: "1PuLTQ7ajXN6RDZGyQQvpSvasB1m7QNbha1EvDSfRHEN",                        // fetch address from Elvis
+      token: "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"    // testnet play token                                                      // the id of the $NGU token
     }
   })
   console.log('Subscribe contract id: ' + result.contractInstance.contractId)
