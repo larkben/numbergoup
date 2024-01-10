@@ -31,23 +31,23 @@ export default function HomePage() {
         <ThreeTorus config={SubscribeConfig}></ThreeTorus>
         <br/>
         <div className={styles.NFTheader}>
-        <h1 className={styles.alphpacaTitleGlow}> ALPHpaca&apos;s </h1>
-        <h5 className={styles.pacaDescript}> A cute cuddly project blessed upon by Alephium. </h5>
+        <h1 className={styles.alphpacaTitleGlow}> NGU Money </h1>
+        <h5 className={styles.pacaDescript}> A project specializing in number go up technologies. </h5>
         </div>
 
         <div className={styles.movingText}>
           <TypeAnimation
             sequence={[
                 // Same substring at the start will only be typed out once, initially
-                "Building with a rarity.",
+                "You buy, NUMBER GO UP!",
                 1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "Building with a purpose.",
+                "You sell, NUMBER GO UP!",
                 1000,
-                'Building with a passion.',
+                'You do nothing, ... NUMBER STILL GO UP!',
                 1000,
-                'Building with a community.',
+                'Welcome to NGU.',
                 1000,
-                'Coming 12.25.23.',
+                'A project that only goes up and likes the number 7.',
                 1000
             ]}
             speed={30}
