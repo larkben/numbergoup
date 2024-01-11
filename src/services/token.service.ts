@@ -43,7 +43,7 @@ export const SubscribeContract = async (
       discordname: web3.stringToHex(discord) 
     },
     attoAlphAmount: DUST_AMOUNT,
-    tokens: [{id: SubscribeConfig.nguID, amount: 777000000n }] // - add zero mainnet
+    tokens: [{id: SubscribeConfig.nguID, amount: 7770000000n }] // - add zero mainnet
   })
 }
 

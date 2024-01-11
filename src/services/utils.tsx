@@ -61,7 +61,7 @@ function getTokenBurnConfig(): BurnToken {
   const burnContract = loadDeployments(network).contracts.BurnToken.contractInstance
   const contractAddress = burnContract.address
   const contractId = burnContract.contractId
-  const tokenId = "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"     // MONTY COIN
+  const tokenId = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
   return {network, groupIndex, contractAddress, contractId, tokenId}
 }
 
@@ -72,7 +72,7 @@ function getSubscribeConfig(): SubscribeConfig {
   const subscribeContract = loadDeployments(network).contracts.Subscribe.contractInstance
   const subscribeAddress = subscribeContract.address
   const subscribeID = subscribeContract.contractId
-  const nguID = "c4d0eca28076ad888751518000396745680af4d2949dc64170a1c596c136e501"     // token id
+  const nguID = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
   return { network, groupIndex, subscribeAddress, subscribeID, nguID }
 }
 
