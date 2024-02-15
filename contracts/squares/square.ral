@@ -1,0 +1,19 @@
+// The child contract for the PARENT contract SQUARES.ral
+Contract Square (
+    parentcontract: ByteVec,                                    // the id of the parent contract
+    owner: Address,
+    timecreated: U256,
+    upgradefee: U256,
+    size: U256,
+    image: U256,
+    description: ByteVec
+) {
+    // Events
+    event updatedimage(updatedimg: ByteVec, timedone: U256)
+
+    // Error Codes
+
+    // Functions
+
+    // Contract Functions
+}

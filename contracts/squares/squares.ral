@@ -1,0 +1,18 @@
+// The parent contract for Square
+Contract Squares (
+    contract: ByteVec,
+    dev: Address,
+    lead: Address,
+    maxsquares: U256,
+    currentsquares: U256,
+    ngutoken: ByteVec,
+    ngufee: U256
+) {
+    // Events
+
+    // Error Codes
+
+    // Functions
+
+    // Contract Functions
+}
