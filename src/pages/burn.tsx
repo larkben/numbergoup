@@ -16,20 +16,25 @@ import { TokenBurnAutomation } from '@/components/Burn'
 // Mainnet: https://node-alephium.ono.re/
 
 export default function AutoSubscribe() {
-  
-    return (
-        <div className={styles.alignCenter}>
-            <div className={styles.NFTheaderElement}>
-                <button className={styles.buttonDapp}> <Link href='/' className={styles.link}> Back to Tools </Link> </button>
-            </div>
-            <br/>
-            <div style={{backgroundColor: 'green', padding: 20}} className={styles.showBorder}>
-                <AlephiumConnectButton></AlephiumConnectButton>
-                <h2 style={{color: 'black', textAlign: 'center'}}> Please connect wallet before burning. </h2>
-                {/*<TokenDapp config={TokenFaucetConfig}></TokenDapp> This is the $PACA faucet; actively not in use at the moment*/}
-                {/*<DevBoard config={TokenFaucetConfig}></DevBoard> This is the dev dashboard*/}
-                <TokenBurnAutomation config={SubscribeConfig}/>
-            </div>
-        </div>
-    )
+  return (
+    <div className={styles.alignCenter}>
+      <div className={styles.NFTheaderElement}>
+        <button className={styles.buttonDapp}>
+          {' '}
+          <Link href="/" className={styles.link}>
+            {' '}
+            Back to Tools{' '}
+          </Link>{' '}
+        </button>
+      </div>
+      <br />
+      <div style={{ backgroundColor: 'green', padding: 20 }} className={styles.showBorder}>
+        <AlephiumConnectButton></AlephiumConnectButton>
+        <h2 style={{ color: 'white', textAlign: 'center' }}> Please connect wallet before burning. </h2>
+        {/*<TokenDapp config={TokenFaucetConfig}></TokenDapp> This is the $PACA faucet; actively not in use at the moment*/}
+        {/*<DevBoard config={TokenFaucetConfig}></DevBoard> This is the dev dashboard*/}
+        <TokenBurnAutomation config={SubscribeConfig} />
+      </div>
+    </div>
+  )
 }

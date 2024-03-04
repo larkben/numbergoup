@@ -24,7 +24,7 @@ export const TokenBurnAutomation: FC<{
   const handleBurn = async (e: React.FormEvent) => {
     e.preventDefault()
     if (signer) {
-      const tokenBurnValue = BigInt(Number(tokenburn) * 1e7).toString();
+      const tokenBurnValue = BigInt(Number(tokenburn) * 1e7).toString()
       const result = await BurnTokenContract(signer, tokenBurnValue)
       setOngoingTxId(result.txId)
     }
@@ -37,46 +37,53 @@ export const TokenBurnAutomation: FC<{
     }
 
     return Promise.resolve()
-  } 
+  }
 
   console.log('ongoing..', ongoingTxId)
 
   // Form submit to insert values and receive input
   return (
     <>
-      <br/>
-      <style>
-        @import url(&apos;https://fonts.googleapis.com/css2?family=Tektur&display=swap&apos;);
-      </style>
-      <div style={{color: 'black'}} >
-        <form onSubmit={handleBurn} style={{alignContent: 'center', textAlign: 'center'}}>
+      <br />
+      <style>@import url(&apos;https://fonts.googleapis.com/css2?family=Tektur&display=swap&apos;);</style>
+      <div style={{ color: 'black' }}>
+        <form onSubmit={handleBurn} style={{ alignContent: 'center', textAlign: 'center' }}>
           <>
-            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Burn {/*({config.network})*/}</h2>
+            <h2 className={styles.title} style={{ color: 'white', textAlign: 'center' }}>
+              {' '}
+              Alephium $NGU Burn {/*({config.network})*/}
+            </h2>
             {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
-            <p style={{color: 'black', textAlign: 'center'}}> You are now burning your most valuable asset. All contracts are final and irreversible. </p>
-            <label htmlFor="burn"> Amount of $NGU to be burned. </label>
+            <p style={{ color: 'white', textAlign: 'center' }}>
+              {' '}
+              You are now burning your most valuable asset. All contracts are final and irreversible.{' '}
+            </p>
+            <label htmlFor="burn" style={{ color: 'white' }}>
+              {' '}
+              Amount of $NGU to be burned.{' '}
+            </label>
             <input
-                className={styles.inputToken}
-                type="number"
-                id="burn"
-                name="burn"
-                value={tokenburn}
-                onChange={(e) => setTokenBurn(e.target.value)}
+              className={styles.inputToken}
+              type="number"
+              id="burn"
+              name="burn"
+              value={tokenburn}
+              onChange={(e) => setTokenBurn(e.target.value)}
             />
-            <br/>
-            <br/>
+            <br />
+            <br />
             <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Burn $NGU" />
           </>
         </form>
       </div>
 
-      <br/>
+      <br />
 
-      <div style={{color: 'white'}}>
+      <div style={{ color: 'white' }}>
         {ongoingTxId && <TxStatus txId={ongoingTxId} txStatusCallback={txStatusCallback} />}
       </div>
 
-      <br/>
+      <br />
     </>
   )
 }
