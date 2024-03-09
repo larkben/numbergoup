@@ -38,7 +38,7 @@ export interface SubscribeConfig {
 }
 
 export function getNetwork(): NetworkId {
-  const network = (process.env.NEXT_PUBLIC_NETWORK ?? 'testnet') as NetworkId
+  const network = (process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet') as NetworkId
   return network
 }
 
@@ -52,7 +52,7 @@ export function getMongoUrl(): string {
 
 function getPollingInterval(): number {
   const network = getNetwork()
-  return network === 'testnet' ? 1000 : 100000
+  return network === 'mainnet' ? 1000 : 100000
 }
 
 function getTokenBurnConfig(): BurnToken {
@@ -62,6 +62,16 @@ function getTokenBurnConfig(): BurnToken {
   const contractAddress = burnContract.address
   const contractId = burnContract.contractId
   const tokenId = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
+  return {network, groupIndex, contractAddress, contractId, tokenId}
+}
+
+function getTokenBurnWangConfig(): BurnToken {
+  const network = getNetwork()
+  const groupIndex = 0
+  const burnContract = loadDeployments(network).contracts.BurnToken.contractInstance
+  const contractAddress = "245N195iAzYSEKw9FdxuQqqT5cjatfTnfxyDesYrBrPnF"
+  const contractId = "8b76f925fa37eff04322c187ba07289da04a31565481b305d7527f0e5bdf7700"
+  const tokenId = "c1aeea313e36454f35beaf40130c9219faa40ba645aff93e16429146039f8202"     // NGU TOKEN
   return {network, groupIndex, contractAddress, contractId, tokenId}
 }
 
@@ -79,3 +89,4 @@ function getSubscribeConfig(): SubscribeConfig {
 // Exports
 export const TokenBurnConfig = getTokenBurnConfig()
 export const SubscribeConfig = getSubscribeConfig()
+export const WangBurnConfig = getTokenBurnWangConfig()

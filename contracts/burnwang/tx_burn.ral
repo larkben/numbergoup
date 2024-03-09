@@ -1,0 +1,8 @@
+TxScript BurnWang (
+	contract: BurnToken,
+	amount: U256
+) {
+	let token = contract.getToken()
+
+	contract.burntoken{callerAddress!() -> token: amount}(amount)
+}

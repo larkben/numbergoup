@@ -1,0 +1,35 @@
+Contract BurnTokenWang (
+	mut tokensburned: U256,
+	token: ByteVec,
+	owner: Address
+) {
+	// Events
+	event Burn(from: Address, amount: U256, when: U256, totalburned: U256)
+	event Destroy(from: Address)
+
+	enum Error {
+		InvalidCaller = 0
+	}
+
+	pub fn getToken() -> ByteVec {
+		return token
+	}
+
+	@using(preapprovedAssets = true, assetsInContract = false, updateFields = true, checkExternalCaller = false)
+	pub fn burntoken(amount: U256) -> () {
+
+		let caller = callerAddress!()
+
+		burnToken!(caller, token, amount)
+
+		tokensburned = tokensburned + amount // Added to total tokens burned
+
+		emit Burn(caller, amount, blockTimeStamp!(), tokensburned)
+	}
+
+	@using(assetsInContract = true)
+    pub fn destroy() -> () {
+        checkCaller!(callerAddress!() == owner, Error.InvalidCaller)
+        destroySelf!(owner)
+    }
+}

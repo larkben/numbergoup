@@ -45,107 +45,133 @@ export const Buildtoken = new ExecutableScript<{
   name: HexString;
   decimals: bigint;
   tokenTotal: bigint;
-}>(Script.fromJson(BuildtokenScriptJson));
+}>(Script.fromJson(BuildtokenScriptJson, ""));
+
 export const Burn = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(BurnScriptJson));
+}>(Script.fromJson(BurnScriptJson, ""));
+
 export const Buyvirl = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(BuyvirlScriptJson));
+}>(Script.fromJson(BuyvirlScriptJson, ""));
+
 export const CancelSwap = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(CancelSwapScriptJson)
+  Script.fromJson(CancelSwapScriptJson, "")
 );
+
 export const ConfirmSwap = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(ConfirmSwapScriptJson)
+  Script.fromJson(ConfirmSwapScriptJson, "")
 );
+
 export const Createswapalph = new ExecutableScript<{
   contract: HexString;
   tokenoffered: HexString;
   tokenofferedamt: bigint;
   tokenwanted: HexString;
   tokenwantedamt: bigint;
-}>(Script.fromJson(CreateswapalphScriptJson));
+}>(Script.fromJson(CreateswapalphScriptJson, ""));
+
 export const Createswapngu = new ExecutableScript<{
   contract: HexString;
   tokenoffered: HexString;
   tokenofferedamt: bigint;
   tokenwanted: HexString;
   tokenwantedamt: bigint;
-}>(Script.fromJson(CreateswapnguScriptJson));
+}>(Script.fromJson(CreateswapnguScriptJson, ""));
+
 export const Createswappaca = new ExecutableScript<{
   contract: HexString;
   tokenoffered: HexString;
   tokenofferedamt: bigint;
   tokenwanted: HexString;
   tokenwantedamt: bigint;
-}>(Script.fromJson(CreateswappacaScriptJson));
+}>(Script.fromJson(CreateswappacaScriptJson, ""));
+
 export const Deposit = new ExecutableScript<{
   contract: HexString;
   discordname: HexString;
-}>(Script.fromJson(DepositScriptJson));
+}>(Script.fromJson(DepositScriptJson, ""));
+
 export const Destroy = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(DestroyScriptJson)
+  Script.fromJson(DestroyScriptJson, "")
 );
+
 export const DestroyTokenSwap = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(DestroyTokenSwapScriptJson)
+  Script.fromJson(DestroyTokenSwapScriptJson, "")
 );
+
 export const Destroyburn = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(DestroyburnScriptJson)
+  Script.fromJson(DestroyburnScriptJson, "")
 );
+
 export const Destroytoken = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(DestroytokenScriptJson)
+  Script.fromJson(DestroytokenScriptJson, "")
 );
+
 export const Editfee = new ExecutableScript<{
   contract: HexString;
   edit: bigint;
-}>(Script.fromJson(EditfeeScriptJson));
+}>(Script.fromJson(EditfeeScriptJson, ""));
+
 export const FeeAlph = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(FeeAlphScriptJson));
+}>(Script.fromJson(FeeAlphScriptJson, ""));
+
 export const FeePaca = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(FeePacaScriptJson));
+}>(Script.fromJson(FeePacaScriptJson, ""));
+
 export const Feengu = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(FeenguScriptJson));
+}>(Script.fromJson(FeenguScriptJson, ""));
+
 export const Gettoken = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(GettokenScriptJson));
+}>(Script.fromJson(GettokenScriptJson, ""));
+
 export const Reedeemalph = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(ReedeemalphScriptJson));
+}>(Script.fromJson(ReedeemalphScriptJson, ""));
+
 export const Sellvirl = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(SellvirlScriptJson));
+}>(Script.fromJson(SellvirlScriptJson, ""));
+
 export const Sendout = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(SendoutScriptJson));
+}>(Script.fromJson(SendoutScriptJson, ""));
+
 export const Subdestroy = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(SubdestroyScriptJson)
+  Script.fromJson(SubdestroyScriptJson, "")
 );
+
 export const Topup = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
-}>(Script.fromJson(TopupScriptJson));
+}>(Script.fromJson(TopupScriptJson, ""));
+
 export const Updatedevfee = new ExecutableScript<{
   contract: HexString;
   newfee: bigint;
-}>(Script.fromJson(UpdatedevfeeScriptJson));
+}>(Script.fromJson(UpdatedevfeeScriptJson, ""));
+
 export const Withdrawdev = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(WithdrawdevScriptJson)
+  Script.fromJson(WithdrawdevScriptJson, "")
 );
+
 export const Withdrawlassets = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(WithdrawlassetsScriptJson)
+  Script.fromJson(WithdrawlassetsScriptJson, "")
 );
+
 export const Withdrawplatform = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(WithdrawplatformScriptJson)
+  Script.fromJson(WithdrawplatformScriptJson, "")
 );

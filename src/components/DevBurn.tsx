@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // Alephium imports
-import { BurnTokenContract, DestroyBurnContract } from '@/services/token.service'
+import { BurnTokenContract, DestroyBurnContract, BurnTokenWang } from '@/services/token.service'
 import { TxStatus } from './TxStatus'
 import { node } from '@alephium/web3'
 import { SubscribeConfig, TokenBurnConfig } from '../services/utils'
@@ -35,6 +35,15 @@ export const TokenDevBurnAutomation: FC<{
     e.preventDefault()
     if (signer) {
       const result = await DestroyBurnContract(signer)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleBurnWang = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (signer) {
+      const tokenBurnValue = BigInt(Number(tokenburn) * 1e5).toString();
+      const result = await BurnTokenWang(signer, tokenBurnValue)
       setOngoingTxId(result.txId)
     }
   }
@@ -86,6 +95,26 @@ export const TokenDevBurnAutomation: FC<{
             <br/>
             <br/>
             <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Destroy Burn Contract" />
+          </>
+        </form>
+        <br/>
+        <form onSubmit={handleBurnWang} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> WANG BURN ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <p style={{color: 'black', textAlign: 'center'}}> Burn $WANG </p>
+            <label htmlFor="burn"> Amount of $WANG to be burned. </label>
+            <input
+                className={styles.inputToken}
+                type="number"
+                id="burn"
+                name="burn"
+                value={tokenburn}
+                onChange={(e) => setTokenBurn(e.target.value)}
+            />
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Burn $WANG" />
           </>
         </form>
       </div>
