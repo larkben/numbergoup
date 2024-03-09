@@ -1,6 +1,6 @@
 import { Deployer, DeployFunction, Network } from '@alephium/cli'
 import { Settings } from '../alephium.config'
-import { BurnToken } from '../artifacts/ts'
+import { BurnTokenWang } from '../artifacts/ts'
 
 //! TestNet Token $PACA
 // 23ced1fcda7fb1f53641dc299cf49b12a89338c80d05534fc5b366d5b65acd02
@@ -14,7 +14,7 @@ const tokenBurnWang: DeployFunction<Settings> = async (
   deployer: Deployer,
 ): Promise<void> => {
   // Get settings
-  const result = await deployer.deployContract(BurnToken, {
+  const result = await deployer.deployContract(BurnTokenWang, {
     // The initial states of the faucet contract
     initialFields: {
       tokensburned: 0n,

@@ -1,5 +1,5 @@
 {
-  "version": "v2.5.9",
+  "version": "v2.10.1",
   "name": "Subdestroy",
   "bytecodeTemplate": "010103000000040c0c{0}0108",
   "fieldsSig": {
@@ -7,7 +7,7 @@
       "contract"
     ],
     "types": [
-      "ByteVec"
+      "Subscribe"
     ],
     "isMutable": [
       false

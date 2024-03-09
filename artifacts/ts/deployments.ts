@@ -9,6 +9,8 @@ import {
   SubscribeInstance,
   BurnToken,
   BurnTokenInstance,
+  BurnTokenWang,
+  BurnTokenWangInstance,
   Swap,
   SwapInstance,
 } from ".";
@@ -20,6 +22,7 @@ export type Deployments = {
   contracts: {
     Subscribe: DeployContractExecutionResult<SubscribeInstance>;
     BurnToken: DeployContractExecutionResult<BurnTokenInstance>;
+    BurnTokenWang?: DeployContractExecutionResult<BurnTokenWangInstance>;
     Swap?: DeployContractExecutionResult<SwapInstance>;
   };
 };
@@ -38,6 +41,15 @@ function toDeployments(json: any): Deployments {
         json.contracts["BurnToken"].contractInstance.address
       ),
     },
+    BurnTokenWang:
+      json.contracts["BurnTokenWang"] === undefined
+        ? undefined
+        : {
+            ...json.contracts["BurnTokenWang"],
+            contractInstance: BurnTokenWang.at(
+              json.contracts["BurnTokenWang"].contractInstance.address
+            ),
+          },
     Swap:
       json.contracts["Swap"] === undefined
         ? undefined

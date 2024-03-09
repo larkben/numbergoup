@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 export * from "./BurnToken";
+export * from "./BurnTokenWang";
 export * from "./CreateToken";
 export * from "./Createswap";
 export * from "./Faucet";

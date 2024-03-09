@@ -68,9 +68,8 @@ function getTokenBurnConfig(): BurnToken {
 function getTokenBurnWangConfig(): BurnToken {
   const network = getNetwork()
   const groupIndex = 0
-  const burnContract = loadDeployments(network).contracts.BurnToken.contractInstance
-  const contractAddress = "245N195iAzYSEKw9FdxuQqqT5cjatfTnfxyDesYrBrPnF"
-  const contractId = "8b76f925fa37eff04322c187ba07289da04a31565481b305d7527f0e5bdf7700"
+  const contractAddress = "22xwWK2vB8DNyJ34TbpME3JVbCYyx59e5Lxz54TkHGiqd"
+  const contractId = "7af61a417a7d51354cb9072799487d936a2dff09338e36e2ede08786735ec500"
   const tokenId = "c1aeea313e36454f35beaf40130c9219faa40ba645aff93e16429146039f8202"     // NGU TOKEN
   return {network, groupIndex, contractAddress, contractId, tokenId}
 }

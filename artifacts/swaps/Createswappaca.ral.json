@@ -1,5 +1,5 @@
 {
-  "version": "v2.5.9",
+  "version": "v2.10.1",
   "name": "Createswappaca",
   "bytecodeTemplate": "010103000400402113c40de0b6b3a76400001700160017010c0d{0}010317020c0d{0}01011703b47a7a1601a2{1}{2}a316021603a3{1}{2}{3}{4}100c{0}0108",
   "fieldsSig": {
@@ -11,7 +11,7 @@
       "tokenwantedamt"
     ],
     "types": [
-      "ByteVec",
+      "Createswap",
       "ByteVec",
       "U256",
       "ByteVec",

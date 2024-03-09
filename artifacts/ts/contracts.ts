@@ -5,6 +5,7 @@
 import { Contract, ContractFactory } from "@alephium/web3";
 import {
   BurnToken,
+  BurnTokenWang,
   CreateToken,
   Createswap,
   Faucet,
@@ -20,6 +21,7 @@ export function getContractByCodeHash(codeHash: string): Contract {
   if (contracts === undefined) {
     contracts = [
       BurnToken,
+      BurnTokenWang,
       CreateToken,
       Createswap,
       Faucet,

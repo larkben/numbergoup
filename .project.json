@@ -1,5 +1,5 @@
 {
-  "fullNodeVersion": "v2.5.9",
+  "fullNodeVersion": "v2.10.1",
   "compilerOptionsUsed": {
     "ignoreUnusedConstantsWarnings": false,
     "ignoreUnusedVariablesWarnings": false,
@@ -28,6 +28,20 @@
       "sourceCodeHash": "49993768e4437e55e84ab766a39e5c5446a4d80dfec760dc9380143bea73553d",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+      "warnings": []
+    },
+    "BurnTokenWang": {
+      "sourceFile": "burnwang/burnwang.ral",
+      "sourceCodeHash": "da3bb5123c06b769854a1d1a59a99606858e663a1e9175421b8bf0529f8d5409",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+      "warnings": []
+    },
+    "BurnWang": {
+      "sourceFile": "burnwang/tx_burn.ral",
+      "sourceCodeHash": "79290d4cb464e6011581bb6d7fe284872e74b6db1a15e72915a7f09155764b16",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
       "warnings": []
     },
     "Buyvirl": {
@@ -114,6 +128,13 @@
       "codeHashDebug": "",
       "warnings": []
     },
+    "Destroyburnwang": {
+      "sourceFile": "burnwang/tx_destoryburn.ral",
+      "sourceCodeHash": "65f865c00115431125356892f27cc39b10ede88dcb6aa36efc98708cd2ada77f",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
     "Destroytoken": {
       "sourceFile": "createtoken/tx_destroy_token.ral",
       "sourceCodeHash": "aad40f301672386ec595e4bc47f72c10fedfbf615fa6f1e27de75d5ea8c3324e",
@@ -171,7 +192,7 @@
       "warnings": []
     },
     "IFungibleToken": {
-      "sourceFile": "../node_modules/@alephium/web3/std/fungible_token_interface.ral",
+      "sourceFile": "../../../.npm/_npx/f1b120e1b513c04c/node_modules/@alephium/web3/std/fungible_token_interface.ral",
       "sourceCodeHash": "6809cb06fb20fa7edf529461998beeebd12b1636d439612cca2f84214dbf4a20",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",

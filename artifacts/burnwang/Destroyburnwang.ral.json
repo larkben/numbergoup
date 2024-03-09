@@ -1,13 +1,13 @@
 {
-  "version": "v2.5.9",
-  "name": "WithdrawdevBurn",
+  "version": "v2.10.1",
+  "name": "Destroyburnwang",
   "bytecodeTemplate": "010103000000040c0c{0}0102",
   "fieldsSig": {
     "names": [
       "contract"
     ],
     "types": [
-      "ByteVec"
+      "BurnToken"
     ],
     "isMutable": [
       false

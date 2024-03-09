@@ -13,6 +13,7 @@ import {
 } from "@alephium/web3";
 import { default as BuildtokenScriptJson } from "../createtoken/Buildtoken.ral.json";
 import { default as BurnScriptJson } from "../burn/Burn.ral.json";
+import { default as BurnWangScriptJson } from "../burnwang/BurnWang.ral.json";
 import { default as BuyvirlScriptJson } from "../ico/Buyvirl.ral.json";
 import { default as CancelSwapScriptJson } from "../swaps/CancelSwap.ral.json";
 import { default as ConfirmSwapScriptJson } from "../swaps/ConfirmSwap.ral.json";
@@ -23,6 +24,7 @@ import { default as DepositScriptJson } from "../subscribe/Deposit.ral.json";
 import { default as DestroyScriptJson } from "../faucet/Destroy.ral.json";
 import { default as DestroyTokenSwapScriptJson } from "../swaps/DestroyTokenSwap.ral.json";
 import { default as DestroyburnScriptJson } from "../burn/Destroyburn.ral.json";
+import { default as DestroyburnwangScriptJson } from "../burnwang/Destroyburnwang.ral.json";
 import { default as DestroytokenScriptJson } from "../createtoken/Destroytoken.ral.json";
 import { default as EditfeeScriptJson } from "../scripts/Editfee.ral.json";
 import { default as FeeAlphScriptJson } from "../swaps/FeeAlph.ral.json";
@@ -51,6 +53,11 @@ export const Burn = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
 }>(Script.fromJson(BurnScriptJson, ""));
+
+export const BurnWang = new ExecutableScript<{
+  contract: HexString;
+  amount: bigint;
+}>(Script.fromJson(BurnWangScriptJson, ""));
 
 export const Buyvirl = new ExecutableScript<{
   contract: HexString;
@@ -104,6 +111,10 @@ export const DestroyTokenSwap = new ExecutableScript<{ contract: HexString }>(
 
 export const Destroyburn = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroyburnScriptJson, "")
+);
+
+export const Destroyburnwang = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(DestroyburnwangScriptJson, "")
 );
 
 export const Destroytoken = new ExecutableScript<{ contract: HexString }>(

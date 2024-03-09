@@ -1,6 +1,6 @@
 
 import { DUST_AMOUNT, ExecutableScript, ExecuteScriptResult, SignerProvider, contractIdFromAddress } from '@alephium/web3'
-import { Topup, Sendout, Destroy, Buildtoken, Gettoken, Editfee, Destroytoken, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform } from '../../artifacts/ts/scripts'
+import { Topup, Sendout, Destroy, Buildtoken, Gettoken, Editfee, Destroytoken, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang } from '../../artifacts/ts/scripts'
 import { TokenBurnConfig, SubscribeConfig, WangBurnConfig } from './utils'
 import { BurnToken, Faucet } from 'artifacts/ts'
 import * as web3 from '@alephium/web3'
@@ -25,7 +25,7 @@ export const BurnTokenWang = async (
   signerProvider: SignerProvider,
   amount: string,
 ): Promise<ExecuteScriptResult> => {
-  return await Burn.execute(signerProvider, {
+  return await BurnWang.execute(signerProvider, {
     initialFields: {
       contract: WangBurnConfig.contractId,
       amount: BigInt(amount),

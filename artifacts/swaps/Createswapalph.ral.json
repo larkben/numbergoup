@@ -1,5 +1,5 @@
 {
-  "version": "v2.5.9",
+  "version": "v2.10.1",
   "name": "Createswapalph",
   "bytecodeTemplate": "0101030003001a13c40de0b6b3a764000017000c0d{0}01021701160016012a1702b47a1602a2{1}{2}a3{1}{2}{3}{4}100c{0}0108",
   "fieldsSig": {
@@ -11,7 +11,7 @@
       "tokenwantedamt"
     ],
     "types": [
-      "ByteVec",
+      "Createswap",
       "ByteVec",
       "U256",
       "ByteVec",
