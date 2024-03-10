@@ -88,16 +88,6 @@ export const TokenDevBurnAutomation: FC<{
         </form>
         <br/>
         <br/>
-        <form onSubmit={handleDestroyBurn} style={{alignContent: 'center', textAlign: 'center'}}>
-          <>
-            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals ({config.network})</h2>
-            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
-            <br/>
-            <br/>
-            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Destroy Burn Contract" />
-          </>
-        </form>
-        <br/>
         <form onSubmit={handleBurnWang} style={{alignContent: 'center', textAlign: 'center'}}>
           <>
             <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> WANG BURN ({config.network})</h2>
@@ -117,6 +107,18 @@ export const TokenDevBurnAutomation: FC<{
             <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Burn $WANG" />
           </>
         </form>
+        <br/>
+        <br/>
+        <form onSubmit={handleDestroyBurn} style={{alignContent: 'center', textAlign: 'center'}}>
+          <>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Signals ({config.network})</h2>
+            {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
+            <br/>
+            <br/>
+            <input className={styles.buttonDapp} type="submit" disabled={!!ongoingTxId} value="Destroy Burn Contract" />
+          </>
+        </form>
+        <br/>
       </div>
 
       <br/>
