@@ -34,6 +34,8 @@ export namespace BurnWormTypes {
     ngufee: bigint;
     alphfee: bigint;
     owner: Address;
+    alphbalance: bigint;
+    ngubalance: bigint;
   };
 
   export type State = ContractState<Fields>;
@@ -118,6 +120,16 @@ class Factory extends ContractFactory<BurnWormInstance, BurnWormTypes.Fields> {
     ): Promise<TestContractResult<null>> => {
       return testMethod(this, "burntokenngu", params);
     },
+    withdrawalph: async (
+      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
+    ): Promise<TestContractResult<null>> => {
+      return testMethod(this, "withdrawalph", params);
+    },
+    withdrawngu: async (
+      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
+    ): Promise<TestContractResult<null>> => {
+      return testMethod(this, "withdrawngu", params);
+    },
     destroy: async (
       params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
     ): Promise<TestContractResult<null>> => {
@@ -131,7 +143,7 @@ export const BurnWorm = new Factory(
   Contract.fromJson(
     BurnWormContractJson,
     "",
-    "95fd567de7a55f6ead790c3cf39224aeba3201d31970df93455a1d8a98c6db38"
+    "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570"
   )
 );
 

@@ -45,10 +45,10 @@
       "warnings": []
     },
     "BurnWorm": {
-      "sourceFile": "burnworm/burnwang.ral",
-      "sourceCodeHash": "611da0ed0651c7a4a83ba398f4765e09bf3fdb313d2b51ebfb46bb7656182fb2",
+      "sourceFile": "burnworm/burnworm.ral",
+      "sourceCodeHash": "08dc5789011ce27c00af360dae3d0e6792ee2733b0261c97ef097b9233d45951",
       "bytecodeDebugPatch": "",
-      "codeHashDebug": "95fd567de7a55f6ead790c3cf39224aeba3201d31970df93455a1d8a98c6db38",
+      "codeHashDebug": "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570",
       "warnings": []
     },
     "Buyvirl": {
@@ -129,7 +129,7 @@
       "warnings": []
     },
     "DestroyWorm": {
-      "sourceFile": "burnworm/tx_destoryburn.ral",
+      "sourceFile": "burnworm/tx_destoryburnworm.ral",
       "sourceCodeHash": "950e1c23bb5004dddcaeb0fe0d56c4bbd258a56abf8e70fd1ba7094cde9e733c",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
@@ -304,15 +304,29 @@
       "warnings": []
     },
     "WormEatAlph": {
-      "sourceFile": "burnworm/tx_burn.ral",
+      "sourceFile": "burnworm/tx_burnwormalph.ral",
       "sourceCodeHash": "9c1217bb315c860fe40b6458c2f46c3a639d1f070399fa3ce5d089adc6947a5b",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
     },
     "WormEatNgu": {
-      "sourceFile": "burnworm/tx_burnngu.ral",
+      "sourceFile": "burnworm/tx_burnwormngu.ral",
       "sourceCodeHash": "b6ff99491be382315f56d97f2ac864a9a44c7145a651431431f6ac2d922538e6",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "WormWithdrawAlph": {
+      "sourceFile": "burnworm/tx_withdrawalph.ral",
+      "sourceCodeHash": "ee162404f73771802454d79c0cfbad960a6b15bd7dedcb83ee7bf6e3cbfd2ce3",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "WormWithdrawNgu": {
+      "sourceFile": "burnworm/tx_withdrawngu.ral",
+      "sourceCodeHash": "54fef84ae00319414bf5d4c989d6bc46679b48b3c6259934b11a1028a2e55047",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []

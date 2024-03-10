@@ -43,6 +43,8 @@ import { default as WithdrawlassetsScriptJson } from "../scripts/Withdrawlassets
 import { default as WithdrawplatformScriptJson } from "../subscribe/Withdrawplatform.ral.json";
 import { default as WormEatAlphScriptJson } from "../burnworm/WormEatAlph.ral.json";
 import { default as WormEatNguScriptJson } from "../burnworm/WormEatNgu.ral.json";
+import { default as WormWithdrawAlphScriptJson } from "../burnworm/WormWithdrawAlph.ral.json";
+import { default as WormWithdrawNguScriptJson } from "../burnworm/WormWithdrawNgu.ral.json";
 
 export const Buildtoken = new ExecutableScript<{
   contract: HexString;
@@ -205,3 +207,11 @@ export const WormEatNgu = new ExecutableScript<{
   amount: bigint;
   id: HexString;
 }>(Script.fromJson(WormEatNguScriptJson, ""));
+
+export const WormWithdrawAlph = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(WormWithdrawAlphScriptJson, "")
+);
+
+export const WormWithdrawNgu = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(WormWithdrawNguScriptJson, "")
+);

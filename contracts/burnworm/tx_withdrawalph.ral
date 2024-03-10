@@ -1,0 +1,5 @@
+TxScript WormWithdrawAlph (
+  contract: BurnWorm
+) {
+  contract.withdrawalph()
+}

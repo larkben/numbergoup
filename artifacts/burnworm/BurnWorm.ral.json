@@ -1,26 +1,32 @@
 {
   "version": "v2.10.1",
   "name": "BurnWorm",
-  "bytecode": "040609121b403a405b406a010000000102ce0002010000000102ce0102010000000102ce0202010302030010b417021602b20002a7160216001601bd051600160116025661010302030011b417021602b200000001aa160216001601bd051600160116025661010200000007b4ce03450c7bce03b0",
-  "codeHash": "95fd567de7a55f6ead790c3cf39224aeba3201d31970df93455a1d8a98c6db38",
+  "bytecode": "060809121b40414069408640a540b4010000000102ce0002010000000102ce0102010000000102ce0202010302030014b417021602b20002a7a00000022aa100160216001601bd051600160116025661010302030015b417021602b200000001aaa00100012aa101160216001601bd05160016011602566101000001000fb417001600ce03450c7bb2ce03a000a7a000a0002ba100010000010010b417001600ce03450c7bb2ce030000a001aaa001a0012ba101010200000007b4ce03450c7bce03b0",
+  "codeHash": "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570",
   "fieldsSig": {
     "names": [
       "ngu",
       "ngufee",
       "alphfee",
-      "owner"
+      "owner",
+      "alphbalance",
+      "ngubalance"
     ],
     "types": [
       "ByteVec",
       "U256",
       "U256",
-      "Address"
+      "Address",
+      "U256",
+      "U256"
     ],
     "isMutable": [
       false,
       false,
       false,
-      false
+      false,
+      true,
+      true
     ]
   },
   "eventsSig": [
@@ -122,6 +128,26 @@
         false,
         false
       ],
+      "returnTypes": []
+    },
+    {
+      "name": "withdrawalph",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    },
+    {
+      "name": "withdrawngu",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
       "returnTypes": []
     },
     {

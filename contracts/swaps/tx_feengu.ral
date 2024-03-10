@@ -1,7 +1,0 @@
-TxScript Feengu (
-    contract: Createswap,
-    amount: U256
-) {
-
-    contract.feengu(amount)
-}
