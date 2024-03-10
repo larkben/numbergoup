@@ -1,0 +1,11 @@
+TxScript WormEatNgu (
+	contract: BurnWorm,
+	amount: U256,
+	id: ByteVec
+) {
+
+    let tokenid = contract.getNgu()
+    let tokenamount = contract.getNguFee()
+
+	contract.burntokenngu{callerAddress!() -> id: amount, tokenid: tokenamount}(id, amount)
+}

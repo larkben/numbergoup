@@ -39,9 +39,16 @@
     },
     "BurnWang": {
       "sourceFile": "burnwang/tx_burn.ral",
-      "sourceCodeHash": "79290d4cb464e6011581bb6d7fe284872e74b6db1a15e72915a7f09155764b16",
+      "sourceCodeHash": "b428520ddbff376f90dc7c1c3c7d8066c7535f4e36a3d1d545b0b9f86005e0f1",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
+      "warnings": []
+    },
+    "BurnWorm": {
+      "sourceFile": "burnworm/burnwang.ral",
+      "sourceCodeHash": "611da0ed0651c7a4a83ba398f4765e09bf3fdb313d2b51ebfb46bb7656182fb2",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "95fd567de7a55f6ead790c3cf39224aeba3201d31970df93455a1d8a98c6db38",
       "warnings": []
     },
     "Buyvirl": {
@@ -121,6 +128,13 @@
       "codeHashDebug": "",
       "warnings": []
     },
+    "DestroyWorm": {
+      "sourceFile": "burnworm/tx_destoryburn.ral",
+      "sourceCodeHash": "950e1c23bb5004dddcaeb0fe0d56c4bbd258a56abf8e70fd1ba7094cde9e733c",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
     "Destroyburn": {
       "sourceFile": "burn/tx_destoryburn.ral",
       "sourceCodeHash": "90ce0c67011e0e96c0fab558ee2c7d5adbb83ddb62e8f234a8256aecfee00551",
@@ -130,7 +144,7 @@
     },
     "Destroyburnwang": {
       "sourceFile": "burnwang/tx_destoryburn.ral",
-      "sourceCodeHash": "65f865c00115431125356892f27cc39b10ede88dcb6aa36efc98708cd2ada77f",
+      "sourceCodeHash": "d18865f693dc2754617befa6120792eb3aa023b2a2720cc425c7d886f910f4fa",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -192,7 +206,7 @@
       "warnings": []
     },
     "IFungibleToken": {
-      "sourceFile": "../../../.npm/_npx/f1b120e1b513c04c/node_modules/@alephium/web3/std/fungible_token_interface.ral",
+      "sourceFile": "../node_modules/@alephium/web3/std/fungible_token_interface.ral",
       "sourceCodeHash": "6809cb06fb20fa7edf529461998beeebd12b1636d439612cca2f84214dbf4a20",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
@@ -285,6 +299,20 @@
     "Withdrawplatform": {
       "sourceFile": "subscribe/tx_withdrawplatform.ral",
       "sourceCodeHash": "1ad0297b4a691f503f183b596dc9d33cbbc7884870e196355e1639bf144d1bb8",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "WormEatAlph": {
+      "sourceFile": "burnworm/tx_burn.ral",
+      "sourceCodeHash": "9c1217bb315c860fe40b6458c2f46c3a639d1f070399fa3ce5d089adc6947a5b",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "WormEatNgu": {
+      "sourceFile": "burnworm/tx_burnngu.ral",
+      "sourceCodeHash": "b6ff99491be382315f56d97f2ac864a9a44c7145a651431431f6ac2d922538e6",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []

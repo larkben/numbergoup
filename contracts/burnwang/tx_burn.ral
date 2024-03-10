@@ -1,5 +1,5 @@
 TxScript BurnWang (
-	contract: BurnToken,
+	contract: BurnTokenWang,
 	amount: U256
 ) {
 	let token = contract.getToken()

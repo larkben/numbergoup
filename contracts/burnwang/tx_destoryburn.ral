@@ -1,5 +1,5 @@
 TxScript Destroyburnwang (
-	contract: BurnToken
+	contract: BurnTokenWang
 ) {
 	contract.destroy()
 }

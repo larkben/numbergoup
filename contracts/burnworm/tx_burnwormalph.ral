@@ -1,0 +1,10 @@
+TxScript WormEatAlph (
+	contract: BurnWorm,
+	amount: U256,
+	id: ByteVec
+) {
+
+	let tokenamount = contract.getAlphFee()
+
+	contract.burntokenalph{callerAddress!() -> id: amount, ALPH: tokenamount }(id, amount)
+}

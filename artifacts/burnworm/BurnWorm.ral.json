@@ -1,0 +1,153 @@
+{
+  "version": "v2.10.1",
+  "name": "BurnWorm",
+  "bytecode": "040609121b403a405b406a010000000102ce0002010000000102ce0102010000000102ce0202010302030010b417021602b20002a7160216001601bd051600160116025661010302030011b417021602b200000001aa160216001601bd051600160116025661010200000007b4ce03450c7bce03b0",
+  "codeHash": "95fd567de7a55f6ead790c3cf39224aeba3201d31970df93455a1d8a98c6db38",
+  "fieldsSig": {
+    "names": [
+      "ngu",
+      "ngufee",
+      "alphfee",
+      "owner"
+    ],
+    "types": [
+      "ByteVec",
+      "U256",
+      "U256",
+      "Address"
+    ],
+    "isMutable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "eventsSig": [
+    {
+      "name": "Burn",
+      "fieldNames": [
+        "token",
+        "amount",
+        "who",
+        "when"
+      ],
+      "fieldTypes": [
+        "ByteVec",
+        "U256",
+        "Address",
+        "U256"
+      ]
+    },
+    {
+      "name": "Destroy",
+      "fieldNames": [
+        "from"
+      ],
+      "fieldTypes": [
+        "Address"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getNgu",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "ByteVec"
+      ]
+    },
+    {
+      "name": "getNguFee",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "getAlphFee",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "U256"
+      ]
+    },
+    {
+      "name": "burntokenalph",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "id",
+        "amount"
+      ],
+      "paramTypes": [
+        "ByteVec",
+        "U256"
+      ],
+      "paramIsMutable": [
+        false,
+        false
+      ],
+      "returnTypes": []
+    },
+    {
+      "name": "burntokenngu",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "id",
+        "amount"
+      ],
+      "paramTypes": [
+        "ByteVec",
+        "U256"
+      ],
+      "paramIsMutable": [
+        false,
+        false
+      ],
+      "returnTypes": []
+    },
+    {
+      "name": "destroy",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": true,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    }
+  ],
+  "constants": [],
+  "enums": [
+    {
+      "name": "Error",
+      "fields": [
+        {
+          "name": "InvalidCaller",
+          "value": {
+            "type": "U256",
+            "value": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

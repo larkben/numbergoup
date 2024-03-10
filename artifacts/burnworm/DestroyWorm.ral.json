@@ -1,18 +1,15 @@
 {
   "version": "v2.10.1",
-  "name": "BurnWang",
-  "bytecodeTemplate": "0101030001000e0c0d{0}01001700b41600{1}a3{1}0d0c{0}0101",
+  "name": "DestroyWorm",
+  "bytecodeTemplate": "010103000000040c0c{0}0105",
   "fieldsSig": {
     "names": [
-      "contract",
-      "amount"
+      "contract"
     ],
     "types": [
-      "BurnTokenWang",
-      "U256"
+      "BurnWorm"
     ],
     "isMutable": [
-      false,
       false
     ]
   },

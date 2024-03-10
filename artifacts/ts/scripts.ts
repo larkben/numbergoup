@@ -23,6 +23,7 @@ import { default as CreateswappacaScriptJson } from "../swaps/Createswappaca.ral
 import { default as DepositScriptJson } from "../subscribe/Deposit.ral.json";
 import { default as DestroyScriptJson } from "../faucet/Destroy.ral.json";
 import { default as DestroyTokenSwapScriptJson } from "../swaps/DestroyTokenSwap.ral.json";
+import { default as DestroyWormScriptJson } from "../burnworm/DestroyWorm.ral.json";
 import { default as DestroyburnScriptJson } from "../burn/Destroyburn.ral.json";
 import { default as DestroyburnwangScriptJson } from "../burnwang/Destroyburnwang.ral.json";
 import { default as DestroytokenScriptJson } from "../createtoken/Destroytoken.ral.json";
@@ -40,6 +41,8 @@ import { default as UpdatedevfeeScriptJson } from "../subscribe/Updatedevfee.ral
 import { default as WithdrawdevScriptJson } from "../subscribe/Withdrawdev.ral.json";
 import { default as WithdrawlassetsScriptJson } from "../scripts/Withdrawlassets.ral.json";
 import { default as WithdrawplatformScriptJson } from "../subscribe/Withdrawplatform.ral.json";
+import { default as WormEatAlphScriptJson } from "../burnworm/WormEatAlph.ral.json";
+import { default as WormEatNguScriptJson } from "../burnworm/WormEatNgu.ral.json";
 
 export const Buildtoken = new ExecutableScript<{
   contract: HexString;
@@ -107,6 +110,10 @@ export const Destroy = new ExecutableScript<{ contract: HexString }>(
 
 export const DestroyTokenSwap = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroyTokenSwapScriptJson, "")
+);
+
+export const DestroyWorm = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(DestroyWormScriptJson, "")
 );
 
 export const Destroyburn = new ExecutableScript<{ contract: HexString }>(
@@ -186,3 +193,15 @@ export const Withdrawlassets = new ExecutableScript<{ contract: HexString }>(
 export const Withdrawplatform = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawplatformScriptJson, "")
 );
+
+export const WormEatAlph = new ExecutableScript<{
+  contract: HexString;
+  amount: bigint;
+  id: HexString;
+}>(Script.fromJson(WormEatAlphScriptJson, ""));
+
+export const WormEatNgu = new ExecutableScript<{
+  contract: HexString;
+  amount: bigint;
+  id: HexString;
+}>(Script.fromJson(WormEatNguScriptJson, ""));

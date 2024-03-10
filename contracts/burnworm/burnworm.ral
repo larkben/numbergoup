@@ -1,0 +1,56 @@
+Contract BurnWorm (
+	ngu: ByteVec,
+	ngufee: U256,
+	alphfee: U256, 
+	owner: Address
+) {
+	// Events
+	event Burn(token: ByteVec, amount: U256, who: Address, when: U256)
+	event Destroy(from: Address)
+
+	enum Error {
+		InvalidCaller = 0
+	}
+
+	pub fn getNgu() -> ByteVec {
+		return ngu
+	}
+
+	pub fn getNguFee() -> U256 {
+		return ngufee
+	}
+
+	pub fn getAlphFee() -> U256 {
+		return alphfee
+	}
+
+	@using(preapprovedAssets = true, assetsInContract = false, updateFields = false, checkExternalCaller = false)
+	pub fn burntokenalph(id: ByteVec, amount: U256) -> () {
+
+		let caller = callerAddress!()
+
+		transferToken!(caller, selfAddress!(), ALPH, getAlphFee())
+
+		burnToken!(caller, id, amount)
+
+		emit Burn(id, amount, caller, blockTimeStamp!())
+	}
+
+	@using(preapprovedAssets = true, assetsInContract = false, updateFields = false, checkExternalCaller = false)
+	pub fn burntokenngu(id: ByteVec, amount: U256) -> () {
+
+		let caller = callerAddress!()
+
+		transferToken!(caller, selfAddress!(), getNgu(), getNguFee())
+
+		burnToken!(caller, id, amount)
+
+		emit Burn(id, amount, caller, blockTimeStamp!())
+	}
+
+	@using(assetsInContract = true)
+    pub fn destroy() -> () {
+        checkCaller!(callerAddress!() == owner, Error.InvalidCaller)
+        destroySelf!(owner)
+    }
+}

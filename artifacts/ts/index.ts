@@ -4,6 +4,7 @@
 
 export * from "./BurnToken";
 export * from "./BurnTokenWang";
+export * from "./BurnWorm";
 export * from "./CreateToken";
 export * from "./Createswap";
 export * from "./Faucet";
