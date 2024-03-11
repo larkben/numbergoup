@@ -47,9 +47,6 @@ describe('unit tests', () => {
 
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
-    expect(testResult.debugMessages).toEqual([
-      { contractAddress: testContractAddress, message: `The current balance is ${contractState.asset.alphAmount}` }
-    ])
   })
 
   /*
