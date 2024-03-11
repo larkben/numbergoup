@@ -1,15 +1,18 @@
 {
   "version": "v2.10.1",
-  "name": "Destroytoken",
-  "bytecodeTemplate": "010103000000040c0c{0}0101",
+  "name": "Burn",
+  "bytecodeTemplate": "0101030001000e0c0d{0}01001700b41600{1}a3{1}0d0c{0}0101",
   "fieldsSig": {
     "names": [
-      "contract"
+      "contract",
+      "amount"
     ],
     "types": [
-      "CreateToken"
+      "BurnToken",
+      "U256"
     ],
     "isMutable": [
+      false,
       false
     ]
   },

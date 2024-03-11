@@ -46,16 +46,9 @@
     },
     "BurnWorm": {
       "sourceFile": "burnworm/burnworm.ral",
-      "sourceCodeHash": "daac085cddef0e4c239a324ce7da45b448709a4fb6c14bfa4f6aa1ba82a09422",
+      "sourceCodeHash": "59837ab2efdc4026da50e28ef4b98f401c5a1f0b0bf78b508d36ce8236b18453",
       "bytecodeDebugPatch": "",
-      "codeHashDebug": "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570",
-      "warnings": []
-    },
-    "Buyvirl": {
-      "sourceFile": "ico/tx_viral_buy.ral",
-      "sourceCodeHash": "bc9ccfb86d4ece45391dd02c74c5c9c662b8b78f916dce217e43ec8f829a2401",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
+      "codeHashDebug": "71ce1dc15ad62b458577ba071fc9754b9aa0109806d00d8290eb59836da3df6c",
       "warnings": []
     },
     "CreateToken": {
@@ -102,14 +95,7 @@
     },
     "Destroytoken": {
       "sourceFile": "createtoken/tx_destroy_token.ral",
-      "sourceCodeHash": "aad40f301672386ec595e4bc47f72c10fedfbf615fa6f1e27de75d5ea8c3324e",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Editfee": {
-      "sourceFile": "scripts/editfee.ral",
-      "sourceCodeHash": "9cdeae542bc4274f07cc34f10ac8142a5cfad433a84eeb6e5ed35f7c6b6edc09",
+      "sourceCodeHash": "38f3152928956b8836e355f7396d9234e8641ec088dcde2c0f6321400d028bbf",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -121,37 +107,9 @@
       "codeHashDebug": "8813de5a4adb21e4e0ea09357924ec19037b916ecfd6a228152238f8e9396d04",
       "warnings": []
     },
-    "FeeCollection": {
-      "sourceFile": "testing/test_fees.ral",
-      "sourceCodeHash": "c57c6d50b3844a156c7fcf9bed5ad1e8656db4a33099ccd3771e6d9c739f34b8",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "037be2975a9253dfe116077fa5b404f46ce64a23e2ccefbf2905dce4b66a7a7c",
-      "warnings": []
-    },
-    "Gettoken": {
-      "sourceFile": "scripts/tokentest.ral",
-      "sourceCodeHash": "3e20a0e7e5ce052d940807ee059265d115a136931f0d38aea4484b5b29b4859b",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
     "IFungibleToken": {
       "sourceFile": "../node_modules/@alephium/web3/std/fungible_token_interface.ral",
       "sourceCodeHash": "6809cb06fb20fa7edf529461998beeebd12b1636d439612cca2f84214dbf4a20",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Reedeemalph": {
-      "sourceFile": "ico/tx_viral_alphdraw.ral",
-      "sourceCodeHash": "09929c8d2211004755bd4e10538bddda1aaaa47b701470965b39faede2bb8e0a",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Sellvirl": {
-      "sourceFile": "ico/tx_viral_sell.ral",
-      "sourceCodeHash": "3f035ee4933f4f33397670cac3be604f7699d2f5fd41b56732f39233d1e3a7e8",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -179,9 +137,9 @@
     },
     "Token": {
       "sourceFile": "createtoken/token.ral",
-      "sourceCodeHash": "fcbdce030993275cfc162a2b970344a8e07a750122684f77ae7044756815f8db",
+      "sourceCodeHash": "5752248f7cf2826d871fc99234878c635f9d1d46110761ed244f31a9beb63c74",
       "bytecodeDebugPatch": "",
-      "codeHashDebug": "9fb480d2534a9e8b5cf4b5ef005deeec049136f4462dfc72c56ad041a561526b",
+      "codeHashDebug": "ca6b8c08739a44b63b275e82ca2fa299d38793c1d6860d741c688e0bc352061b",
       "warnings": []
     },
     "Topup": {
@@ -198,23 +156,9 @@
       "codeHashDebug": "",
       "warnings": []
     },
-    "Viral": {
-      "sourceFile": "ico/virl.ral",
-      "sourceCodeHash": "a45282df7ae0cc47e050ff91c8a5987c68a454a0d198cc6e6d34882ad04154ee",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "d87d6c74c21a7bec6cba00e9a0388ca81c5a71518b8efb77f43b5160cfdd4456",
-      "warnings": []
-    },
     "Withdrawdev": {
       "sourceFile": "subscribe/tx_withdrawdev.ral",
       "sourceCodeHash": "37999eb9685840f4c25426da3451bcaba25c28652cca2f0592f33feee051cba5",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Withdrawlassets": {
-      "sourceFile": "scripts/tokentesttwo.ral",
-      "sourceCodeHash": "5f365d681775d5ef7a91db608b378978177c127b14a6835538487a7956f3d61f",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
