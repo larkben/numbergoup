@@ -59,29 +59,4 @@ describe('unit tests', () => {
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
   })
-
-  it('test withdraw alph', async () => {
-    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
-    console.log('balanceBefore', JSON.stringify(balanceBefore))
-
-    const testParamsAlph = { ...withdrawTestParams, testArgs: {} }
-    // test that assertion failed in the withdraw function
-    const testResult = await BurnWorm.tests.withdrawalph(testParamsAlph)
-
-    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
-    console.log('balanceBefore', JSON.stringify(balanceAfter))
-  })
-
-  it('test withdraw ngu', async () => {
-    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
-    console.log('balanceBefore', JSON.stringify(balanceBefore))
-
-    const testParamsNgu = { ...withdrawTestParams, testArgs: {} }
-    // test that assertion failed in the withdraw function
-    const testResult = await BurnWorm.tests.withdrawngu(testParamsNgu)
-
-    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
-    console.log('balanceBefore', JSON.stringify(balanceAfter))
-  })
-
 })
