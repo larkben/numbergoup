@@ -45,7 +45,7 @@ describe('unit tests', () => {
     expect(contractState.address).toEqual(testContractAddress)
     expect(contractState.fields.alphbalance).toEqual(1500000000000000000n) // 10.5 alph
     // double check the balance of the contract assets
-    expect(contractState.asset).toEqual({ alphAmount: 15n ** 18n, tokens: [{ id: testTokenId, amount: 30n }] })
+    expect(contractState.asset).toEqual({ alphAmount: 1500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] })
 
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
