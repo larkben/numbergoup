@@ -27,12 +27,12 @@ describe('unit tests', () => {
         alphfee: 500000000000000000n, // 0.5 ALPH
         owner: testAddress,
         ngubalance: 30n,
-        alphbalance: 10n ** 18n // 1 ALPH
+        alphbalance: 10n ** 18n // 10 ALPH
       },
       // arguments to test the target function of the test contract
-      testArgs: { id: testTokenId, amount: 1n },
+      testArgs: { id: testTokenId, amount: 1n }, // Burning one random token
       // assets owned by the caller of the function
-      inputAssets: [{ address: testAddress, asset: { alphAmount: 10n ** 18n, tokens: [{ id: testTokenId, amount: 30n }] } }]
+      inputAssets: [{ address: testAddress, asset: { alphAmount: 10n ** 18n, tokens: [{ id: testTokenId, amount: 30n }] } }] // 10 ALPH and 30 Random Tokens
     }
   })
 
@@ -43,8 +43,7 @@ describe('unit tests', () => {
     // only one contract involved in the test
     const contractState = testResult.contracts[0] as BurnWormTypes.State
     // double check the balance of the contract assets
-    //expect(contractState.asset).toEqual({ alphAmount: 1500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] })
-
+    expect(contractState.asset).toEqual({ alphAmount: 10500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] })
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
   })
