@@ -45,6 +45,9 @@ describe('unit tests', () => {
     const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
     console.log('balanceBefore', JSON.stringify(balanceBefore))
 
+    const contractBalanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testContractAddress))
+    console.log('contractBalanceBefore', JSON.stringify(contractBalanceBefore))
+
     const testParams = testParamsFixture
     const signer = await getSigner(500000000000000000n, 0)
     const testResult = await BurnWorm.tests.burntokenalph(testParams)
@@ -56,7 +59,12 @@ describe('unit tests', () => {
 
     const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
     console.log('balanceAfter', JSON.stringify(balanceAfter))
+
+    const contractBalanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testContractAddress))
+    console.log('contractBalanceAfter', JSON.stringify(contractBalanceAfter))
     // the test framework support debug messages too
+
+
     // debug will be disabled automatically at the deployment to real networks
   })
 })
