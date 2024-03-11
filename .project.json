@@ -46,7 +46,7 @@
     },
     "BurnWorm": {
       "sourceFile": "burnworm/burnworm.ral",
-      "sourceCodeHash": "08dc5789011ce27c00af360dae3d0e6792ee2733b0261c97ef097b9233d45951",
+      "sourceCodeHash": "daac085cddef0e4c239a324ce7da45b448709a4fb6c14bfa4f6aa1ba82a09422",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570",
       "warnings": []
@@ -58,53 +58,11 @@
       "codeHashDebug": "",
       "warnings": []
     },
-    "CancelSwap": {
-      "sourceFile": "swaps/tx_cancel_swap.ral",
-      "sourceCodeHash": "e259f835a2934fde782aa0546976643c05c2f0c83e4a276772de5ed7913cd98e",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "ConfirmSwap": {
-      "sourceFile": "swaps/tx_confirm_swap.ral",
-      "sourceCodeHash": "71e6b7523fef8f478f509c7dd3154b1bcbeda7f2d28fadf6005c9d4bce791550",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
     "CreateToken": {
       "sourceFile": "createtoken/create_token.ral",
       "sourceCodeHash": "1f75c67fc65f44672f0b66047fbbe2d7d4c999cc5ea4b175a0eced64133e1feb",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "7ed6793ccad176ce4c219e78b5957818968443e64427459cae59ead4c5e2dcb8",
-      "warnings": []
-    },
-    "Createswap": {
-      "sourceFile": "swaps/createswap.ral",
-      "sourceCodeHash": "d94737803d31ecd600e5d07eeeece044ef3c400bb98a64b3f4062a14f7aa336a",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "ee0d422da610ac195fa99322c2f527d854564158ca5f95ff42118600653fa585",
-      "warnings": []
-    },
-    "Createswapalph": {
-      "sourceFile": "swaps/tx_create_swapalph.ral",
-      "sourceCodeHash": "c3d145f7da6c988d6a9688cf0d4e4d25c6ab3f7964db407fc7ab920e4daa0077",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Createswapngu": {
-      "sourceFile": "swaps/tx_create_swapngu.ral",
-      "sourceCodeHash": "6a78c3e8e3e44a34e769f71c45c2156c59cb420d011fc20cb41f93cb760bb9b2",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Createswappaca": {
-      "sourceFile": "swaps/tx_create_swappaca.ral",
-      "sourceCodeHash": "1afb0d1f4a88765887740dd4c2e2329fd999fe5751acd232e144ec7ac5705363",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
       "warnings": []
     },
     "Deposit": {
@@ -117,13 +75,6 @@
     "Destroy": {
       "sourceFile": "faucet/tx_destroy_faucet.ral",
       "sourceCodeHash": "0447e8824afa27dc76fdcaac5fac72247eb5b4aa93d5efc87da36d1450e1c4f7",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "DestroyTokenSwap": {
-      "sourceFile": "swaps/tx_destroy_tokenswap.ral",
-      "sourceCodeHash": "8ae50e4974df1c50b394797928ad4d6168963f590414bf87da523252ac0df6ce",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
@@ -170,32 +121,11 @@
       "codeHashDebug": "8813de5a4adb21e4e0ea09357924ec19037b916ecfd6a228152238f8e9396d04",
       "warnings": []
     },
-    "FeeAlph": {
-      "sourceFile": "swaps/tx_feealph.ral",
-      "sourceCodeHash": "1e12397dc597f5f2ce7c9da9cd1868b303a3ddeac7b43daff02e3bc210ebf8af",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
     "FeeCollection": {
       "sourceFile": "testing/test_fees.ral",
       "sourceCodeHash": "c57c6d50b3844a156c7fcf9bed5ad1e8656db4a33099ccd3771e6d9c739f34b8",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "037be2975a9253dfe116077fa5b404f46ce64a23e2ccefbf2905dce4b66a7a7c",
-      "warnings": []
-    },
-    "FeePaca": {
-      "sourceFile": "swaps/tx_feepaca.ral",
-      "sourceCodeHash": "0029c3792abef12ccdb011ce80b3c16d6f95aacfedceac8a9b01dea531e17308",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
-      "warnings": []
-    },
-    "Feengu": {
-      "sourceFile": "swaps/tx_feengu.ral",
-      "sourceCodeHash": "fa4f9bc1674b499d0306397fe4ab351d2812443a91852731ad26b5d2b255c373",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "",
       "warnings": []
     },
     "Gettoken": {
@@ -245,13 +175,6 @@
       "sourceCodeHash": "893efa54f32d9123be76f345e4af5615371dec98ca56c72dec370315ef125ba7",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "d2df6369c3aa2161dfed0f5164d3940fd294067729d99586d5dea24f42ffbc65",
-      "warnings": []
-    },
-    "Swap": {
-      "sourceFile": "swaps/swap.ral",
-      "sourceCodeHash": "ba4679ae400d5539d2418a44c5c60f9e037c87d5e9d3344b0ea59cd1e674e7d9",
-      "bytecodeDebugPatch": "",
-      "codeHashDebug": "f5b78061c50a1d1c61861a43961186bf1d7a8520de8faa2eb730ece6cd886a9f",
       "warnings": []
     },
     "Token": {

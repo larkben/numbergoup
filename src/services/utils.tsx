@@ -1,5 +1,5 @@
 import { NetworkId, ONE_ALPH } from "@alephium/web3"
-import { loadDeployments } from "artifacts/ts/deployments"
+import { loadDeployments } from "../../artifacts/ts/deployments"
 
 //* Interfaces
 
@@ -11,21 +11,11 @@ export interface BurnToken {
   tokenId: string
 }
 
-// !NEED TO BE CONFIGURED
-export interface SwapTemplate {
+export interface BurnWorm {
   network: NetworkId
   groupIndex: number
   contractAddress: string           // Contract Addy
-  contractId: string                // Contract Collects Fees, Takes Player With Highest Score
-  tokenId: string                   // Burns $PACA or uses PACA to upgrade skills
-}
-
-// !NEED TO BE CONFIGURED
-export interface Swap {
-  network: NetworkId
-  groupIndex: number
-  contractAddress: string           // Contract Addy
-  contractId: string                // Contract Collects Fees, Takes Player With Highest Score
+  contractId: string                // Contract Collects Fees ALPH 0.5 and NGU 7
   tokenId: string   
 }
 
@@ -85,7 +75,17 @@ function getSubscribeConfig(): SubscribeConfig {
   return { network, groupIndex, subscribeAddress, subscribeID, nguID }
 }
 
+function getBurnWormConfig(): BurnWorm {
+  const network = getNetwork()
+  const groupIndex = 0
+  const contractAddress = "255wC7Sqr6rL4cA5S8AP6PnoMQHD7rRbkY5nbkfpVnnC7"
+  const contractId = "9a782ff1422dd73ae286576027ccfe7ac4a89ccfcaf83373409f48e48b950e00"
+  const tokenId = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
+  return { network, groupIndex, contractAddress, contractId, tokenId }
+}
+
 // Exports
 export const TokenBurnConfig = getTokenBurnConfig()
 export const SubscribeConfig = getSubscribeConfig()
 export const WangBurnConfig = getTokenBurnWangConfig()
+export const BurnWormConfig = getBurnWormConfig()
