@@ -54,7 +54,7 @@ describe('unit tests', () => {
     expect(contractState.asset).toEqual({ alphAmount: 1500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] }) // 1.5 ALPH
 
     const balanceAfter = (await nodeProvider.addresses.getAddressesAddressUtxos(testAddress)).utxos
-    console.log('balanceBefore', JSON.stringify(balanceBefore))
+    console.log('balanceAfter', JSON.stringify(balanceAfter))
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
   })
