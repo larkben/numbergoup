@@ -11,6 +11,7 @@ describe('unit tests', () => {
   let testTokenId: string
   let testContractAddress: string
   let testParamsFixture: TestContractParams<BurnWormTypes.Fields, { id: string, amount: bigint }>
+  let withdrawTestParams: TestContractParams<BurnWormTypes.Fields, {}>
 
   // We initialize the fixture variables before all tests
   beforeAll(async () => {
@@ -42,7 +43,7 @@ describe('unit tests', () => {
 
   it('test burn with alph fee', async () => {
     const signer = await getSigner(500000000000000000n, 0)
-    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressUtxos(testAddress)).utxos
+    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
     console.log('balanceBefore', JSON.stringify(balanceBefore))
 
     const testParams = testParamsFixture
@@ -53,17 +54,34 @@ describe('unit tests', () => {
     // double check the balance of the contract assets
     expect(contractState.asset).toEqual({ alphAmount: 1500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] }) // 1.5 ALPH
 
-    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressUtxos(testAddress)).utxos
+    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
     console.log('balanceAfter', JSON.stringify(balanceAfter))
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
   })
 
-  /*
-  it('test withdraw', async () => {
-    const testParams = { ...testParamsFixture, testArgs: { amount: 3n } }
+  it('test withdraw alph', async () => {
+    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
+    console.log('balanceBefore', JSON.stringify(balanceBefore))
+
+    const testParamsAlph = { ...withdrawTestParams, testArgs: {} }
     // test that assertion failed in the withdraw function
-    await expectAssertionError(BurnWorm.tests.withdraw(testParams), testContractAddress, 0)
+    const testResult = await BurnWorm.tests.withdrawalph(testParamsAlph)
+
+    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
+    console.log('balanceBefore', JSON.stringify(balanceAfter))
   })
-  */
+
+  it('test withdraw ngu', async () => {
+    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
+    console.log('balanceBefore', JSON.stringify(balanceBefore))
+
+    const testParamsNgu = { ...withdrawTestParams, testArgs: {} }
+    // test that assertion failed in the withdraw function
+    const testResult = await BurnWorm.tests.withdrawngu(testParamsNgu)
+
+    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
+    console.log('balanceBefore', JSON.stringify(balanceAfter))
+  })
+
 })
