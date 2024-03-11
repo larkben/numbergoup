@@ -1,6 +1,10 @@
-import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT } from '@alephium/web3'
-import { expectAssertionError, randomContractId, testAddress } from '@alephium/web3-test'
+import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT, ONE_ALPH } from '@alephium/web3'
+import { expectAssertionError, randomContractId, testAddress, mintToken, getSigner } from '@alephium/web3-test'
+import { deployToDevnet } from '@alephium/cli'
 import { BurnWorm, BurnWormTypes, WormEatAlph, WormEatNgu, WormWithdrawAlph, WormWithdrawNgu } from '../../artifacts/ts'
+
+web3.setCurrentNodeProvider('http://127.0.0.1:22973', undefined, fetch)
+const nodeProvider = web3.getCurrentNodeProvider()
 
 describe('unit tests', () => {
   let testContractId: string
@@ -37,6 +41,10 @@ describe('unit tests', () => {
   })
 
   it('test burn with alph fee', async () => {
+    const signer = await getSigner(500000000000000000n, 0)
+    const balanceBefore = (await nodeProvider.addresses.getAddressesAddressUtxos(testAddress)).utxos
+    console.log('balanceBefore', JSON.stringify(balanceBefore))
+
     const testParams = testParamsFixture
     const testResult = await BurnWorm.tests.burntokenalph(testParams)
 
@@ -44,6 +52,9 @@ describe('unit tests', () => {
     const contractState = testResult.contracts[0] as BurnWormTypes.State
     // double check the balance of the contract assets
     expect(contractState.asset).toEqual({ alphAmount: 1500000000000000000n, tokens: [{ id: testTokenId, amount: 30n }] }) // 1.5 ALPH
+
+    const balanceAfter = (await nodeProvider.addresses.getAddressesAddressUtxos(testAddress)).utxos
+    console.log('balanceBefore', JSON.stringify(balanceBefore))
     // the test framework support debug messages too
     // debug will be disabled automatically at the deployment to real networks
   })
