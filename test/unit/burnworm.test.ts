@@ -42,11 +42,11 @@ describe('unit tests', () => {
   })
 
   it('test burn with alph fee', async () => {
-    const signer = await getSigner(500000000000000000n, 0)
     const balanceBefore = (await nodeProvider.addresses.getAddressesAddressBalance(testAddress))
     console.log('balanceBefore', JSON.stringify(balanceBefore))
 
     const testParams = testParamsFixture
+    const signer = await getSigner(500000000000000000n, 0)
     const testResult = await BurnWorm.tests.burntokenalph(testParams)
 
     // only one contract involved in the test
