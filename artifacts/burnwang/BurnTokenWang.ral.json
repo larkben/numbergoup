@@ -1,0 +1,104 @@
+{
+  "version": "v2.10.1",
+  "name": "BurnTokenWang",
+  "bytecode": "03030940294038010000000102ce0002010301020010b417011601ce001600bda00016002aa100051601160056a00061010200000007b4ce01450c7bce01b0",
+  "codeHash": "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+  "fieldsSig": {
+    "names": [
+      "tokensburned",
+      "token",
+      "owner"
+    ],
+    "types": [
+      "U256",
+      "ByteVec",
+      "Address"
+    ],
+    "isMutable": [
+      true,
+      false,
+      false
+    ]
+  },
+  "eventsSig": [
+    {
+      "name": "Burn",
+      "fieldNames": [
+        "from",
+        "amount",
+        "when",
+        "totalburned"
+      ],
+      "fieldTypes": [
+        "Address",
+        "U256",
+        "U256",
+        "U256"
+      ]
+    },
+    {
+      "name": "Destroy",
+      "fieldNames": [
+        "from"
+      ],
+      "fieldTypes": [
+        "Address"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getToken",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": [
+        "ByteVec"
+      ]
+    },
+    {
+      "name": "burntoken",
+      "usePreapprovedAssets": true,
+      "useAssetsInContract": false,
+      "isPublic": true,
+      "paramNames": [
+        "amount"
+      ],
+      "paramTypes": [
+        "U256"
+      ],
+      "paramIsMutable": [
+        false
+      ],
+      "returnTypes": []
+    },
+    {
+      "name": "destroy",
+      "usePreapprovedAssets": false,
+      "useAssetsInContract": true,
+      "isPublic": true,
+      "paramNames": [],
+      "paramTypes": [],
+      "paramIsMutable": [],
+      "returnTypes": []
+    }
+  ],
+  "constants": [],
+  "enums": [
+    {
+      "name": "Error",
+      "fields": [
+        {
+          "name": "InvalidCaller",
+          "value": {
+            "type": "U256",
+            "value": "0"
+          }
+        }
+      ]
+    }
+  ]
+}
