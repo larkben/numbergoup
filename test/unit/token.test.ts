@@ -1,6 +1,6 @@
 import { web3, Project, TestContractParams, addressFromContractId, AssetOutput, DUST_AMOUNT } from '@alephium/web3'
 import { expectAssertionError, randomContractId, testAddress } from '@alephium/web3-test'
-import { TokenFaucet, TokenFaucetTypes } from '../../artifacts/ts'
+import { BurnWorm } from '../../artifacts/ts'
 
 describe('unit tests', () => {
   let testContractId: string

@@ -34,16 +34,6 @@ Contract Token (
         return owner
     }
 
-    @using(assetsInContract = true, updateFields = false, checkExternalCaller = true)
-    pub fn destroytoken() -> () {
-
-        let caller = callerAddress!()
-
-        checkCaller!(owner == caller, ErrorCodes.InvalidCaller)
-
-        destroySelf!(owner)
-
-        emit Destroy(owner, selfContractId!())
-    }
+    // No destroy function as it is not secure for the longevity of a token
 
 }
