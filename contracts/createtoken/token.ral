@@ -8,12 +8,6 @@ Contract Token (
     owner: Address
 ) implements IFungibleToken {
 
-    event Destroy(user: Address, contract: ByteVec)
-
-    enum ErrorCodes {
-        InvalidCaller = 1
-    }
-
     pub fn getSymbol() -> ByteVec {
         return symbol
     }
