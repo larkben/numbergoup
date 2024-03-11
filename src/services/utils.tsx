@@ -1,5 +1,5 @@
 import { NetworkId, ONE_ALPH } from "@alephium/web3"
-import { loadDeployments } from "../../artifacts/ts/deployments"
+import { loadDeployments } from "artifacts/ts/deployments"
 
 //* Interfaces
 
