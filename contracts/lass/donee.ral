@@ -1,0 +1,8 @@
+Contract Donee (
+    token: ByteVec,
+    totaltokens: U256,
+    dev: Address,
+    devfee: U256,                                       // 0.05 ALPH per tx
+    mut alphcollected: U256,
+    owner: Address
+)

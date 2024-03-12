@@ -4,7 +4,7 @@ Contract CreateToken(
 ) {
 
     event Destroy(user: Address)
-    event CreateToken(user: Address, contract: ByteVec)
+    event CreateToken(user: Address, contract: ByteVec, name: ByteVec, symbol: ByteVec, totalsupply: U256: decimals: U256)
 
     enum ErrorCodes {
         InvalidCaller = 1
@@ -25,7 +25,7 @@ Contract CreateToken(
             minter
         )
 
-        emit CreateToken(minter, contractID)
+        emit CreateToken(minter, contractID, name, symbol, tokenTotal, decimals)
 
         return contractID
     }

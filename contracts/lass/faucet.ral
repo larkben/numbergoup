@@ -1,0 +1,11 @@
+Contract Faucet (
+    token: ByteVec,
+    mut totaltokens: U256,
+    mut amountrelease: U256,
+    dev: Address,
+    devfee: U256,                               // 0.01 alph per tx 
+    mut alphcollected: U256,
+    owner: Address
+) {
+
+}
