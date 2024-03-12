@@ -1,7 +1,7 @@
 
 import { DUST_AMOUNT, ExecutableScript, ExecuteScriptResult, SignerProvider, contractIdFromAddress } from '@alephium/web3'
 import { Topup, Sendout, Destroy, Buildtoken, Destroytoken, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang, WormEatAlph, WormEatNgu, DestroyWorm } from '../../artifacts/ts/scripts'
-import { TokenBurnConfig, SubscribeConfig, WangBurnConfig } from './utils'
+import { TokenBurnConfig, SubscribeConfig, WangBurnConfig, BurnWormConfig } from './utils'
 import { BurnToken, Faucet } from 'artifacts/ts'
 import * as web3 from '@alephium/web3'
 import { stringToHex } from '@alephium/web3'
@@ -26,7 +26,7 @@ export const DestroyBurnContract = async (
 ): Promise<ExecuteScriptResult> => {
   return await DestroyWorm.execute(signerProvider, {
     initialFields: {
-      contract: "141f2ca1d8821699354c75d0d9e03a76226cde89ef18028c64f90c70cb5bc100"
+      contract: "80ecb8bb6715f21812be1fac53ee8f306b0d1b08557a9b0ec7a51f40037c2900"
     },
     attoAlphAmount: DUST_AMOUNT
   })
@@ -121,12 +121,12 @@ export const BurnWormAlphContract = async (
 ): Promise<ExecuteScriptResult> => {
   return await WormEatAlph.execute(signerProvider, {
     initialFields: {
-      contract: SubscribeConfig.subscribeID,
+      contract: BurnWormConfig.contractId,
       amount: BigInt(amount),
       id: tokenid
     },
     attoAlphAmount: DUST_AMOUNT,
-    tokens: [{id: tokenid, amount: BigInt(amount) }]
+    tokens: [{id: tokenid, amount: BigInt(amount) }, {id: web3.ALPH_TOKEN_ID, amount: 500000000000000000n}]
   })
 }
 
@@ -138,12 +138,12 @@ export const BurnWormNguContract = async (
 ): Promise<ExecuteScriptResult> => {
   return await WormEatNgu.execute(signerProvider, {
     initialFields: {
-      contract: SubscribeConfig.subscribeID,
+      contract: BurnWormConfig.contractId,
       amount: BigInt(amount),
       id: tokenid
     },
     attoAlphAmount: DUST_AMOUNT,
-    tokens: [{id: tokenid, amount: BigInt(amount) }]
+    tokens: [{id: tokenid, amount: BigInt(amount)}, {id: BurnWormConfig.tokenId, amount: 70000000n}]
   })
 }
 

@@ -78,8 +78,8 @@ function getSubscribeConfig(): SubscribeConfig {
 function getBurnWormConfig(): BurnWorm {
   const network = getNetwork()
   const groupIndex = 0
-  const contractAddress = "255wC7Sqr6rL4cA5S8AP6PnoMQHD7rRbkY5nbkfpVnnC7"
-  const contractId = "9a782ff1422dd73ae286576027ccfe7ac4a89ccfcaf83373409f48e48b950e00"
+  const contractAddress = "vGphcriZrKNCBdtzdnUBuVFzHA669Fm5rB726bdvz7sV"
+  const contractId = "17890ddcc7b518a56274ccd62cd262920cb5328239db122cd25fde701930a200"
   const tokenId = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
   return { network, groupIndex, contractAddress, contractId, tokenId }
 }
