@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as FeeCollectionContractJson } from "../testing/FeeCollection.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -83,6 +90,18 @@ export namespace FeeCollectionTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<HexString>;
     };
+    gettoken: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    withdrawalassets: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+    editfee: {
+      params: CallContractParams<{ edit: bigint }>;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -96,12 +115,67 @@ export namespace FeeCollectionTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getTokenOne: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getTokenTwo: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getBalanceOne: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getBalanceTwo: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getFee: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getSymbol: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getName: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    gettoken: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    withdrawalassets: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    editfee: {
+      params: SignExecuteContractMethodParams<{ edit: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<
   FeeCollectionInstance,
   FeeCollectionTypes.Fields
 > {
+  encodeFields(fields: FeeCollectionTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as FeeCollectionTypes.Fields;
   }
@@ -124,77 +198,88 @@ class Factory extends ContractFactory<
   tests = {
     getTokenOne: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getTokenOne", params);
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getTokenOne", params, getContractByCodeHash);
     },
     getTokenTwo: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getTokenTwo", params);
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getTokenTwo", params, getContractByCodeHash);
     },
     getBalanceOne: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getBalanceOne", params);
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getBalanceOne", params, getContractByCodeHash);
     },
     getBalanceTwo: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getBalanceTwo", params);
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getBalanceTwo", params, getContractByCodeHash);
     },
     getFee: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getFee", params);
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getFee", params, getContractByCodeHash);
     },
     getSymbol: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getSymbol", params);
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getSymbol", params, getContractByCodeHash);
     },
     getName: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getName", params);
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getName", params, getContractByCodeHash);
     },
     gettoken: async (
-      params: TestContractParams<FeeCollectionTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "gettoken", params);
+      params: TestContractParamsWithoutMaps<
+        FeeCollectionTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "gettoken", params, getContractByCodeHash);
     },
     withdrawalassets: async (
       params: Omit<
-        TestContractParams<FeeCollectionTypes.Fields, never>,
+        TestContractParamsWithoutMaps<FeeCollectionTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawalassets", params);
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(
+        this,
+        "withdrawalassets",
+        params,
+        getContractByCodeHash
+      );
     },
     editfee: async (
-      params: TestContractParams<FeeCollectionTypes.Fields, { edit: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "editfee", params);
+      params: TestContractParamsWithoutMaps<
+        FeeCollectionTypes.Fields,
+        { edit: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "editfee", params, getContractByCodeHash);
     },
   };
 }
@@ -204,7 +289,8 @@ export const FeeCollection = new Factory(
   Contract.fromJson(
     FeeCollectionContractJson,
     "",
-    "037be2975a9253dfe116077fa5b404f46ce64a23e2ccefbf2905dce4b66a7a7c"
+    "037be2975a9253dfe116077fa5b404f46ce64a23e2ccefbf2905dce4b66a7a7c",
+    []
   )
 );
 
@@ -382,6 +468,96 @@ export class FeeCollectionInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    gettoken: async (
+      params: FeeCollectionTypes.CallMethodParams<"gettoken">
+    ): Promise<FeeCollectionTypes.CallMethodResult<"gettoken">> => {
+      return callMethod(
+        FeeCollection,
+        this,
+        "gettoken",
+        params,
+        getContractByCodeHash
+      );
+    },
+    withdrawalassets: async (
+      params?: FeeCollectionTypes.CallMethodParams<"withdrawalassets">
+    ): Promise<FeeCollectionTypes.CallMethodResult<"withdrawalassets">> => {
+      return callMethod(
+        FeeCollection,
+        this,
+        "withdrawalassets",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    editfee: async (
+      params: FeeCollectionTypes.CallMethodParams<"editfee">
+    ): Promise<FeeCollectionTypes.CallMethodResult<"editfee">> => {
+      return callMethod(
+        FeeCollection,
+        this,
+        "editfee",
+        params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getTokenOne: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getTokenOne">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getTokenOne">> => {
+      return signExecuteMethod(FeeCollection, this, "getTokenOne", params);
+    },
+    getTokenTwo: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getTokenTwo">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getTokenTwo">> => {
+      return signExecuteMethod(FeeCollection, this, "getTokenTwo", params);
+    },
+    getBalanceOne: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getBalanceOne">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getBalanceOne">> => {
+      return signExecuteMethod(FeeCollection, this, "getBalanceOne", params);
+    },
+    getBalanceTwo: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getBalanceTwo">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getBalanceTwo">> => {
+      return signExecuteMethod(FeeCollection, this, "getBalanceTwo", params);
+    },
+    getFee: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getFee">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getFee">> => {
+      return signExecuteMethod(FeeCollection, this, "getFee", params);
+    },
+    getSymbol: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getSymbol">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getSymbol">> => {
+      return signExecuteMethod(FeeCollection, this, "getSymbol", params);
+    },
+    getName: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"getName">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"getName">> => {
+      return signExecuteMethod(FeeCollection, this, "getName", params);
+    },
+    gettoken: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"gettoken">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"gettoken">> => {
+      return signExecuteMethod(FeeCollection, this, "gettoken", params);
+    },
+    withdrawalassets: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"withdrawalassets">
+    ): Promise<
+      FeeCollectionTypes.SignExecuteMethodResult<"withdrawalassets">
+    > => {
+      return signExecuteMethod(FeeCollection, this, "withdrawalassets", params);
+    },
+    editfee: async (
+      params: FeeCollectionTypes.SignExecuteMethodParams<"editfee">
+    ): Promise<FeeCollectionTypes.SignExecuteMethodResult<"editfee">> => {
+      return signExecuteMethod(FeeCollection, this, "editfee", params);
     },
   };
 

@@ -17,10 +17,12 @@ const burnWorm: DeployFunction<Settings> = async (
   const result = await deployer.deployContract(BurnWorm, {
     // The initial states of the faucet contract
     initialFields: {
-      ngu: "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200",      // NGU TOKEN ID
-      ngufee: 70000000n,                                                            // 7 NGU
-      alphfee: 500000000000000000n,                                                 // 0.5 ALPH
-      owner: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd"
+      ngu: "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200",
+      ngufee: 770000000n,
+      alphfee: 500000000000000000n,
+      owner: "16gAmGuCysLjGxHK8TUENkvhbqvwZRb6BabUbsxLYkSkd",
+      alphbalance: 0n,
+      ngubalance: 0n
     }
   })
   console.log('burnWorm contract id: ' + result.contractInstance.contractId)

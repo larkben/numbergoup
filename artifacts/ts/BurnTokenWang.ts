@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as BurnTokenWangContractJson } from "../burnwang/BurnTokenWang.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -50,6 +57,14 @@ export namespace BurnTokenWangTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<HexString>;
     };
+    burntoken: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    destroy: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -63,12 +78,39 @@ export namespace BurnTokenWangTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getToken: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    burntoken: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    destroy: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<
   BurnTokenWangInstance,
   BurnTokenWangTypes.Fields
 > {
+  encodeFields(fields: BurnTokenWangTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as BurnTokenWangTypes.Fields;
   }
@@ -83,24 +125,27 @@ class Factory extends ContractFactory<
   tests = {
     getToken: async (
       params: Omit<
-        TestContractParams<BurnTokenWangTypes.Fields, never>,
+        TestContractParamsWithoutMaps<BurnTokenWangTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getToken", params);
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getToken", params, getContractByCodeHash);
     },
     burntoken: async (
-      params: TestContractParams<BurnTokenWangTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "burntoken", params);
+      params: TestContractParamsWithoutMaps<
+        BurnTokenWangTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "burntoken", params, getContractByCodeHash);
     },
     destroy: async (
       params: Omit<
-        TestContractParams<BurnTokenWangTypes.Fields, never>,
+        TestContractParamsWithoutMaps<BurnTokenWangTypes.Fields, never>,
         "testArgs"
       >
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "destroy", params);
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "destroy", params, getContractByCodeHash);
     },
   };
 }
@@ -110,7 +155,8 @@ export const BurnTokenWang = new Factory(
   Contract.fromJson(
     BurnTokenWangContractJson,
     "",
-    "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4"
+    "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+    []
   )
 );
 
@@ -179,6 +225,48 @@ export class BurnTokenWangInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    burntoken: async (
+      params: BurnTokenWangTypes.CallMethodParams<"burntoken">
+    ): Promise<BurnTokenWangTypes.CallMethodResult<"burntoken">> => {
+      return callMethod(
+        BurnTokenWang,
+        this,
+        "burntoken",
+        params,
+        getContractByCodeHash
+      );
+    },
+    destroy: async (
+      params?: BurnTokenWangTypes.CallMethodParams<"destroy">
+    ): Promise<BurnTokenWangTypes.CallMethodResult<"destroy">> => {
+      return callMethod(
+        BurnTokenWang,
+        this,
+        "destroy",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getToken: async (
+      params: BurnTokenWangTypes.SignExecuteMethodParams<"getToken">
+    ): Promise<BurnTokenWangTypes.SignExecuteMethodResult<"getToken">> => {
+      return signExecuteMethod(BurnTokenWang, this, "getToken", params);
+    },
+    burntoken: async (
+      params: BurnTokenWangTypes.SignExecuteMethodParams<"burntoken">
+    ): Promise<BurnTokenWangTypes.SignExecuteMethodResult<"burntoken">> => {
+      return signExecuteMethod(BurnTokenWang, this, "burntoken", params);
+    },
+    destroy: async (
+      params: BurnTokenWangTypes.SignExecuteMethodParams<"destroy">
+    ): Promise<BurnTokenWangTypes.SignExecuteMethodResult<"destroy">> => {
+      return signExecuteMethod(BurnTokenWang, this, "destroy", params);
     },
   };
 

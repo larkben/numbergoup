@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as BurnWormContractJson } from "../burnworm/BurnWorm.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -61,6 +68,26 @@ export namespace BurnWormTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<bigint>;
     };
+    burntokenalph: {
+      params: CallContractParams<{ id: HexString; amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    burntokenngu: {
+      params: CallContractParams<{ id: HexString; amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    withdrawalph: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+    withdrawngu: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+    destroy: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -74,9 +101,62 @@ export namespace BurnWormTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getNgu: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getNguFee: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getAlphFee: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    burntokenalph: {
+      params: SignExecuteContractMethodParams<{
+        id: HexString;
+        amount: bigint;
+      }>;
+      result: SignExecuteScriptTxResult;
+    };
+    burntokenngu: {
+      params: SignExecuteContractMethodParams<{
+        id: HexString;
+        amount: bigint;
+      }>;
+      result: SignExecuteScriptTxResult;
+    };
+    withdrawalph: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    withdrawngu: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    destroy: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<BurnWormInstance, BurnWormTypes.Fields> {
+  encodeFields(fields: BurnWormTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as BurnWormTypes.Fields;
   }
@@ -90,50 +170,68 @@ class Factory extends ContractFactory<BurnWormInstance, BurnWormTypes.Fields> {
 
   tests = {
     getNgu: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getNgu", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getNgu", params, getContractByCodeHash);
     },
     getNguFee: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getNguFee", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getNguFee", params, getContractByCodeHash);
     },
     getAlphFee: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getAlphFee", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getAlphFee", params, getContractByCodeHash);
     },
     burntokenalph: async (
-      params: TestContractParams<
+      params: TestContractParamsWithoutMaps<
         BurnWormTypes.Fields,
         { id: HexString; amount: bigint }
       >
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "burntokenalph", params);
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "burntokenalph", params, getContractByCodeHash);
     },
     burntokenngu: async (
-      params: TestContractParams<
+      params: TestContractParamsWithoutMaps<
         BurnWormTypes.Fields,
         { id: HexString; amount: bigint }
       >
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "burntokenngu", params);
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "burntokenngu", params, getContractByCodeHash);
     },
     withdrawalph: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawalph", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "withdrawalph", params, getContractByCodeHash);
     },
     withdrawngu: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawngu", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "withdrawngu", params, getContractByCodeHash);
     },
     destroy: async (
-      params: Omit<TestContractParams<BurnWormTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "destroy", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<BurnWormTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "destroy", params, getContractByCodeHash);
     },
   };
 }
@@ -143,7 +241,8 @@ export const BurnWorm = new Factory(
   Contract.fromJson(
     BurnWormContractJson,
     "",
-    "2b43b79e25c2873c5bd8d635f64cc6d4da3ca2bf75063e0e2c38078892d29570"
+    "0fb26fa85052919c3365b34a102880752470ac36ed6d357922a9bf680aff8b59",
+    []
   )
 );
 
@@ -229,6 +328,106 @@ export class BurnWormInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    burntokenalph: async (
+      params: BurnWormTypes.CallMethodParams<"burntokenalph">
+    ): Promise<BurnWormTypes.CallMethodResult<"burntokenalph">> => {
+      return callMethod(
+        BurnWorm,
+        this,
+        "burntokenalph",
+        params,
+        getContractByCodeHash
+      );
+    },
+    burntokenngu: async (
+      params: BurnWormTypes.CallMethodParams<"burntokenngu">
+    ): Promise<BurnWormTypes.CallMethodResult<"burntokenngu">> => {
+      return callMethod(
+        BurnWorm,
+        this,
+        "burntokenngu",
+        params,
+        getContractByCodeHash
+      );
+    },
+    withdrawalph: async (
+      params?: BurnWormTypes.CallMethodParams<"withdrawalph">
+    ): Promise<BurnWormTypes.CallMethodResult<"withdrawalph">> => {
+      return callMethod(
+        BurnWorm,
+        this,
+        "withdrawalph",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    withdrawngu: async (
+      params?: BurnWormTypes.CallMethodParams<"withdrawngu">
+    ): Promise<BurnWormTypes.CallMethodResult<"withdrawngu">> => {
+      return callMethod(
+        BurnWorm,
+        this,
+        "withdrawngu",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    destroy: async (
+      params?: BurnWormTypes.CallMethodParams<"destroy">
+    ): Promise<BurnWormTypes.CallMethodResult<"destroy">> => {
+      return callMethod(
+        BurnWorm,
+        this,
+        "destroy",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getNgu: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"getNgu">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"getNgu">> => {
+      return signExecuteMethod(BurnWorm, this, "getNgu", params);
+    },
+    getNguFee: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"getNguFee">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"getNguFee">> => {
+      return signExecuteMethod(BurnWorm, this, "getNguFee", params);
+    },
+    getAlphFee: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"getAlphFee">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"getAlphFee">> => {
+      return signExecuteMethod(BurnWorm, this, "getAlphFee", params);
+    },
+    burntokenalph: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"burntokenalph">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"burntokenalph">> => {
+      return signExecuteMethod(BurnWorm, this, "burntokenalph", params);
+    },
+    burntokenngu: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"burntokenngu">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"burntokenngu">> => {
+      return signExecuteMethod(BurnWorm, this, "burntokenngu", params);
+    },
+    withdrawalph: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"withdrawalph">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"withdrawalph">> => {
+      return signExecuteMethod(BurnWorm, this, "withdrawalph", params);
+    },
+    withdrawngu: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"withdrawngu">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"withdrawngu">> => {
+      return signExecuteMethod(BurnWorm, this, "withdrawngu", params);
+    },
+    destroy: async (
+      params: BurnWormTypes.SignExecuteMethodParams<"destroy">
+    ): Promise<BurnWormTypes.SignExecuteMethodResult<"destroy">> => {
+      return signExecuteMethod(BurnWorm, this, "destroy", params);
     },
   };
 

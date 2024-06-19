@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as SubscribeContractJson } from "../subscribe/Subscribe.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -72,6 +79,26 @@ export namespace SubscribeTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<bigint>;
     };
+    deposit: {
+      params: CallContractParams<{ discordname: HexString }>;
+      result: CallContractResult<null>;
+    };
+    withdrawplatform: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+    withdrawdev: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
+    updatefee: {
+      params: CallContractParams<{ newfee: bigint }>;
+      result: CallContractResult<null>;
+    };
+    subdestroy: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -85,12 +112,63 @@ export namespace SubscribeTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getToken: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getSubFee: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getDevFees: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getPlatformFees: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    deposit: {
+      params: SignExecuteContractMethodParams<{ discordname: HexString }>;
+      result: SignExecuteScriptTxResult;
+    };
+    withdrawplatform: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    withdrawdev: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    updatefee: {
+      params: SignExecuteContractMethodParams<{ newfee: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    subdestroy: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<
   SubscribeInstance,
   SubscribeTypes.Fields
 > {
+  encodeFields(fields: SubscribeTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as SubscribeTypes.Fields;
   }
@@ -104,52 +182,81 @@ class Factory extends ContractFactory<
 
   tests = {
     getToken: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getToken", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getToken", params, getContractByCodeHash);
     },
     getSubFee: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getSubFee", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getSubFee", params, getContractByCodeHash);
     },
     getDevFees: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getDevFees", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getDevFees", params, getContractByCodeHash);
     },
     getPlatformFees: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getPlatformFees", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getPlatformFees", params, getContractByCodeHash);
     },
     deposit: async (
-      params: TestContractParams<
+      params: TestContractParamsWithoutMaps<
         SubscribeTypes.Fields,
         { discordname: HexString }
       >
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "deposit", params);
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "deposit", params, getContractByCodeHash);
     },
     withdrawplatform: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawplatform", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(
+        this,
+        "withdrawplatform",
+        params,
+        getContractByCodeHash
+      );
     },
     withdrawdev: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "withdrawdev", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "withdrawdev", params, getContractByCodeHash);
     },
     updatefee: async (
-      params: TestContractParams<SubscribeTypes.Fields, { newfee: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "updatefee", params);
+      params: TestContractParamsWithoutMaps<
+        SubscribeTypes.Fields,
+        { newfee: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "updatefee", params, getContractByCodeHash);
     },
     subdestroy: async (
-      params: Omit<TestContractParams<SubscribeTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "subdestroy", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<SubscribeTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "subdestroy", params, getContractByCodeHash);
     },
   };
 }
@@ -159,7 +266,8 @@ export const Subscribe = new Factory(
   Contract.fromJson(
     SubscribeContractJson,
     "",
-    "d2df6369c3aa2161dfed0f5164d3940fd294067729d99586d5dea24f42ffbc65"
+    "d2df6369c3aa2161dfed0f5164d3940fd294067729d99586d5dea24f42ffbc65",
+    []
   )
 );
 
@@ -290,6 +398,111 @@ export class SubscribeInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    deposit: async (
+      params: SubscribeTypes.CallMethodParams<"deposit">
+    ): Promise<SubscribeTypes.CallMethodResult<"deposit">> => {
+      return callMethod(
+        Subscribe,
+        this,
+        "deposit",
+        params,
+        getContractByCodeHash
+      );
+    },
+    withdrawplatform: async (
+      params?: SubscribeTypes.CallMethodParams<"withdrawplatform">
+    ): Promise<SubscribeTypes.CallMethodResult<"withdrawplatform">> => {
+      return callMethod(
+        Subscribe,
+        this,
+        "withdrawplatform",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    withdrawdev: async (
+      params?: SubscribeTypes.CallMethodParams<"withdrawdev">
+    ): Promise<SubscribeTypes.CallMethodResult<"withdrawdev">> => {
+      return callMethod(
+        Subscribe,
+        this,
+        "withdrawdev",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+    updatefee: async (
+      params: SubscribeTypes.CallMethodParams<"updatefee">
+    ): Promise<SubscribeTypes.CallMethodResult<"updatefee">> => {
+      return callMethod(
+        Subscribe,
+        this,
+        "updatefee",
+        params,
+        getContractByCodeHash
+      );
+    },
+    subdestroy: async (
+      params?: SubscribeTypes.CallMethodParams<"subdestroy">
+    ): Promise<SubscribeTypes.CallMethodResult<"subdestroy">> => {
+      return callMethod(
+        Subscribe,
+        this,
+        "subdestroy",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getToken: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"getToken">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"getToken">> => {
+      return signExecuteMethod(Subscribe, this, "getToken", params);
+    },
+    getSubFee: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"getSubFee">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"getSubFee">> => {
+      return signExecuteMethod(Subscribe, this, "getSubFee", params);
+    },
+    getDevFees: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"getDevFees">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"getDevFees">> => {
+      return signExecuteMethod(Subscribe, this, "getDevFees", params);
+    },
+    getPlatformFees: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"getPlatformFees">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"getPlatformFees">> => {
+      return signExecuteMethod(Subscribe, this, "getPlatformFees", params);
+    },
+    deposit: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"deposit">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"deposit">> => {
+      return signExecuteMethod(Subscribe, this, "deposit", params);
+    },
+    withdrawplatform: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"withdrawplatform">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"withdrawplatform">> => {
+      return signExecuteMethod(Subscribe, this, "withdrawplatform", params);
+    },
+    withdrawdev: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"withdrawdev">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"withdrawdev">> => {
+      return signExecuteMethod(Subscribe, this, "withdrawdev", params);
+    },
+    updatefee: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"updatefee">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"updatefee">> => {
+      return signExecuteMethod(Subscribe, this, "updatefee", params);
+    },
+    subdestroy: async (
+      params: SubscribeTypes.SignExecuteMethodParams<"subdestroy">
+    ): Promise<SubscribeTypes.SignExecuteMethodResult<"subdestroy">> => {
+      return signExecuteMethod(Subscribe, this, "subdestroy", params);
     },
   };
 

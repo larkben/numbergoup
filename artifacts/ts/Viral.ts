@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as ViralContractJson } from "../ico/Viral.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -81,6 +88,18 @@ export namespace ViralTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<bigint>;
     };
+    buyvirl: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    sell: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    removealph: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -94,9 +113,67 @@ export namespace ViralTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getTokenId: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getBalance: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getSymbol: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getName: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    tokenPrice: {
+      params: SignExecuteContractMethodParams<{
+        price: bigint;
+        amount: bigint;
+      }>;
+      result: SignExecuteScriptTxResult;
+    };
+    getPrice: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getAlphBalance: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    buyvirl: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    sell: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    removealph: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<ViralInstance, ViralTypes.Fields> {
+  encodeFields(fields: ViralTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as ViralTypes.Fields;
   }
@@ -110,57 +187,84 @@ class Factory extends ContractFactory<ViralInstance, ViralTypes.Fields> {
 
   tests = {
     getTokenId: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getTokenId", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getTokenId", params, getContractByCodeHash);
     },
     getBalance: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getBalance", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getBalance", params, getContractByCodeHash);
     },
     getSymbol: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getSymbol", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getSymbol", params, getContractByCodeHash);
     },
     getName: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getName", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getName", params, getContractByCodeHash);
     },
     tokenPrice: async (
-      params: TestContractParams<
+      params: TestContractParamsWithoutMaps<
         ViralTypes.Fields,
         { price: bigint; amount: bigint }
       >
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "tokenPrice", params);
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "tokenPrice", params, getContractByCodeHash);
     },
     getPrice: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getPrice", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getPrice", params, getContractByCodeHash);
     },
     getAlphBalance: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getAlphBalance", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getAlphBalance", params, getContractByCodeHash);
     },
     buyvirl: async (
-      params: TestContractParams<ViralTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "buyvirl", params);
+      params: TestContractParamsWithoutMaps<
+        ViralTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "buyvirl", params, getContractByCodeHash);
     },
     sell: async (
-      params: TestContractParams<ViralTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "sell", params);
+      params: TestContractParamsWithoutMaps<
+        ViralTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "sell", params, getContractByCodeHash);
     },
     removealph: async (
-      params: Omit<TestContractParams<ViralTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "removealph", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<ViralTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "removealph", params, getContractByCodeHash);
     },
   };
 }
@@ -170,7 +274,8 @@ export const Viral = new Factory(
   Contract.fromJson(
     ViralContractJson,
     "",
-    "d87d6c74c21a7bec6cba00e9a0388ca81c5a71518b8efb77f43b5160cfdd4456"
+    "d87d6c74c21a7bec6cba00e9a0388ca81c5a71518b8efb77f43b5160cfdd4456",
+    []
   )
 );
 
@@ -313,6 +418,82 @@ export class ViralInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    buyvirl: async (
+      params: ViralTypes.CallMethodParams<"buyvirl">
+    ): Promise<ViralTypes.CallMethodResult<"buyvirl">> => {
+      return callMethod(Viral, this, "buyvirl", params, getContractByCodeHash);
+    },
+    sell: async (
+      params: ViralTypes.CallMethodParams<"sell">
+    ): Promise<ViralTypes.CallMethodResult<"sell">> => {
+      return callMethod(Viral, this, "sell", params, getContractByCodeHash);
+    },
+    removealph: async (
+      params?: ViralTypes.CallMethodParams<"removealph">
+    ): Promise<ViralTypes.CallMethodResult<"removealph">> => {
+      return callMethod(
+        Viral,
+        this,
+        "removealph",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getTokenId: async (
+      params: ViralTypes.SignExecuteMethodParams<"getTokenId">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getTokenId">> => {
+      return signExecuteMethod(Viral, this, "getTokenId", params);
+    },
+    getBalance: async (
+      params: ViralTypes.SignExecuteMethodParams<"getBalance">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getBalance">> => {
+      return signExecuteMethod(Viral, this, "getBalance", params);
+    },
+    getSymbol: async (
+      params: ViralTypes.SignExecuteMethodParams<"getSymbol">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getSymbol">> => {
+      return signExecuteMethod(Viral, this, "getSymbol", params);
+    },
+    getName: async (
+      params: ViralTypes.SignExecuteMethodParams<"getName">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getName">> => {
+      return signExecuteMethod(Viral, this, "getName", params);
+    },
+    tokenPrice: async (
+      params: ViralTypes.SignExecuteMethodParams<"tokenPrice">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"tokenPrice">> => {
+      return signExecuteMethod(Viral, this, "tokenPrice", params);
+    },
+    getPrice: async (
+      params: ViralTypes.SignExecuteMethodParams<"getPrice">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getPrice">> => {
+      return signExecuteMethod(Viral, this, "getPrice", params);
+    },
+    getAlphBalance: async (
+      params: ViralTypes.SignExecuteMethodParams<"getAlphBalance">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"getAlphBalance">> => {
+      return signExecuteMethod(Viral, this, "getAlphBalance", params);
+    },
+    buyvirl: async (
+      params: ViralTypes.SignExecuteMethodParams<"buyvirl">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"buyvirl">> => {
+      return signExecuteMethod(Viral, this, "buyvirl", params);
+    },
+    sell: async (
+      params: ViralTypes.SignExecuteMethodParams<"sell">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"sell">> => {
+      return signExecuteMethod(Viral, this, "sell", params);
+    },
+    removealph: async (
+      params: ViralTypes.SignExecuteMethodParams<"removealph">
+    ): Promise<ViralTypes.SignExecuteMethodResult<"removealph">> => {
+      return signExecuteMethod(Viral, this, "removealph", params);
     },
   };
 

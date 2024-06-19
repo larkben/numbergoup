@@ -11,6 +11,8 @@ import {
   BurnTokenInstance,
   BurnTokenWang,
   BurnTokenWangInstance,
+  BurnWorm,
+  BurnWormInstance,
   Swap,
   SwapInstance,
 } from ".";
@@ -23,6 +25,7 @@ export type Deployments = {
     Subscribe: DeployContractExecutionResult<SubscribeInstance>;
     BurnToken: DeployContractExecutionResult<BurnTokenInstance>;
     BurnTokenWang?: DeployContractExecutionResult<BurnTokenWangInstance>;
+    BurnWorm?: DeployContractExecutionResult<BurnWormInstance>;
     Swap?: DeployContractExecutionResult<SwapInstance>;
   };
 };
@@ -48,6 +51,15 @@ function toDeployments(json: any): Deployments {
             ...json.contracts["BurnTokenWang"],
             contractInstance: BurnTokenWang.at(
               json.contracts["BurnTokenWang"].contractInstance.address
+            ),
+          },
+    BurnWorm:
+      json.contracts["BurnWorm"] === undefined
+        ? undefined
+        : {
+            ...json.contracts["BurnWorm"],
+            contractInstance: BurnWorm.at(
+              json.contracts["BurnWorm"].contractInstance.address
             ),
           },
     Swap:
@@ -79,7 +91,7 @@ export function loadDeployments(
   if (deployments === undefined) {
     throw Error("The contract has not been deployed to the " + networkId);
   }
-  const allDeployments = Array.isArray(deployments)
+  const allDeployments: any[] = Array.isArray(deployments)
     ? deployments
     : [deployments];
   if (deployerAddress === undefined) {

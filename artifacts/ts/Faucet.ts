@@ -23,6 +23,13 @@ import {
   fetchContractState,
   ContractInstance,
   getContractEventsCurrentCount,
+  TestContractParamsWithoutMaps,
+  TestContractResultWithoutMaps,
+  SignExecuteContractMethodParams,
+  SignExecuteScriptTxResult,
+  signExecuteMethod,
+  addStdIdToFields,
+  encodeContractFields,
 } from "@alephium/web3";
 import { default as FaucetContractJson } from "../faucet/Faucet.ral.json";
 import { getContractByCodeHash } from "./contracts";
@@ -58,6 +65,18 @@ export namespace FaucetTypes {
       params: Omit<CallContractParams<{}>, "args">;
       result: CallContractResult<HexString>;
     };
+    topup: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    sendout: {
+      params: CallContractParams<{ amount: bigint }>;
+      result: CallContractResult<null>;
+    };
+    destroy: {
+      params: Omit<CallContractParams<{}>, "args">;
+      result: CallContractResult<null>;
+    };
   }
   export type CallMethodParams<T extends keyof CallMethodTable> =
     CallMethodTable[T]["params"];
@@ -71,9 +90,52 @@ export namespace FaucetTypes {
       ? CallMethodTable[MaybeName]["result"]
       : undefined;
   };
+
+  export interface SignExecuteMethodTable {
+    getTokenId: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getBalance: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getSymbol: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    getName: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+    topup: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    sendout: {
+      params: SignExecuteContractMethodParams<{ amount: bigint }>;
+      result: SignExecuteScriptTxResult;
+    };
+    destroy: {
+      params: Omit<SignExecuteContractMethodParams<{}>, "args">;
+      result: SignExecuteScriptTxResult;
+    };
+  }
+  export type SignExecuteMethodParams<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["params"];
+  export type SignExecuteMethodResult<T extends keyof SignExecuteMethodTable> =
+    SignExecuteMethodTable[T]["result"];
 }
 
 class Factory extends ContractFactory<FaucetInstance, FaucetTypes.Fields> {
+  encodeFields(fields: FaucetTypes.Fields) {
+    return encodeContractFields(
+      addStdIdToFields(this.contract, fields),
+      this.contract.fieldsSig,
+      []
+    );
+  }
+
   getInitialFieldsWithDefaultValues() {
     return this.contract.getInitialFieldsWithDefaultValues() as FaucetTypes.Fields;
   }
@@ -93,39 +155,60 @@ class Factory extends ContractFactory<FaucetInstance, FaucetTypes.Fields> {
 
   tests = {
     getTokenId: async (
-      params: Omit<TestContractParams<FaucetTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getTokenId", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<FaucetTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getTokenId", params, getContractByCodeHash);
     },
     getBalance: async (
-      params: Omit<TestContractParams<FaucetTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<bigint>> => {
-      return testMethod(this, "getBalance", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<FaucetTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<bigint>> => {
+      return testMethod(this, "getBalance", params, getContractByCodeHash);
     },
     getSymbol: async (
-      params: Omit<TestContractParams<FaucetTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getSymbol", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<FaucetTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getSymbol", params, getContractByCodeHash);
     },
     getName: async (
-      params: Omit<TestContractParams<FaucetTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<HexString>> => {
-      return testMethod(this, "getName", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<FaucetTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<HexString>> => {
+      return testMethod(this, "getName", params, getContractByCodeHash);
     },
     topup: async (
-      params: TestContractParams<FaucetTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "topup", params);
+      params: TestContractParamsWithoutMaps<
+        FaucetTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "topup", params, getContractByCodeHash);
     },
     sendout: async (
-      params: TestContractParams<FaucetTypes.Fields, { amount: bigint }>
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "sendout", params);
+      params: TestContractParamsWithoutMaps<
+        FaucetTypes.Fields,
+        { amount: bigint }
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "sendout", params, getContractByCodeHash);
     },
     destroy: async (
-      params: Omit<TestContractParams<FaucetTypes.Fields, never>, "testArgs">
-    ): Promise<TestContractResult<null>> => {
-      return testMethod(this, "destroy", params);
+      params: Omit<
+        TestContractParamsWithoutMaps<FaucetTypes.Fields, never>,
+        "testArgs"
+      >
+    ): Promise<TestContractResultWithoutMaps<null>> => {
+      return testMethod(this, "destroy", params, getContractByCodeHash);
     },
   };
 }
@@ -135,7 +218,8 @@ export const Faucet = new Factory(
   Contract.fromJson(
     FaucetContractJson,
     "",
-    "8813de5a4adb21e4e0ea09357924ec19037b916ecfd6a228152238f8e9396d04"
+    "8813de5a4adb21e4e0ea09357924ec19037b916ecfd6a228152238f8e9396d04",
+    []
   )
 );
 
@@ -247,6 +331,67 @@ export class FaucetInstance extends ContractInstance {
         params === undefined ? {} : params,
         getContractByCodeHash
       );
+    },
+    topup: async (
+      params: FaucetTypes.CallMethodParams<"topup">
+    ): Promise<FaucetTypes.CallMethodResult<"topup">> => {
+      return callMethod(Faucet, this, "topup", params, getContractByCodeHash);
+    },
+    sendout: async (
+      params: FaucetTypes.CallMethodParams<"sendout">
+    ): Promise<FaucetTypes.CallMethodResult<"sendout">> => {
+      return callMethod(Faucet, this, "sendout", params, getContractByCodeHash);
+    },
+    destroy: async (
+      params?: FaucetTypes.CallMethodParams<"destroy">
+    ): Promise<FaucetTypes.CallMethodResult<"destroy">> => {
+      return callMethod(
+        Faucet,
+        this,
+        "destroy",
+        params === undefined ? {} : params,
+        getContractByCodeHash
+      );
+    },
+  };
+
+  view = this.methods;
+
+  transact = {
+    getTokenId: async (
+      params: FaucetTypes.SignExecuteMethodParams<"getTokenId">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"getTokenId">> => {
+      return signExecuteMethod(Faucet, this, "getTokenId", params);
+    },
+    getBalance: async (
+      params: FaucetTypes.SignExecuteMethodParams<"getBalance">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"getBalance">> => {
+      return signExecuteMethod(Faucet, this, "getBalance", params);
+    },
+    getSymbol: async (
+      params: FaucetTypes.SignExecuteMethodParams<"getSymbol">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"getSymbol">> => {
+      return signExecuteMethod(Faucet, this, "getSymbol", params);
+    },
+    getName: async (
+      params: FaucetTypes.SignExecuteMethodParams<"getName">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"getName">> => {
+      return signExecuteMethod(Faucet, this, "getName", params);
+    },
+    topup: async (
+      params: FaucetTypes.SignExecuteMethodParams<"topup">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"topup">> => {
+      return signExecuteMethod(Faucet, this, "topup", params);
+    },
+    sendout: async (
+      params: FaucetTypes.SignExecuteMethodParams<"sendout">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"sendout">> => {
+      return signExecuteMethod(Faucet, this, "sendout", params);
+    },
+    destroy: async (
+      params: FaucetTypes.SignExecuteMethodParams<"destroy">
+    ): Promise<FaucetTypes.SignExecuteMethodResult<"destroy">> => {
+      return signExecuteMethod(Faucet, this, "destroy", params);
     },
   };
 

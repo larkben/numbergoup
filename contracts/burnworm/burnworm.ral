@@ -3,8 +3,8 @@ Contract BurnWorm (
 	ngufee: U256,
 	alphfee: U256, 
 	owner: Address,
-  mut alphbalance: U256,
-  mut ngubalance: U256
+  	mut alphbalance: U256,
+  	mut ngubalance: U256
 ) {
 	// Events
 	event Burn(token: ByteVec, amount: U256, who: Address, when: U256)
@@ -33,7 +33,7 @@ Contract BurnWorm (
 
 		transferToken!(caller, selfAddress!(), ALPH, getAlphFee())
 
-    alphbalance = alphbalance + getAlphFee()
+    	alphbalance = alphbalance + getAlphFee()
 
 		burnToken!(caller, id, amount)
 
@@ -47,7 +47,7 @@ Contract BurnWorm (
 
 		transferToken!(caller, selfAddress!(), getNgu(), getNguFee())
 
-    ngubalance = ngubalance + getNguFee()
+    	ngubalance = ngubalance + getNguFee()
 
 		burnToken!(caller, id, amount)
 
@@ -55,32 +55,32 @@ Contract BurnWorm (
 	}
 
 
-	@using(updateFields = true, checkExternalCaller = true)
+	@using(updateFields = true, checkExternalCaller = true, assetsInContract = true)
 	pub fn withdrawalph() -> () {
 
-    let caller = callerAddress!()
+    	let caller = callerAddress!()
 
-    checkCaller!(caller == owner, Error.InvalidCaller)
+    	checkCaller!(caller == owner, Error.InvalidCaller)
 
-    transferToken!(selfAddress!(), owner, ALPH, alphbalance)
+    	transferToken!(selfAddress!(), owner, ALPH, alphbalance)
 
-    alphbalance = alphbalance - alphbalance
-  }
+    	alphbalance = alphbalance - alphbalance
+  	}
 	
 	
-  @using(updateFields = true, checkExternalCaller = true)
-	pub fn withdrawngu() -> () {
+  	@using(updateFields = true, checkExternalCaller = true, assetsInContract = true)
+		pub fn withdrawngu() -> () {
     
-    let caller = callerAddress!()
+    	let caller = callerAddress!()
 
-    checkCaller!(caller == owner, Error.InvalidCaller)
+    	checkCaller!(caller == owner, Error.InvalidCaller)
 
-    transferToken!(selfAddress!(), owner, getNgu(), ngubalance)
+    	transferToken!(selfAddress!(), owner, getNgu(), ngubalance)
 
-    ngubalance = ngubalance - ngubalance
-  }
+    	ngubalance = ngubalance - ngubalance
+  	}
 
-	@using(assetsInContract = true)
+	@using(assetsInContract = true, checkExternalCaller = true)
     pub fn destroy() -> () {
         checkCaller!(callerAddress!() == owner, Error.InvalidCaller)
         destroySelf!(owner)
