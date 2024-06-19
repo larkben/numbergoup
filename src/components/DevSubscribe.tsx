@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // Alephium imports
-import { SubscribeContract, SubscribeDestroyContract, SubscribeWithdrawDevContract, SubscribeWithdrawPlatformContract } from '@/services/token.service'
+import { SubscribeContract, SubscribeDestroyContract, SubscribeWithdrawDevContract, SubscribeWithdrawPlatformContract, DestroyBurnWorm } from '@/services/token.service'
 import { TxStatus } from './TxStatus'
 import { node } from '@alephium/web3'
 import { SubscribeConfig } from '@/services/utils'
@@ -42,7 +42,7 @@ export const DevSubscribeAutomation: FC<{
   const handleWithdrawDevSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
     if (signer) {
-      const result = await SubscribeWithdrawDevContract(signer)
+      const result = await DestroyBurnWorm(signer)
       setOngoingTxId(result.txId)
     }
   }

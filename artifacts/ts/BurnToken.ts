@@ -155,7 +155,7 @@ export const BurnToken = new Factory(
   Contract.fromJson(
     BurnTokenContractJson,
     "",
-    "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+    "200dbd87031547e7717a92fb8b18cfba463c1e51384d8fbfa08d78dd4db8a9a5",
     []
   )
 );

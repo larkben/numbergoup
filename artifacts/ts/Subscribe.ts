@@ -266,7 +266,7 @@ export const Subscribe = new Factory(
   Contract.fromJson(
     SubscribeContractJson,
     "",
-    "d2df6369c3aa2161dfed0f5164d3940fd294067729d99586d5dea24f42ffbc65",
+    "7ce0dcb69ea4d29a13b974e16cf977891f8e061a7512037d8b9eb6f86b792ae7",
     []
   )
 );

@@ -1,5 +1,5 @@
 {
-  "version": "v2.10.1",
+  "version": "v3.1.2",
   "name": "BurnWang",
   "bytecodeTemplate": "0101030001000e0c0d{0}01001700b41600{1}a3{1}0d0c{0}0101",
   "fieldsSig": {
@@ -19,9 +19,6 @@
   "functions": [
     {
       "name": "main",
-      "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],

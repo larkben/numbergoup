@@ -11,7 +11,6 @@ import {
   SignerProvider,
   HexString,
 } from "@alephium/web3";
-import { default as BuildtokenScriptJson } from "../createtoken/Buildtoken.ral.json";
 import { default as BurnScriptJson } from "../burn/Burn.ral.json";
 import { default as BurnWangScriptJson } from "../burnwang/BurnWang.ral.json";
 import { default as BuyvirlScriptJson } from "../ico/Buyvirl.ral.json";
@@ -20,7 +19,6 @@ import { default as DestroyScriptJson } from "../faucet/Destroy.ral.json";
 import { default as DestroyWormScriptJson } from "../burnworm/DestroyWorm.ral.json";
 import { default as DestroyburnScriptJson } from "../burn/Destroyburn.ral.json";
 import { default as DestroyburnwangScriptJson } from "../burnwang/Destroyburnwang.ral.json";
-import { default as DestroytokenScriptJson } from "../createtoken/Destroytoken.ral.json";
 import { default as EditfeeScriptJson } from "../scripts/Editfee.ral.json";
 import { default as GettokenScriptJson } from "../scripts/Gettoken.ral.json";
 import { default as ReedeemalphScriptJson } from "../ico/Reedeemalph.ral.json";
@@ -36,14 +34,6 @@ import { default as WormEatAlphScriptJson } from "../burnworm/WormEatAlph.ral.js
 import { default as WormEatNguScriptJson } from "../burnworm/WormEatNgu.ral.json";
 import { default as WormWithdrawAlphScriptJson } from "../burnworm/WormWithdrawAlph.ral.json";
 import { default as WormWithdrawNguScriptJson } from "../burnworm/WormWithdrawNgu.ral.json";
-
-export const Buildtoken = new ExecutableScript<{
-  contract: HexString;
-  symbol: HexString;
-  name: HexString;
-  decimals: bigint;
-  tokenTotal: bigint;
-}>(Script.fromJson(BuildtokenScriptJson, "", []));
 
 export const Burn = new ExecutableScript<{
   contract: HexString;
@@ -79,10 +69,6 @@ export const Destroyburn = new ExecutableScript<{ contract: HexString }>(
 
 export const Destroyburnwang = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroyburnwangScriptJson, "", [])
-);
-
-export const Destroytoken = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(DestroytokenScriptJson, "", [])
 );
 
 export const Editfee = new ExecutableScript<{

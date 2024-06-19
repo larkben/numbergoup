@@ -274,7 +274,7 @@ export const Viral = new Factory(
   Contract.fromJson(
     ViralContractJson,
     "",
-    "d87d6c74c21a7bec6cba00e9a0388ca81c5a71518b8efb77f43b5160cfdd4456",
+    "3a2691c56df8b02d727a6b2d5844606c030dc3a2c7061259ac5c99ff24c32e98",
     []
   )
 );

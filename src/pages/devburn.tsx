@@ -5,7 +5,6 @@ import Router from './router'
 
 import { AlephiumConnectButton, AlephiumWalletProvider } from '@alephium/web3-react'
 import { NodeProvider, EventSubscribeOptions } from '@alephium/web3'
-import { CreateToken, CreateTokenInstance, CreateTokenTypes } from 'artifacts/ts'
 
 import Link from 'next/link'
 import { SubscribeConfig, TokenBurnConfig } from '@/services/utils'

@@ -1,8 +1,8 @@
 {
-  "version": "v2.10.1",
+  "version": "v3.1.2",
   "name": "Viral",
-  "bytecode": "050a09121b40244034403d40464077409740b7010000000102ce0002010000000102a00002010000000102ce0002010000000102ce0002010002030106160016012c1702160202010000000102ce0102010000000102a0010201010102001b0005160000041701b4b21601a7b2b400001600aaa00116012aa101a00016002ba10006b41600a001a00061010201020010b41701a00016002aa1001601b200001600aa0516011600160060010200010011b417001600ce02450f7ba001a0012ba101ce02a001a80716005e",
-  "codeHash": "d87d6c74c21a7bec6cba00e9a0388ca81c5a71518b8efb77f43b5160cfdd4456",
+  "bytecode": "050a0e1c402a4038404d405b4069409f40c440e9010000000103d307175852ce0002010000000103d3c3401fcaa00002010000000103d30a0263bace0002010000000103d3f4544ae5ce0002010002030107d3c3b70c28160016012c1702160202010000000103d3fd609717ce0102010000000103d3ad4befcfa0010201010102001cd3415b29f10005160000041701b4b21601a7b2b400001600aaa00116012aa101a00016002ba10006b41600a001a00061010201020011d3c91f0c74b41701a00016002aa1001601b200001600aa0516011600160060010200010012d31a375ae5b417001600ce02450f7ba001a0012ba101ce02a001a80716005e",
+  "codeHash": "3a2691c56df8b02d727a6b2d5844606c030dc3a2c7061259ac5c99ff24c32e98",
   "fieldsSig": {
     "names": [
       "tokenId",
@@ -68,9 +68,6 @@
   "functions": [
     {
       "name": "getTokenId",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -80,9 +77,6 @@
     },
     {
       "name": "getBalance",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -92,9 +86,6 @@
     },
     {
       "name": "getSymbol",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -104,9 +95,6 @@
     },
     {
       "name": "getName",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -116,9 +104,6 @@
     },
     {
       "name": "tokenPrice",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [
         "price",
         "amount"
@@ -137,9 +122,6 @@
     },
     {
       "name": "getPrice",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -149,9 +131,6 @@
     },
     {
       "name": "getAlphBalance",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -161,9 +140,6 @@
     },
     {
       "name": "buyvirl",
-      "usePreapprovedAssets": true,
-      "useAssetsInContract": true,
-      "isPublic": true,
       "paramNames": [
         "amount"
       ],
@@ -177,9 +153,6 @@
     },
     {
       "name": "sell",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": true,
-      "isPublic": true,
       "paramNames": [
         "amount"
       ],
@@ -193,9 +166,6 @@
     },
     {
       "name": "removealph",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": true,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],

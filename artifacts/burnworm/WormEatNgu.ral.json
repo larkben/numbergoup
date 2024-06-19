@@ -1,5 +1,5 @@
 {
-  "version": "v2.10.1",
+  "version": "v3.1.2",
   "name": "WormEatNgu",
   "bytecodeTemplate": "010103000200180c0d{0}010017000c0d{0}01011701b47a{2}{1}a316001601a3{2}{1}0e0c{0}0104",
   "fieldsSig": {
@@ -22,9 +22,6 @@
   "functions": [
     {
       "name": "main",
-      "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],

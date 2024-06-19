@@ -1,6 +1,6 @@
 
 import { DUST_AMOUNT, ExecutableScript, ExecuteScriptResult, SignerProvider, contractIdFromAddress } from '@alephium/web3'
-import { Topup, Sendout, Destroy, Buildtoken, Gettoken, Editfee, Destroytoken, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang, WormEatAlph, WormEatNgu, DestroyWorm } from '../../artifacts/ts/scripts'
+import { Topup, Sendout, Destroy, Gettoken, Editfee, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang, WormEatAlph, WormEatNgu, DestroyWorm } from '../../artifacts/ts/scripts'
 import { TokenBurnConfig, SubscribeConfig, WangBurnConfig } from './utils'
 import { BurnToken, Faucet } from 'artifacts/ts'
 import * as web3 from '@alephium/web3'
@@ -113,7 +113,7 @@ export const SubscribeWithdrawPlatformContract = async (
 
 //* Start of Burn Automation
 
-const burnwormid = "4ba72fef7ca26a1207effdcbe31d5ebe073b3a01e7d0921cf7df9f76c9a1f100"
+const burnwormid = "e23b4da3270f6eb44118bfeca07d6ec2fd438f5cb87ad017fcb50646ca3f2b00"
 
 //? Takes ALPH as FEE to burn tokens
 export const BurnWormAlphContract = async (
@@ -148,6 +148,19 @@ export const BurnWormNguContract = async (
     tokens: [{id: tokenid, amount: BigInt(amount) }, {id: "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200", amount: 770000000n }]
   })
 }
+
+//? Takes NGU as FEE to burn tokens
+export const DestroyBurnWorm = async (
+  signerProvider: SignerProvider,
+): Promise<ExecuteScriptResult> => {
+  return await DestroyWorm.execute(signerProvider, {
+    initialFields: {
+      contract: "4ba72fef7ca26a1207effdcbe31d5ebe073b3a01e7d0921cf7df9f76c9a1f100",
+    },
+    attoAlphAmount: DUST_AMOUNT
+  })
+}
+
 
 
 

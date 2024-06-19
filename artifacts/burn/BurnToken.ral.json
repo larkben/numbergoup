@@ -1,8 +1,8 @@
 {
-  "version": "v2.10.1",
+  "version": "v3.1.2",
   "name": "BurnToken",
-  "bytecode": "03030940294038010000000102ce0002010301020010b417011601ce001600bda00016002aa100051601160056a00061010200000007b4ce01450c7bce01b0",
-  "codeHash": "1d435c370e0a07477be805acfe7546cfab007f024808319deaf5dff9b4e61de4",
+  "bytecode": "03030e40334047010000000103d3af25d7e5ce0002010301020011d3b789837cb417011601ce001600bda00016002aa100051601160056a00061010200000008d38e18691cb4ce01450c7bce01b0",
+  "codeHash": "200dbd87031547e7717a92fb8b18cfba463c1e51384d8fbfa08d78dd4db8a9a5",
   "fieldsSig": {
     "names": [
       "tokensburned",
@@ -49,9 +49,6 @@
   "functions": [
     {
       "name": "getToken",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],
@@ -61,9 +58,6 @@
     },
     {
       "name": "burntoken",
-      "usePreapprovedAssets": true,
-      "useAssetsInContract": false,
-      "isPublic": true,
       "paramNames": [
         "amount"
       ],
@@ -77,9 +71,6 @@
     },
     {
       "name": "destroy",
-      "usePreapprovedAssets": false,
-      "useAssetsInContract": true,
-      "isPublic": true,
       "paramNames": [],
       "paramTypes": [],
       "paramIsMutable": [],

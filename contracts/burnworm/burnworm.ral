@@ -5,8 +5,6 @@ Contract BurnWorm (
 	owner: Address,
   	mut alphbalance: U256,
   	mut ngubalance: U256
-  	mut alphbalance: U256,
-  	mut ngubalance: U256
 ) {
 	// Events
 	event Burn(token: ByteVec, amount: U256, who: Address, when: U256)
@@ -50,7 +48,6 @@ Contract BurnWorm (
 		transferToken!(caller, selfAddress!(), getNgu(), getNguFee())
 
     	ngubalance = ngubalance + getNguFee()
-    	ngubalance = ngubalance + getNguFee()
 
 		burnToken!(caller, id, amount)
 
@@ -62,12 +59,9 @@ Contract BurnWorm (
 	pub fn withdrawalph() -> () {
 
     	let caller = callerAddress!()
-    	let caller = callerAddress!()
 
     	checkCaller!(caller == owner, Error.InvalidCaller)
-    	checkCaller!(caller == owner, Error.InvalidCaller)
 
-    	transferToken!(selfAddress!(), owner, ALPH, alphbalance)
     	transferToken!(selfAddress!(), owner, ALPH, alphbalance)
 
     	alphbalance = alphbalance - alphbalance
@@ -78,16 +72,11 @@ Contract BurnWorm (
 		pub fn withdrawngu() -> () {
     
     	let caller = callerAddress!()
-    	let caller = callerAddress!()
 
-    	checkCaller!(caller == owner, Error.InvalidCaller)
     	checkCaller!(caller == owner, Error.InvalidCaller)
 
     	transferToken!(selfAddress!(), owner, getNgu(), ngubalance)
-    	transferToken!(selfAddress!(), owner, getNgu(), ngubalance)
 
-    	ngubalance = ngubalance - ngubalance
-  	}
     	ngubalance = ngubalance - ngubalance
   	}
 

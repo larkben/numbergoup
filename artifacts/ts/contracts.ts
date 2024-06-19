@@ -7,11 +7,9 @@ import {
   BurnToken,
   BurnTokenWang,
   BurnWorm,
-  CreateToken,
   Faucet,
   FeeCollection,
   Subscribe,
-  Token,
   Viral,
 } from ".";
 
@@ -22,11 +20,9 @@ export function getContractByCodeHash(codeHash: string): Contract {
       BurnToken,
       BurnTokenWang,
       BurnWorm,
-      CreateToken,
       Faucet,
       FeeCollection,
       Subscribe,
-      Token,
       Viral,
     ];
   }

@@ -1,5 +1,4 @@
 import { NetworkId, ONE_ALPH } from "@alephium/web3"
-import { loadDeployments } from "../../artifacts/ts/deployments"
 
 //* Interfaces
 
@@ -48,9 +47,8 @@ function getPollingInterval(): number {
 function getTokenBurnConfig(): BurnToken {
   const network = getNetwork()
   const groupIndex = 0
-  const burnContract = loadDeployments(network).contracts.BurnToken.contractInstance
-  const contractAddress = burnContract.address
-  const contractId = burnContract.contractId
+  const contractAddress = "ufWhVmdLgbruPiwPEpJv2gsWE2M9PrE9BCSwMx65AxpP"
+  const contractId = "0e7d5eebc82853ff28113a23ac81387b2ff910d764c4c240d4c1f29ec5a44f00"
   const tokenId = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
   return {network, groupIndex, contractAddress, contractId, tokenId}
 }
@@ -68,9 +66,8 @@ function getTokenBurnWangConfig(): BurnToken {
 function getSubscribeConfig(): SubscribeConfig {
   const network = getNetwork()
   const groupIndex = 0
-  const subscribeContract = loadDeployments(network).contracts.Subscribe.contractInstance
-  const subscribeAddress = subscribeContract.address
-  const subscribeID = subscribeContract.contractId
+  const subscribeAddress = "23oZ2YSF4jS1YFijq5r11gELjcrVtUnfVPnTQxNMPDV3V"
+  const subscribeID = "876a253748760a124f50bbb0d0621c5e603422ed7a65e09592e9fd4d24075e00"
   const nguID = "df3008f43a7cc1d4a37eef71bf581fc4b9c3be4e2d58ed6d1df483bbb83bd200"     // NGU TOKEN
   return { network, groupIndex, subscribeAddress, subscribeID, nguID }
 }
