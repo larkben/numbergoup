@@ -179,7 +179,7 @@ class Factory extends ContractFactory<ViralInstance, ViralTypes.Fields> {
   }
 
   eventIndex = { Sell: 0, Buy: 1, WithdrawAlph: 2 };
-  consts = { ErrorCodes: { InvalidCaller: BigInt(3) } };
+  consts = { ErrorCodes: { InvalidCaller: BigInt("3") } };
 
   at(address: string): ViralInstance {
     return new ViralInstance(address);
@@ -341,7 +341,7 @@ export class ViralInstance extends ContractInstance {
     return subscribeContractEvents(Viral.contract, this, options, fromCount);
   }
 
-  methods = {
+  view = {
     getTokenId: async (
       params?: ViralTypes.CallMethodParams<"getTokenId">
     ): Promise<ViralTypes.CallMethodResult<"getTokenId">> => {
@@ -441,8 +441,6 @@ export class ViralInstance extends ContractInstance {
       );
     },
   };
-
-  view = this.methods;
 
   transact = {
     getTokenId: async (

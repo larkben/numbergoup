@@ -1,6 +1,6 @@
 
 import { DUST_AMOUNT, ExecutableScript, ExecuteScriptResult, SignerProvider, contractIdFromAddress } from '@alephium/web3'
-import { Topup, Sendout, Destroy, Gettoken, Editfee, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang, WormEatAlph, WormEatNgu, DestroyWorm } from '../../artifacts/ts/scripts'
+import { Topup, Sendout, Destroy, Burn, Deposit, Destroyburn, Subdestroy, Updatedevfee, Withdrawdev, Withdrawplatform, BurnWang, WormEatAlph, WormEatNgu, DestroyWorm } from '../../artifacts/ts/scripts'
 import { TokenBurnConfig, SubscribeConfig, WangBurnConfig } from './utils'
 import { BurnToken, Faucet } from 'artifacts/ts'
 import * as web3 from '@alephium/web3'
@@ -21,6 +21,7 @@ export const BurnTokenContract = async (
   })
 }
 
+// Destroy the Burn contract
 export const DestroyBurnContract = async (
   signerProvider: SignerProvider
 ): Promise<ExecuteScriptResult> => {
@@ -113,7 +114,7 @@ export const SubscribeWithdrawPlatformContract = async (
 
 //* Start of Burn Automation
 
-const burnwormid = "e23b4da3270f6eb44118bfeca07d6ec2fd438f5cb87ad017fcb50646ca3f2b00"
+const burnwormid = "dd07dc72b72bce65f834f96f7f8609609f59794ee779cd08e4560de269ad5a00"
 
 //? Takes ALPH as FEE to burn tokens
 export const BurnWormAlphContract = async (
@@ -123,7 +124,7 @@ export const BurnWormAlphContract = async (
 ): Promise<ExecuteScriptResult> => {
   return await WormEatAlph.execute(signerProvider, {
     initialFields: {
-      contract: burnwormid,
+      contract: "dd07dc72b72bce65f834f96f7f8609609f59794ee779cd08e4560de269ad5a00",
       amount: BigInt(amount),
       id: tokenid
     },
@@ -140,7 +141,7 @@ export const BurnWormNguContract = async (
 ): Promise<ExecuteScriptResult> => {
   return await WormEatNgu.execute(signerProvider, {
     initialFields: {
-      contract: burnwormid,
+      contract: "dd07dc72b72bce65f834f96f7f8609609f59794ee779cd08e4560de269ad5a00",
       amount: BigInt(amount),
       id: tokenid
     },

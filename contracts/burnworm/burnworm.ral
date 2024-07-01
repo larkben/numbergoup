@@ -26,7 +26,7 @@ Contract BurnWorm (
 		return alphfee
 	}
 
-	@using(preapprovedAssets = true, assetsInContract = false, updateFields = true, checkExternalCaller = false)
+	@using(preapprovedAssets = true, assetsInContract = true, updateFields = true, checkExternalCaller = false)
 	pub fn burntokenalph(id: ByteVec, amount: U256) -> () {
 
 		let caller = callerAddress!()
@@ -40,7 +40,7 @@ Contract BurnWorm (
 		emit Burn(id, amount, caller, blockTimeStamp!())
 	}
 
-	@using(preapprovedAssets = true, assetsInContract = false, updateFields = true, checkExternalCaller = false)
+	@using(preapprovedAssets = true, assetsInContract = true, updateFields = true, checkExternalCaller = false)
 	pub fn burntokenngu(id: ByteVec, amount: U256) -> () {
 
 		let caller = callerAddress!()

@@ -116,7 +116,7 @@ class Factory extends ContractFactory<
   }
 
   eventIndex = { Burn: 0, Destroy: 1 };
-  consts = { Error: { InvalidCaller: BigInt(0) } };
+  consts = { Error: { InvalidCaller: BigInt("0") } };
 
   at(address: string): BurnTokenInstance {
     return new BurnTokenInstance(address);
@@ -214,7 +214,7 @@ export class BurnTokenInstance extends ContractInstance {
     );
   }
 
-  methods = {
+  view = {
     getToken: async (
       params?: BurnTokenTypes.CallMethodParams<"getToken">
     ): Promise<BurnTokenTypes.CallMethodResult<"getToken">> => {
@@ -249,8 +249,6 @@ export class BurnTokenInstance extends ContractInstance {
       );
     },
   };
-
-  view = this.methods;
 
   transact = {
     getToken: async (

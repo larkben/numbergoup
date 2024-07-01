@@ -162,7 +162,7 @@ class Factory extends ContractFactory<BurnWormInstance, BurnWormTypes.Fields> {
   }
 
   eventIndex = { Burn: 0, Destroy: 1 };
-  consts = { Error: { InvalidCaller: BigInt(0) } };
+  consts = { Error: { InvalidCaller: BigInt("0") } };
 
   at(address: string): BurnWormInstance {
     return new BurnWormInstance(address);
@@ -241,7 +241,7 @@ export const BurnWorm = new Factory(
   Contract.fromJson(
     BurnWormContractJson,
     "",
-    "0fb26fa85052919c3365b34a102880752470ac36ed6d357922a9bf680aff8b59",
+    "45c04aaa72aa49d87bb9b33d6078ebf49299e6facc49f381e85ef5b7eb8ee69a",
     []
   )
 );
@@ -295,7 +295,7 @@ export class BurnWormInstance extends ContractInstance {
     return subscribeContractEvents(BurnWorm.contract, this, options, fromCount);
   }
 
-  methods = {
+  view = {
     getNgu: async (
       params?: BurnWormTypes.CallMethodParams<"getNgu">
     ): Promise<BurnWormTypes.CallMethodResult<"getNgu">> => {
@@ -385,8 +385,6 @@ export class BurnWormInstance extends ContractInstance {
       );
     },
   };
-
-  view = this.methods;
 
   transact = {
     getNgu: async (
