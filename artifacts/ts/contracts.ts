@@ -8,7 +8,6 @@ import {
   BurnTokenWang,
   BurnWorm,
   Faucet,
-  FeeCollection,
   Subscribe,
   Viral,
 } from ".";
@@ -16,15 +15,7 @@ import {
 let contracts: ContractFactory<any>[] | undefined = undefined;
 export function getContractByCodeHash(codeHash: string): Contract {
   if (contracts === undefined) {
-    contracts = [
-      BurnToken,
-      BurnTokenWang,
-      BurnWorm,
-      Faucet,
-      FeeCollection,
-      Subscribe,
-      Viral,
-    ];
+    contracts = [BurnToken, BurnTokenWang, BurnWorm, Faucet, Subscribe, Viral];
   }
   const c = contracts.find(
     (c) =>

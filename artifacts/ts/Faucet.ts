@@ -143,9 +143,9 @@ class Factory extends ContractFactory<FaucetInstance, FaucetTypes.Fields> {
   eventIndex = { Topup: 0, Sendout: 1, Destroy: 2 };
   consts = {
     ErrorCodes: {
-      InvalidWithdraw: BigInt(1),
-      InvalidTopup: BigInt(2),
-      InvalidCaller: BigInt(3),
+      InvalidWithdraw: BigInt("1"),
+      InvalidTopup: BigInt("2"),
+      InvalidCaller: BigInt("3"),
     },
   };
 
@@ -287,7 +287,7 @@ export class FaucetInstance extends ContractInstance {
     return subscribeContractEvents(Faucet.contract, this, options, fromCount);
   }
 
-  methods = {
+  view = {
     getTokenId: async (
       params?: FaucetTypes.CallMethodParams<"getTokenId">
     ): Promise<FaucetTypes.CallMethodResult<"getTokenId">> => {
@@ -354,8 +354,6 @@ export class FaucetInstance extends ContractInstance {
       );
     },
   };
-
-  view = this.methods;
 
   transact = {
     getTokenId: async (

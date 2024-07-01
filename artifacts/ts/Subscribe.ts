@@ -174,7 +174,7 @@ class Factory extends ContractFactory<
   }
 
   eventIndex = { Subscribed: 0, Withdrawngu: 1, Feeupdate: 2, Destroysub: 3 };
-  consts = { Codes: { InvalidCaller: BigInt(1) } };
+  consts = { Codes: { InvalidCaller: BigInt("1") } };
 
   at(address: string): SubscribeInstance {
     return new SubscribeInstance(address);
@@ -354,7 +354,7 @@ export class SubscribeInstance extends ContractInstance {
     );
   }
 
-  methods = {
+  view = {
     getToken: async (
       params?: SubscribeTypes.CallMethodParams<"getToken">
     ): Promise<SubscribeTypes.CallMethodResult<"getToken">> => {
@@ -455,8 +455,6 @@ export class SubscribeInstance extends ContractInstance {
       );
     },
   };
-
-  view = this.methods;
 
   transact = {
     getToken: async (

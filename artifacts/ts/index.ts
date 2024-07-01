@@ -6,7 +6,6 @@ export * from "./BurnToken";
 export * from "./BurnTokenWang";
 export * from "./BurnWorm";
 export * from "./Faucet";
-export * from "./FeeCollection";
 export * from "./Subscribe";
 export * from "./Viral";
 export * from "./scripts";

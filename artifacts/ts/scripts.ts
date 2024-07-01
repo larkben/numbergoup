@@ -19,8 +19,6 @@ import { default as DestroyScriptJson } from "../faucet/Destroy.ral.json";
 import { default as DestroyWormScriptJson } from "../burnworm/DestroyWorm.ral.json";
 import { default as DestroyburnScriptJson } from "../burn/Destroyburn.ral.json";
 import { default as DestroyburnwangScriptJson } from "../burnwang/Destroyburnwang.ral.json";
-import { default as EditfeeScriptJson } from "../scripts/Editfee.ral.json";
-import { default as GettokenScriptJson } from "../scripts/Gettoken.ral.json";
 import { default as ReedeemalphScriptJson } from "../ico/Reedeemalph.ral.json";
 import { default as SellvirlScriptJson } from "../ico/Sellvirl.ral.json";
 import { default as SendoutScriptJson } from "../faucet/Sendout.ral.json";
@@ -28,7 +26,6 @@ import { default as SubdestroyScriptJson } from "../subscribe/Subdestroy.ral.jso
 import { default as TopupScriptJson } from "../faucet/Topup.ral.json";
 import { default as UpdatedevfeeScriptJson } from "../subscribe/Updatedevfee.ral.json";
 import { default as WithdrawdevScriptJson } from "../subscribe/Withdrawdev.ral.json";
-import { default as WithdrawlassetsScriptJson } from "../scripts/Withdrawlassets.ral.json";
 import { default as WithdrawplatformScriptJson } from "../subscribe/Withdrawplatform.ral.json";
 import { default as WormEatAlphScriptJson } from "../burnworm/WormEatAlph.ral.json";
 import { default as WormEatNguScriptJson } from "../burnworm/WormEatNgu.ral.json";
@@ -71,16 +68,6 @@ export const Destroyburnwang = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(DestroyburnwangScriptJson, "", [])
 );
 
-export const Editfee = new ExecutableScript<{
-  contract: HexString;
-  edit: bigint;
-}>(Script.fromJson(EditfeeScriptJson, "", []));
-
-export const Gettoken = new ExecutableScript<{
-  contract: HexString;
-  amount: bigint;
-}>(Script.fromJson(GettokenScriptJson, "", []));
-
 export const Reedeemalph = new ExecutableScript<{
   contract: HexString;
   amount: bigint;
@@ -112,10 +99,6 @@ export const Updatedevfee = new ExecutableScript<{
 
 export const Withdrawdev = new ExecutableScript<{ contract: HexString }>(
   Script.fromJson(WithdrawdevScriptJson, "", [])
-);
-
-export const Withdrawlassets = new ExecutableScript<{ contract: HexString }>(
-  Script.fromJson(WithdrawlassetsScriptJson, "", [])
 );
 
 export const Withdrawplatform = new ExecutableScript<{ contract: HexString }>(
