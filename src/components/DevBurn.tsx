@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // Alephium imports
-import { BurnTokenContract, DestroyBurnContract, BurnTokenWang } from '@/services/token.service'
+import { BurnTokenContract, DestroyBurnContract, BurnTokenWang, CollectBurnWormAlph } from '@/services/token.service'
 import { TxStatus } from './TxStatus'
 import { node } from '@alephium/web3'
 import { SubscribeConfig, TokenBurnConfig } from '../services/utils'
@@ -26,7 +26,7 @@ export const TokenDevBurnAutomation: FC<{
     e.preventDefault()
     if (signer) {
       const tokenBurnValue = BigInt(Number(tokenburn) * 1e7).toString();
-      const result = await BurnTokenContract(signer, tokenBurnValue)
+      const result = await CollectBurnWormAlph(signer)
       setOngoingTxId(result.txId)
     }
   }
@@ -69,7 +69,7 @@ export const TokenDevBurnAutomation: FC<{
       <div style={{color: 'black'}} >
         <form onSubmit={handleBurn} style={{alignContent: 'center', textAlign: 'center'}}>
           <>
-            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Alephium NGU Burn ({config.network})</h2>
+            <h2 className={styles.title} style={{color: 'black', textAlign: 'center'}}> Collect ALPH ({config.network})</h2>
             {/*<p>PublicKey: {context.account?.publicKey ?? '???'}</p>*/}
             <p style={{color: 'black', textAlign: 'center'}}> You are now burning your most valuable asset. All contracts are final and irreversible. </p>
             <label htmlFor="burn"> Amount of $NGU to be burned. </label>
